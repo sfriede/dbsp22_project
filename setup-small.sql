@@ -1,7 +1,9 @@
 DROP TABLE IF EXISTS Health;
 DROP TABLE IF EXISTS RiskFactors;
 DROP TABLE IF EXISTS Education;
+DROP TABLE IF EXISTS Demographics;
 DROP TABLE IF EXISTS States;
+
 
 
 CREATE TABLE States
@@ -11,6 +13,27 @@ population      INT,
 PRIMARY KEY(stateName),
 CHECK(population >= 0)
 );
+
+CREATE TABLE Demographics
+(
+stateName            VARCHAR(15),
+white                FLOAT(3,2),
+black                FLOAT(3,2),
+asian                FLOAT(3,2),
+indigenous           FLOAT(3,2),
+other                FLOAT(3,2),
+hispanicOrLatino     FLOAT(3,2),
+notHispanicOrLatino  FLOAT(3,2),
+PRIMARY KEY(stateName),
+CHECK(white BETWEEN 0 AND 100),
+CHECK(black BETWEEN 0 AND 100),
+CHECK(asian BETWEEN 0 AND 100) ,
+CHECK(indigenous BETWEEN 0 AND 100),
+CHECK(other BETWEEN 0 AND 100),
+CHECK(hispanicOrLatino BETWEEN 0 AND 100) ,
+CHECK(notHispanicOrLatino BETWEEN 0 AND 100)
+);
+
 
 
 CREATE TABLE Health
