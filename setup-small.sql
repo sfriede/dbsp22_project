@@ -110,6 +110,18 @@ CHECK(percentCompletingCollege BETWEEN 0 AND 100),
 CHECK(eduSpendingPerPupil >= 0)
 );
 
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/states-small.csv' 
+INTO TABLE States 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/demographics-small.csv' 
+INTO TABLE Demographics 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
 LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\health-small.csv' 
 INTO TABLE Health 
 FIELDS TERMINATED BY ',' 
@@ -125,6 +137,12 @@ IGNORE 1 ROWS;
 
 LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\education-small.csv' 
 INTO TABLE Education 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/economy-small.csv' 
+INTO TABLE Economy 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
