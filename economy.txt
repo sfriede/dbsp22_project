@@ -1,4 +1,4 @@
-state	percentInPoverty	unemploymentRate	realGDP	numberUnhoused	medianIncome	foreignBornMedianIncome	USBornMedianIncome
+stateName	percentInPoverty	unemploymentRate	realGDP	numberUnhoused	medianIncome	foreignBornMedianIncome	USBornMedianIncome
 Alabama	13.9	3.9	195474.7	"1,949"	"49,936"	"46,493"	"51,904"
 Alaska	11.8	3.9	50645.5	"3,351"	"68,734"	"72,217"	"78,196"
 Arizona	10.4	6.6	320658.3	"2,366"	"62,283"	"53,291"	"63,899"

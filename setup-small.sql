@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Health;
 DROP TABLE IF EXISTS RiskFactors;
 DROP TABLE IF EXISTS Education;
+DROP TABLE IF EXISTS Economy;
 DROP TABLE IF EXISTS Demographics;
 DROP TABLE IF EXISTS States;
 
@@ -17,14 +18,15 @@ CHECK(population >= 0)
 CREATE TABLE Demographics
 (
 stateName            VARCHAR(15),
-white                FLOAT(3,2),
-black                FLOAT(3,2),
-asian                FLOAT(3,2),
-indigenous           FLOAT(3,2),
-other                FLOAT(3,2),
-hispanicOrLatino     FLOAT(3,2),
-notHispanicOrLatino  FLOAT(3,2),
+white                FLOAT(5,2),
+black                FLOAT(5,2),
+asian                FLOAT(5,2),
+indigenous           FLOAT(5,2),
+other                FLOAT(5,2),
+hispanicOrLatino     FLOAT(5,2),
+notHispanicOrLatino  FLOAT(5,2),
 PRIMARY KEY(stateName),
+FOREIGN KEY(stateName) REFERENCES States(stateName) ON DELETE CASCADE ON UPDATE CASCADE,
 CHECK(white BETWEEN 0 AND 100),
 CHECK(black BETWEEN 0 AND 100),
 CHECK(asian BETWEEN 0 AND 100) ,
@@ -34,6 +36,26 @@ CHECK(hispanicOrLatino BETWEEN 0 AND 100) ,
 CHECK(notHispanicOrLatino BETWEEN 0 AND 100)
 );
 
+CREATE TABLE Economy
+(
+stateName                       VARCHAR(15),
+percentInPoverty                FLOAT(5,2),
+unemploymentRate                FLOAT(5,2),
+realGDP                         FLOAT(10,2),
+numberUnhoused                  INT, 
+medianIncome                    INT,     
+foreignBornMedianIncome         INT, 
+USBornMedianIncome              INT,                     
+PRIMARY KEY(stateName),
+FOREIGN KEY(stateName) REFERENCES States(stateName) ON DELETE CASCADE ON UPDATE CASCADE,
+CHECK(percentInPoverty BETWEEN 0 AND 100),
+CHECK(unemploymentRate BETWEEN 0 AND 100),
+CHECK(realGDP >= 0),
+CHECK(numberUnhoused >= 0),
+CHECK(medianIncome >= 0),
+CHECK(foreignBornMedianIncome >= 0),
+CHECK(USBornMedianIncome >= 0)
+);
 
 
 CREATE TABLE Health

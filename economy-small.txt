@@ -1,4 +1,4 @@
-state	percentInPoverty	unemploymentRate	realGDP	numberUnhoused	medianIncome	foreignBornMedianIncome	USBornMedianIncome
+stateName	percentInPoverty	unemploymentRate	realGDP	numberUnhoused	medianIncome	foreignBornMedianIncome	USBornMedianIncome
 Alabama	13.9	3.9	195474.7	"1,949"	"49,936"	"46,493"	"51,904"
 California	10.6	3.7	2722838.6	"161,548"	"70,489"	"71,325"	"84,598"
 Florida	12.4	3.8	935674.3	"27,487"	"54,644"	"52,773"	"61,144"
