@@ -65,12 +65,20 @@ CHECK(percentCompletingCollege BETWEEN 0 AND 100),
 CHECK(eduSpendingPerPupil >= 0)
 );
 
-LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\health-small.csv' 
-INTO TABLE Health 
-FIELDS TERMINATED BY ',' 
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS;
+--LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\health-small.csv' 
+--INTO TABLE Health 
+--FIELDS TERMINATED BY ',' 
+--LINES TERMINATED BY '\n'
+--IGNORE 1 ROWS;
 
+BULK INSERT Health
+FROM 'C:\Users\Sydney\Desktop\databases\health-small.csv'
+WITH
+(
+	FORMAT = 'CSV',
+	FIRSTROW=2
+)
+GO;
 
 LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\riskFactors-small.csv' 
 INTO TABLE RiskFactors 
