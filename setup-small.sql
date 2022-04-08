@@ -1,7 +1,10 @@
 DROP TABLE IF EXISTS Health;
 DROP TABLE IF EXISTS RiskFactors;
 DROP TABLE IF EXISTS Education;
+DROP TABLE IF EXISTS Economy;
+DROP TABLE IF EXISTS Demographics;
 DROP TABLE IF EXISTS States;
+
 
 
 CREATE TABLE States
@@ -10,6 +13,48 @@ stateName       VARCHAR(15),
 population      INT,
 PRIMARY KEY(stateName),
 CHECK(population >= 0)
+);
+
+CREATE TABLE Demographics
+(
+stateName            VARCHAR(15),
+white                FLOAT(5,2),
+black                FLOAT(5,2),
+asian                FLOAT(5,2),
+indigenous           FLOAT(5,2),
+other                FLOAT(5,2),
+hispanicOrLatino     FLOAT(5,2),
+notHispanicOrLatino  FLOAT(5,2),
+PRIMARY KEY(stateName),
+FOREIGN KEY(stateName) REFERENCES States(stateName) ON DELETE CASCADE ON UPDATE CASCADE,
+CHECK(white BETWEEN 0 AND 100),
+CHECK(black BETWEEN 0 AND 100),
+CHECK(asian BETWEEN 0 AND 100) ,
+CHECK(indigenous BETWEEN 0 AND 100),
+CHECK(other BETWEEN 0 AND 100),
+CHECK(hispanicOrLatino BETWEEN 0 AND 100) ,
+CHECK(notHispanicOrLatino BETWEEN 0 AND 100)
+);
+
+CREATE TABLE Economy
+(
+stateName                       VARCHAR(15),
+percentInPoverty                FLOAT(5,2),
+unemploymentRate                FLOAT(5,2),
+realGDP                         FLOAT(10,2),
+numberUnhoused                  INT, 
+medianIncome                    INT,     
+foreignBornMedianIncome         INT, 
+USBornMedianIncome              INT,                     
+PRIMARY KEY(stateName),
+FOREIGN KEY(stateName) REFERENCES States(stateName) ON DELETE CASCADE ON UPDATE CASCADE,
+CHECK(percentInPoverty BETWEEN 0 AND 100),
+CHECK(unemploymentRate BETWEEN 0 AND 100),
+CHECK(realGDP >= 0),
+CHECK(numberUnhoused >= 0),
+CHECK(medianIncome >= 0),
+CHECK(foreignBornMedianIncome >= 0),
+CHECK(USBornMedianIncome >= 0)
 );
 
 
@@ -65,6 +110,18 @@ CHECK(percentCompletingCollege BETWEEN 0 AND 100),
 CHECK(eduSpendingPerPupil >= 0)
 );
 
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/states-small.csv' 
+INTO TABLE States 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/demographics-small.csv' 
+INTO TABLE Demographics 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
 LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\health-small.csv' 
 INTO TABLE Health 
 FIELDS TERMINATED BY ',' 
@@ -79,6 +136,12 @@ IGNORE 1 ROWS;
 
 LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\education-small.csv' 
 INTO TABLE Education 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/economy-small.csv' 
+INTO TABLE Economy 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
