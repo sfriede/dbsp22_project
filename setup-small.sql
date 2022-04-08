@@ -1,12 +1,9 @@
-DROP TABLE IF EXISTS Health;
-DROP TABLE IF EXISTS RiskFactors;
-DROP TABLE IF EXISTS Education;
-DROP TABLE IF EXISTS Economy;
-DROP TABLE IF EXISTS Demographics;
-DROP TABLE IF EXISTS States;
+--- Shelby Coe and Sydney Friedel
+--- scoe4 and sfriede5
 
 
-
+--- Describe the schema for the States relation
+--- Each tuple contains a state's name and population
 CREATE TABLE States
 (
 stateName       VARCHAR(15),
@@ -15,6 +12,9 @@ PRIMARY KEY(stateName),
 CHECK(population >= 0)
 );
 
+
+--- Describe the schema for the Demographics relation
+--- Each tuple hold the demographics statistics for a particular state
 CREATE TABLE Demographics
 (
 stateName            VARCHAR(15),
@@ -36,6 +36,9 @@ CHECK(hispanicOrLatino BETWEEN 0 AND 100) ,
 CHECK(notHispanicOrLatino BETWEEN 0 AND 100)
 );
 
+
+--- Describe the schema for the Economy relation
+--- Each tuple contains the economic information for a given state
 CREATE TABLE Economy
 (
 stateName                       VARCHAR(15),
@@ -57,7 +60,8 @@ CHECK(foreignBornMedianIncome >= 0),
 CHECK(USBornMedianIncome >= 0)
 );
 
-
+--- Describe the schema for the Health relation
+--- Each tuple contains the health statistics for a given state
 CREATE TABLE Health
 (
 stateName       VARCHAR(15),
@@ -74,6 +78,8 @@ CHECK(suicideRate BETWEEN 0 AND 100) ,
 CHECK(teenPregnancyRate BETWEEN 0 AND 100)
 );
 
+--- Describe schema for the RiskFactors relation
+--- Each tuple contains statistics about different health risk factors for a given state
 CREATE TABLE RiskFactors
 (
 stateName       VARCHAR(15),
@@ -87,6 +93,8 @@ CHECK(STISPer100K >= 0),
 CHECK(obesityPrevalence BETWEEN 0 AND 100)
 );
 
+--- Describe the schema for the Education relation
+--- Each tuple contains education statistics for a given state
 CREATE TABLE Education
 (
 stateName       VARCHAR(15),
@@ -110,37 +118,42 @@ CHECK(percentCompletingCollege BETWEEN 0 AND 100),
 CHECK(eduSpendingPerPupil >= 0)
 );
 
-LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/states-small.csv' 
+--- For each *-small.csv file, load the CSV file into the desired relation
+--- The structure of each CSV file must match the above schema for the relation
+--- Each load command inserts each row of the CSV file into the relation as a tuple
+
+LOAD DATA LOCAL INFILE 'states-small.csv'
 INTO TABLE States 
-FIELDS TERMINATED BY ',' 
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/demographics-small.csv' 
+LOAD DATA LOCAL INFILE 'demographics-small.csv'
 INTO TABLE Demographics 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\health-small.csv' 
+LOAD DATA LOCAL INFILE 'health-small.csv' 
 INTO TABLE Health 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\riskFactors-small.csv' 
+LOAD DATA LOCAL INFILE 'riskFactors-small.csv' 
 INTO TABLE RiskFactors 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:\Users\Sydney\Desktop\databases\education-small.csv' 
+LOAD DATA LOCAL INFILE 'education-small.csv' 
 INTO TABLE Education 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
-LOAD DATA INFILE 'C:/Users/shelby/Documents/Databases/dbsp22_project/economy-small.csv' 
+LOAD DATA LOCAL INFILE 'economy-small.csv'
 INTO TABLE Economy 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\n'
