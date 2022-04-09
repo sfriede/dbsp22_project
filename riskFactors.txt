@@ -34,7 +34,7 @@ New York,128.8,804,27.7
 North Carolina,148.4,889,30.9
 North Dakota,139.5,653,26.3
 Ohio,159.1,764,33.6
-Oklahoma,171.1801,33.1
+Oklahoma,171,1801,33.1
 Oregon,145.8,617,35.5
 Pennsylvania,153.2,594,36.4
 Rhode Island,141.6,653,28.1
