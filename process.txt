@@ -1,0 +1,66 @@
+Shelby Coe (scoe4) and Sydney Friedel (sfriede5)
+
+For each relation, we created an excel file to store the aggregate data from all the various sources. These excel files had a row of column names corresponding to the attribute names of the relation, followed by one row per tuple. Once all the data was combined into the excel sheet, we saved it as a CSV file to be used in our setup scripts. The specific steps for each relation are described below.
+
+1. States (state.txt)
+-> Source for all attributes: https://data.census.gov/cedsci/table?q=&y=2020&d=DEC%20Redistricting%20Data%20%28PL%2094-171%29&tid=DECENNIALPL2020.P1
+We transposed this table, downloaded the excel file, and removed all columns except for the state name and total population columns (from the Data sheet). Blank cells were deleted, and we used Excel formatting tools to automatically remove commas from the population cells.
+
+2. Demographics (demographics.txt)
+-> Source for all attributes: https://data.census.gov/cedsci/table?q=&y=2020&d=DEC%20Redistricting%20Data%20%28PL%2094-171%29&tid=DECENNIALPL2020.P1
+We transposed this table, downloaded the excel file, and removed all columns except for the state name and the five 'population of one race' columns (white, black, asian, native hawaiian and other pacific islander, some other race) from the Data sheet. Blank cells were deleted, and we used Excel formatting tools to automatically remove commas from the population cells. Finally, we calculated the percentages of each race by dividing by the state's total population for each state (from the States excel sheet) and multiplying by 100.
+
+3. Health (health.txt)
+-> Source for abortionRate:https://www.kff.org/womens-health-policy/state-indicator/number-of-abortions/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
+-> Source for homicideRate: https://www.cdc.gov/nchs/pressroom/sosmap/homicide_mortality/homicide.htm
+-> Source for suicideRate: https://www.cdc.gov/nchs/pressroom/sosmap/suicide-mortality/suicide.htm
+-> Source for teenPregnancyRate: https://www.cdc.gov/nchs/pressroom/sosmap/teen-births/teenbirths.htm
+-> Source for drugOverdoses: https://www.cdc.gov/nchs/pressroom/sosmap/drug_poisoning_mortality/drug_poisoning.htm
+We downloaded the excel file for the abortion rate data and downloaded the CSV files for all other attributes. The abortionRate Excel sheet gave a column of the state names and a column of the corresponding attribute values.
+Each CSV file had to be uploaded into Excel (Data -> From Text/CSV), and then all columns except the state name and associated attribute value were removed, as well as all rows past the year 2020 (if they existed for this attribute).
+From here, we had a separate sheet for each attribute and could merge them all into a single table based on shared state names. Every 'NR' entry (not recorded) was automatically replaced with '\N', the abortionRate was divided by the state's total population (from the States table) and multiplied by 100, and the row for Washington DC was removed.
+
+4. Risk Factors (risk-factors.txt)
+-> Source for cancerMortality: https://www.cdc.gov/nchs/pressroom/sosmap/cancer_mortality/cancer.htm
+      Downloaded the CSV files for cancerMortality and obesityPrevalence, uploaded them into Excel as described above and removed all columns except state names and cancer rate.
+-> Source for STIsPer100K: https://www.innerbody.com/std-testing/std-statistics-by-state
+      All of the STD data found in this report, including case statistics for HIV, syphilis, gonorrhea, and chlamydia, are from the C.D.C.’s latest data release
+      Had to copy and paste the entire table on the website into Excel and then delete all columns except for state name and STD/100K
+-> Source for obesityPrevalence: https://www.cdc.gov/obesity/data/prevalence-maps.html
+      Downloaded the CSV files for cancerMortality and obesityPrevalence, uploaded them into Excel as described above and removed all columns except state names and obesity prevalence.
+From here, we had a separate sheet for each attribute and easily merged them into one table based on common state names.
+	
+5. Education (education.txt)
+-> Source for: avgTeacherSalary: https://study.com/academy/popular/teacher-salary-by-state.html
+      This data was aggregated from Bureau of Labor Statistics
+      Copied the table for the teacher salary data from the website into excel and then removed all columns except state name and starting salary
+-> Source for avgSATScore: https://nces.ed.gov/programs/digest/d19/tables/dt19_226.40.asp
+      Downloaded the Excel file and removed all columns except the state name and mean score for 2019
+-> Source for avgACTScore: https://nces.ed.gov/programs/digest/d19/tables/dt19_226.60.asp
+      Downloaded the Excel file and removed all columns except the state name and 2019 composite score
+-> Source for NAEPScoreMath and NAEPScoreReading: https://nces.ed.gov/nationsreportcard/studies/statemapping/table_2019b.aspx
+      Downloaded the Excel file and removed all columns except the state name, reading NAEP equivalent, and math NAEP equivalent
+-> Source for highschoolGraduationRate: https://nces.ed.gov/programs/digest/d20/tables/dt20_219.46.asp
+      Downloaded the excel file and kept only the state name and Total ACGR 2018-2019 column
+-> Source for percentCompletingCollege: https://data.ers.usda.gov/reports.aspx?ID=17829
+      Chose 'completing college' as the highest level of attainment, copied the resulting table into Excel, and kept only the state name and 2015-2019 total column (removing the US, Washington DC, and Puerto Rico rows)
+-> Source for educationSpendingPerPupil : https://www.census.gov/data/tables/2020/econ/school-finances/secondary-education-finance.html
+      Downloaded the preliminary table and kept only the state name and per pupil columns. The data was not available for every state, and the rows for these states did not exist. This created a slightly tedious process of having to insert a row for the missing state with null values
+From here, we had a sheet for each attribute and were able to merge them all into one table based on common state name. All cells containing '—' or blank cells were automatically replaced with '\N'. All cells were formatted to contain no percent signs or commas. 
+
+6. Economy (economy.txt)
+-> State name 
+      Created an excel file with the column names as the attribute names
+-> Source for percentInPoverty: https://www.census.gov/library/publications/2021/demo/p60-273.html
+      Downloaded excel file, used the column showing percentage of people in poverty in 2020, copy and pasted into the excel sheet
+-> Source for unemploymentRate: https://www.bls.gov/charts/state-employment-and-unemployment/state-unemployment-rates-map.htm#
+      Downloaded excel file, copied the 2018 unemployment rates (most recent) into the excel file for the economy relation
+-> Source for realGDP: https://apps.bea.gov/regional/histdata/releases/0321gdpstate/index.cfm
+      Downloaded the “Annual GDP by State and Industry” zip file, then used the “ALL STATES” csv file. From there I deleted all rows where the category wasn’t “real GDP (in chained 2012 dollars)” and used the numbers in the amount column
+-> Source for percentUnhoused: https://www.hudexchange.info/resource/6291/2020-ahar-part-1-pit-estimates-of-homelessness-in-the-us/ 
+      Use the 2020 point in time estimate by state, went to the 2020 (not changes sheet), copied the data from the column titled “Overall Homeless”
+-> Source for medianIncome: https://www.census.gov/data/tables/time-series/demo/income-poverty/historical-income-households.html 
+      Downloaded the zip file with annual state income data, opened the csv file with the data for all states, used the column titled Median Income
+-> Source for medHouseholdIncomeUSBorn and medHouseholdIncomeForeignBorn: https://www.migrationpolicy.org/data/state-profiles/state/income/US/AK/
+      Copied the data in the “Foreign Born” and “U.S. Born” columns into the excel sheet
+
