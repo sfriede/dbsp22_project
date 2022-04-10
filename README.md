@@ -3,10 +3,34 @@
 
 First, we want to address changes in our project since Phase B. This isn't a concern since we already discussed making this change with Punit and received his approval, but we want to make Professor More and the CAs aware. While retrieving data, we realized that many attributes, all of which stem from U.S. government data, were severely limited in terms of number/frequency of recordings. This meant we were not able to find two sets of recordings (old and new) for all attributes, so we could not create the "RelationOld" and "RelationNew" relations we described in our Phase B schema without having mostly null values in each table. 
 
-Given this limitation, we and our advisor found it best to only collect data from the 2019-2020 period, as we could find data for nearly all attributes during this time, and eliminate proposed queries concerned with how different state statistics changed over time. We modified our database schema to not have "old" and "new" versions of each relation, but just a single version of each. Note that though this eliminates some of our original proposed queries, we created additional, equally complex queries to make up for it. All the new queries are listed below. 
+Given this limitation, we and our advisor found it best to only collect data from the 2019-2020 period, as we could find data for nearly all attributes during this time, and eliminate proposed queries concerned with how different state statistics changed over time. We modified our database schema to not have "old" and "new" versions of each relation, but just a single version of each. Note that though this eliminates some of our original proposed queries, we created additional, equally complex queries to make up for it. All the new queries and the new databse schema are listed below. 
 Also, there are a few slight tweaks to the schema described in Phase B: some attribute names were changed to better reflect the data we found (e.g. 'obesityPercent' was renamed to 'obesityPrevalence'), a few new race attributes were added to the Demographics relation, and the avgMotherAge and avgFatherAge attributes had to be removed from the Health relation, as we could not find this data for the 2019-2020 time period. 
 
 Lastly, we want to explain our reasoning for the tuples we chose to create our relation-small.txt files. Given that our project domain is the sociological statistics about the 50 U.S. states, we thought it would be best and most interesting to select a small subset of states with a wide variety of population, size, political affiliation, and other factors. In addition, several states within this subset had null values for attributes across different relations, making this a somewhat adversarial set in terms of future queries and computations.
+
+##### New Database Schema:
+
+States(<ins>stateName</ins>, population)
+  
+Demographics(<ins>stateName</ins>, white, black, asian, indigenous, other, hispanicOrLatino, notHispanicOrLatino)
+  
+    Foreign key (Demographics.stateName) references (States.stateName)
+  
+Health(<ins>stateName</ins>, abortionRate, homicideRate, suicideRate, drugOverdoses, teenPregnancyRate)
+  
+    Foreign key (Health.stateName) references (States.stateName)
+  
+RiskFactors(<ins>stateName</ins>,cancerMortality, STIsPer100K, obesityPrevalence)
+  
+    Foreign key (RiskFactors.stateName) references (States.stateName)
+  
+Economy(<ins>stateName</ins>,percentInPoverty,unemploymentRate,realGDP,numberUnhoused,medianIncome,foreignBornMedianIncome,USBornMedianIncome)
+  
+    Foreign key (Economy.stateName) references (States.stateName)
+  
+Education(<ins>stateName</ins>,avgTeacherStartingSalary,avgSATScore,avgACTScore,NAEPScoreReading,NAEPScoreMath,highschoolGradRate,percentCompletingCollege,eduSpendingPerPupil)
+  
+    Foreign key (Education.stateName) references (States.stateName)
 
 ##### New Proposed Queries:
 1. In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), list the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. 
