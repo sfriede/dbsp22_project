@@ -127,37 +127,37 @@ CHECK(eduSpendingPerPupil >= 0)
 );
 
 
-LOAD DATA LOCAL INFILE 'states-small.txt'
+LOAD DATA LOCAL INFILE './states-small.txt'
 INTO TABLE States 
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'demographics-small.txt'
+LOAD DATA LOCAL INFILE './demographics-small.txt'
 INTO TABLE Demographics 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'health-small.txt' 
+LOAD DATA LOCAL INFILE './health-small.txt' 
 INTO TABLE Health 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'riskFactors-small.txt' 
+LOAD DATA LOCAL INFILE './riskFactors-small.txt' 
 INTO TABLE RiskFactors 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'education-small.txt' 
+LOAD DATA LOCAL INFILE './education-small.txt' 
 INTO TABLE Education 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE 'economy-small.txt'
+LOAD DATA LOCAL INFILE './economy-small.txt'
 INTO TABLE Economy 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
