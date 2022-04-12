@@ -127,6 +127,8 @@ CHECK(eduSpendingPerPupil >= 0)
 );
 
 
+-- Load the data from each .txt file into the appropriate table
+
 LOAD DATA LOCAL INFILE 'state.txt'
 INTO TABLE States 
 FIELDS TERMINATED BY ','

@@ -126,6 +126,7 @@ CHECK(percentCompletingCollege BETWEEN 0 AND 100),
 CHECK(eduSpendingPerPupil >= 0)
 );
 
+-- Load the data from each -small.txt file into the appropriate table
 
 LOAD DATA LOCAL INFILE './states-small.txt'
 INTO TABLE States 
