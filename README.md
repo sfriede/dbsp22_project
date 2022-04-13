@@ -10,27 +10,28 @@ Lastly, we want to explain our reasoning for the tuples we chose to create our r
 
 ##### New Database Schema:
 
-States(<ins>stateName</ins>, population)
+States(stateName, population)
+	Primary key stateName
   
-Demographics(<ins>stateName</ins>, white, black, asian, indigenous, other, hispanicOrLatino, notHispanicOrLatino)
+Demographics(stateName, white, black, asian, indigenous, other, hispanicOrLatino, notHispanicOrLatino)
+  	Primary key stateName
+	Foreign key (Demographics.stateName) references (States.stateName)
   
-    Foreign key (Demographics.stateName) references (States.stateName)
+Health(stateName, abortionRate, homicideRate, suicideRate, drugOverdoses, teenPregnancyRate)
+	Primary key stateName
+    	Foreign key (Health.stateName) references (States.stateName)
   
-Health(<ins>stateName</ins>, abortionRate, homicideRate, suicideRate, drugOverdoses, teenPregnancyRate)
+RiskFactors(stateName,cancerMortality, STIsPer100K, obesityPrevalence)
+  	Primary key stateName
+        Foreign key (RiskFactors.stateName) references (States.stateName)
   
-    Foreign key (Health.stateName) references (States.stateName)
+Economy(stateName,percentInPoverty,unemploymentRate,realGDP,numberUnhoused,medianIncome,foreignBornMedianIncome,USBornMedianIncome)
+	Primary key stateName
+        Foreign key (Economy.stateName) references (States.stateName)
   
-RiskFactors(<ins>stateName</ins>,cancerMortality, STIsPer100K, obesityPrevalence)
-  
-    Foreign key (RiskFactors.stateName) references (States.stateName)
-  
-Economy(<ins>stateName</ins>,percentInPoverty,unemploymentRate,realGDP,numberUnhoused,medianIncome,foreignBornMedianIncome,USBornMedianIncome)
-  
-    Foreign key (Economy.stateName) references (States.stateName)
-  
-Education(<ins>stateName</ins>,avgTeacherStartingSalary,avgSATScore,avgACTScore,NAEPScoreReading,NAEPScoreMath,highschoolGradRate,percentCompletingCollege,eduSpendingPerPupil)
-  
-    Foreign key (Education.stateName) references (States.stateName)
+Education(stateName,avgTeacherStartingSalary,avgSATScore,avgACTScore,NAEPScoreReading,NAEPScoreMath,highschoolGradRate,percentCompletingCollege,eduSpendingPerPupil)
+	Primary key stateName
+        Foreign key (Education.stateName) references (States.stateName)
 
 ##### New Proposed Queries:
 1. In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), list the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. 
