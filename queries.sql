@@ -112,14 +112,14 @@ WHERE stateName IN (SELECT * FROM BestEduPerformance);
 SELECT USBornMedianIncome, foreignBornMedianIncome, FORMAT(USBornMedianIncome - foreignBornMedianIncome, 2) AS difference
 FROM Economy;
 
--- 9. For states in which the rate of drug overdoses and sucide are significantly lower than other states, what was the highschool graduation rate? Average SAT/ACT scores?
+-- 9. For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? Average SAT/ACT scores?
 -- defined "significant" as more than 2 standard deviations away from the mean?
 WITH AggregateStats AS (SELECT AVG(drugOverdoses) AS 'avgRateDrugs', 
 AVG(suicideRate) AS 'avgRateSuicides', STD(drugOverdoses) AS 'stddevDrugs', STD(suicideRate) AS 'stddevSuicides'
 FROM Health)
 SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
 FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
-WHERE H.drugOverdoses >= (AggregateStats.'avgRateDrugs' + 2*AggregateStats.'stddevDrugs') AND H.suicideRate >= (AggregateStats.'avgRateSuicides' + 2*AggregateStats.'stddevSuicides');
+WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) OR H.suicideRate >= (SELECT avgRateSuicides FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);
 
 -- 10. In descending order of education spending per pupil, list each state's percentage of adults who have completed college and the highschool graduation rate.
 SELECT Education.percentCompletingCollege, Education.highschoolGradRate
@@ -130,24 +130,24 @@ ORDER BY eduSpendingPerPupil DESC;
 -- For this we were thinking we could add a variable to compare health based on the difference economic attributes
 WITH HighestStates AS (SELECT stateName
 FROM Economy
-ORDER BY homeslessnessRatePer100000 DESC
+ORDER BY homelessnessRatePer10000 DESC
 LIMIT 10),
 LowestStates AS (SELECT stateName
 FROM Economy
-ORDER BY homeslessnessRatePer100000 ASC
+ORDER BY homelessnessRatePer10000 ASC
 LIMIT 10)
 SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
 FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
 WHERE E.stateName IN (SELECT * FROM HighestStates) OR E.stateName IN (SELECT * FROM LowestStates)
-ORDER BY E.homeslessnessRatePer100000 DESC;
+ORDER BY E.homelessnessRatePer10000 DESC;
 
 -- 12. For states with a relatively high unemployment rate compared to the average of all states, list the risk factor and health statistics.
 WITH AggregateStats AS
-(SELECT AVG(unemploymentRate) AS avgUnemploymentRate, STD(unemploymentRate) AS 'stddevUnemploymentRate'
-FROM Health)
+(SELECT AVG(unemploymentRate) AS 'avgUnemploymentRate', STD(unemploymentRate) AS 'stddevUnemploymentRate'
+FROM Economy)
 SELECT E.stateName, H.abortionRate, H.homicideRate, H.drugOverdoses, H.suicideRate, H.teenPregnancyRate
 FROM Health AS H JOIN Economy AS E ON H.stateName = E.stateName
-WHERE H.unemploymentRate >= (AggregateStats.avgUnemploymentRate + 2 * AggregateStats.'stddevUnemploymentRate');
+WHERE E.unemploymentRate >= (SELECT avgUnemploymentRate FROM AggregateStats) + 2*(SELECT stddevUnemploymentRate FROM AggregateStats);
 
 -- 13. For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
 WITH BestStates AS (SELECT stateName
@@ -159,15 +159,15 @@ FROM Education
 ORDER BY NAEPScoreReading + NAEPScoreMath  ASC
 LIMIT 10)
 SELECT E.stateName, H.suicideRate, H.homicideRate, H.drugOverdoses 
-FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
+FROM Education AS E JOIN Health AS H ON E.stateName = H.stateName
 WHERE E.stateName IN (SELECT * FROM BestStates) OR E.stateName IN (SELECT * FROM WorstStates)
-ORDER BY E.NAEPScoreReading + NAEPScoreMath  DESC;
+ORDER BY E.NAEPScoreReading + E.NAEPScoreMath  DESC;
 
 -- 14. What is the average graduation rate of each state for the five states with the lowest poverty levels? 
 WITH LowestPovertyStates AS (SELECT stateName, percentInPoverty
 FROM Economy
 ORDER BY percentInPoverty ASC
-LIMIT 10),
+LIMIT 10)
 SELECT E.highschoolGradRate
 FROM Education AS E JOIN LowestPovertyStates
 ON E.stateName = LowestPovertyStates.stateName
@@ -177,7 +177,7 @@ ORDER BY LowestPovertyStates.percentInPoverty DESC;
 WITH HighestGraduationStates AS (SELECT stateName, highschoolGradRate
 FROM Education
 ORDER BY highschoolGradRate DESC
-LIMIT 10),
+LIMIT 10)
 SELECT E.percentInPoverty
 FROM Economy AS E JOIN HighestGraduationStates
 ON E.stateName = HighestGraduationStates.stateName
@@ -213,5 +213,5 @@ ORDER BY H.suicideRate DESC;
 -- 16. List the states and the average income of working adults for states ordered by the average teacher salary of the state.
 SELECT Ed.avgTeacherStartingSalary, Ed.stateName, Ec.medianIncome
 FROM Education AS Ed JOIN Economy AS Ec ON Ed.stateName = Ec.stateName
-ORDER BY Ed/avgTeacherStartingSalary DESC;
+ORDER BY Ed.avgTeacherStartingSalary DESC;
 
