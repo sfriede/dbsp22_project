@@ -148,6 +148,9 @@ FROM Economy)
 SELECT E.stateName, H.abortionRate, H.homicideRate, H.drugOverdoses, H.suicideRate, H.teenPregnancyRate
 FROM Health AS H JOIN Economy AS E ON H.stateName = E.stateName
 WHERE E.unemploymentRate >= (SELECT avgUnemploymentRate FROM AggregateStats) + 2*(SELECT stddevUnemploymentRate FROM AggregateStats);
+-- how do these values compare to the average values for all states?
+SELECT AVG(abortionRate), AVG(homicideRate), AVG(drugOverdoses), AVG(suicideRate), AVG(teenPregnancyRate)
+FROM Health;
 
 -- 13. For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
 WITH BestStates AS (SELECT stateName
