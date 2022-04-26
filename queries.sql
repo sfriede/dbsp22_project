@@ -247,4 +247,4 @@ DELIMITER ;
 
 SELECT GetDiversityIndex(stateName), realGDP, medianIncome
 FROM Economy
-ORDER BY GetEduScore(stateName) ASC;
+ORDER BY GetDiversityIndex(stateName) ASC;
