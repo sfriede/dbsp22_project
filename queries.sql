@@ -228,14 +228,14 @@ DROP FUNCTION IF EXISTS GetDiversityIndex //
 CREATE FUNCTION GetDiversityIndex(stateName_param VARCHAR(15))
 RETURNS DECIMAL(5,3)
 BEGIN
-      WITH AggregateDiversity AS (SELECT AVG(D.white) AS white, AVG(D.black) AS black, AVG(D.asian) AS asian, AVG(D.indigenous) AS indigenous, AVG(D.other) AS other
+      WITH AggregateDiversity AS (SELECT stateName, AVG(D.white) AS white, AVG(D.black) AS black, AVG(D.asian) AS asian, AVG(D.indigenous) AS indigenous, AVG(D.other) AS other
                                   FROM Demographics AS D
                                  )
       IF EXISTS (SELECT * FROM Demographics WHERE stateName = stateName_param) THEN
-         SELECT 
+         SELECT FORMAT(1 / (D.white * A.white + D.black * A.black + D.asian * A.asian + D.indigenous * A.indigenous + D.other * A.other), 3)
          INTO @diversityIndex
-         FROM Demographics AS D, State AS S
-         ON D.stateName = S.stateName
+         FROM Demographics AS D, AggregateDiversity AS A
+         ON D.stateName = AggregateDiversity.stateName
 	      WHERE stateName = stateName_param;
          RETURN @diversityIndex;
       ELSE
@@ -244,3 +244,7 @@ BEGIN
 END; //
 
 DELIMITER ;
+
+SELECT GetDiversityIndex(stateName), realGDP, medianIncome
+FROM Economy
+ORDER BY GetEduScore(stateName) ASC;
