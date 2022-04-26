@@ -218,3 +218,29 @@ SELECT Ed.avgTeacherStartingSalary, Ed.stateName, Ec.medianIncome
 FROM Education AS Ed JOIN Economy AS Ec ON Ed.stateName = Ec.stateName
 ORDER BY Ed.avgTeacherStartingSalary DESC;
 
+-- 17. Ordering the states from least to most racially diverse, list the state GDP and median household income.
+-- https://archives.huduser.gov/healthycommunities/sites/default/files/public/Racial%20Diversity%20using%20Shannon-Wiener%20Index.pdf
+-- link above used as a guide for calculating diversity index
+DELIMITER // 
+
+DROP FUNCTION IF EXISTS GetDiversityIndex //
+
+CREATE FUNCTION GetDiversityIndex(stateName_param VARCHAR(15))
+RETURNS DECIMAL(5,3)
+BEGIN
+      WITH AggregateDiversity AS (SELECT AVG(D.white) AS white, AVG(D.black) AS black, AVG(D.asian) AS asian, AVG(D.indigenous) AS indigenous, AVG(D.other) AS other
+                                  FROM Demographics AS D
+                                 )
+      IF EXISTS (SELECT * FROM Demographics WHERE stateName = stateName_param) THEN
+         SELECT 
+         INTO @diversityIndex
+         FROM Demographics AS D, State AS S
+         ON D.stateName = S.stateName
+	      WHERE stateName = stateName_param;
+         RETURN @diversityIndex;
+      ELSE
+         RETURN 0;
+      END IF;
+END; //
+
+DELIMITER ;
