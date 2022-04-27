@@ -176,6 +176,24 @@ FROM Education AS E JOIN LowestPovertyStates
 ON E.stateName = LowestPovertyStates.stateName
 ORDER BY LowestPovertyStates.percentInPoverty DESC;
 
+-- This is an idea we have for making queries like this more user-interactive for Phase E: we would allow the user to
+-- select some cutoff value in the query parameter and display the information for that query result
+-- This stored procedure would be called via a prepared statement in PHP with the user input poverty level cutoff
+DELIMITER //
+
+DROP PROCEDURE IF EXISTS GetStatesBelowPovLevel //
+
+CREATE PROCEDURE GetStatesBelowPovLevel(percentPov_param FLOAT(5,2))
+BEGIN
+
+	SELECT Ed.stateName, Ed.highschoolGradRate
+	FROM Education AS Ed JOIN Economy AS Ec ON Ed.stateName = Ec.stateName
+	WHERE Ec.percentInPoverty <= percentPov_param;
+END; //
+
+DELIMITER ;
+
+
 -- What is the poverty level of each state for the five states with the highest graduation rate? 
 WITH HighestGraduationStates AS (SELECT stateName, highschoolGradRate
 FROM Education
