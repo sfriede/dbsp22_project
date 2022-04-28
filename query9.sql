@@ -27,6 +27,7 @@ BEGIN
 
    -- tear down the prepared shell since no longer needed (we won't requery it)
    DEALLOCATE PREPARE stmt;
-END; //
+END; 
+//
 
 DELIMITER ;
