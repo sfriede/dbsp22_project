@@ -12,8 +12,8 @@ BEGIN
    -- in place so we can plug in the specific sid value in a careful way
    
 
-   SET @sql = CONCAT('WITH AggregateStats AS (SELECT AVG(drugOverdoses) AS 'avgRateDrugs', 
-                     AVG(suicideRate) AS 'avgRateSuicides', STD(drugOverdoses) AS 'stddevDrugs', STD(suicideRate) AS 'stddevSuicides'
+   SET @sql = CONCAT('WITH AggregateStats AS (SELECT AVG(drugOverdoses) AS avgRateDrugs, 
+                     AVG(suicideRate) AS avgRateSuicides, STD(drugOverdoses) AS stddevDrugs, STD(suicideRate) AS stddevSuicides
                      FROM Health)
                      SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
                      FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
