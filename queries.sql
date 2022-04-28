@@ -142,14 +142,14 @@ BEGIN
                      SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
                      FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
                      WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) OR H.suicideRate >= (SELECT avgRateSuicides FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);');
-        -- alert the server we have a statement shell to set up
-        PREPARE stmt FROM @sql;
+   -- alert the server we have a statement shell to set up
+   PREPARE stmt FROM @sql;
 
-         -- now execute the statement shell
-        EXECUTE stmt;
+   -- now execute the statement shell
+   EXECUTE stmt;
 
-        -- tear down the prepared shell since no longer needed (we won't requery it)
-        DEALLOCATE PREPARE stmt;
+   -- tear down the prepared shell since no longer needed (we won't requery it)
+   DEALLOCATE PREPARE stmt;
 END; //
 
 DELIMITER ;
