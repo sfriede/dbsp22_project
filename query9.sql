@@ -5,7 +5,7 @@ DELIMITER //
 
 DROP PROCEDURE IF EXISTS Query9 //
 
-CREATE PROCEDURE Query9 
+CREATE PROCEDURE Query9() 
 BEGIN  
    -- concatenate the assignment name list and associated expressions
    -- into a larger query string so we can execute it, but leave ?
