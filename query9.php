@@ -4,16 +4,10 @@
     //open a connection to dbase server 
 	include 'open.php';
 
-	// collect the posted value in a variable called $item
-	$item = $_POST['SID'];
-
 	// echo some basic header info onto the page
 	echo "<h2>For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
     what was the highschool graduation rate? Average SAT/ACT scores?</h2><br>";
 	
-
-
-
     // call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query9;")) {
 
