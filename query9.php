@@ -15,7 +15,7 @@
 
 
     // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query9();")) {
+	if ($result = $conn->query("CALL Query9;")) {
 
 	    echo "<table border=\"2px solid black\">";
 
