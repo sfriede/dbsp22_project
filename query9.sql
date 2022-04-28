@@ -6,11 +6,7 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS Query9 //
 
 CREATE PROCEDURE Query9
-BEGIN    
-   --  MODIFIED CODE FROM 4/19 CLASS
-   SET @sql = NULL;
-
-
+BEGIN  
    -- concatenate the assignment name list and associated expressions
    -- into a larger query string so we can execute it, but leave ?
    -- in place so we can plug in the specific sid value in a careful way
@@ -21,7 +17,8 @@ BEGIN
                      FROM Health)
                      SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
                      FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
-                     WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) OR H.suicideRate >= (SELECT avgRateSuicides FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);');
+                     WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) 
+                     OR H.suicideRate >= (SELECT avgRateSuicides FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);');
    -- alert the server we have a statement shell to set up
    PREPARE stmt FROM @sql;
 
