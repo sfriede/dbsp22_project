@@ -1,15 +1,15 @@
-<head><title>Query 9</title></head>
+<head><title>Query 10</title></head>
  <body>
 <?php     
     //open a connection to dbase server 
 	include 'open.php';
 
 	// echo some basic header info onto the page
-	echo "<h2>For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
-    what was the highschool graduation rate? Average SAT/ACT scores?</h2><br>";
+	echo "<h2>In descending order of education spending per pupil, 
+    list each state's percentage of adults who have completed college and the highschool graduation rate.</h2><br>";
 	
     // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query9();")) {
+	if ($result = $conn->query("CALL Query10();")) {
 
 	    echo "<table border=\"2px solid black\">";
 
@@ -37,7 +37,7 @@
 	    echo "</table>";
 
         } else {
-            echo "Call to Query9 failed<br>";
+            echo "Call to Query10 failed<br>";
 	  }   
 
 
