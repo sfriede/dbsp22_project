@@ -4,13 +4,24 @@
 <html>
    <body>
 
-	<!-- TEMPLATE -->
-	<h2> Show Raw Scores</h2>
-	<form action="HW4_ShowRawScores.php" method="post">
-		SID: <input type="text" name="SID"> <br/>
-		<input type="submit">
-	</form>
-	<br/><br/>
+	
+        <!-- (2) -->
+        <h2> What is the median household income for states where the teen pregnancy rate is higher than X%?</h2>
+        <form action="query2.php" method="post">
+                Threshold (0-100%): <input type="text" name="teenPregRate"> <br/>
+                <input type="submit">
+        </form>
+        <br/><br/>
+
+	
+        <!-- (6) -->
+        <h2> What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state?</h2>
+        <form action="query6.php" method="post">
+                State Name (capitalized): <input type="text" name="q6state"> <br/>
+                <input type="submit">
+        </form>
+        <br/><br/>
+
 
 	<!-- (8) -->
 	<h2>What is the mean average income in each state for U.S. born individuals across all 50 states? 
