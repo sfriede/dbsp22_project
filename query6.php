@@ -38,7 +38,7 @@
 
             		      //Create table to display results
            		       echo "<table border=\"1px solid black\">";
-            		       echo "<tr><th> ForeingBornIncome </th> <th> USBornIncome </th><th> white </th><th> black </th><th> asian </th><th> indigenous </th><th> other </th><th> hispanicOrLatino </th> <th> nonHispanicOrLatino </th></tr>";
+            		       echo "<tr><th> ForeignBornIncome </th> <th> USBornIncome </th><th> white </th><th> black </th><th> asian </th><th> indigenous </th><th> other </th><th> hispanicOrLatino </th> <th> nonHispanicOrLatino </th></tr>";
 
             		       //Report result set by visiting each row in it
             		       while ($row1 = $result1->fetch_row()) {
@@ -52,6 +52,7 @@
 				     echo "<td>".$row1[6]."</td>";
 				     echo "<td>".$row1[7]."</td>";
 				     echo "<td>".$row1[8]."</td>";
+				   
                			     echo "</tr>";
             			     }
 
@@ -60,7 +61,7 @@
          			} else {
 
 				  if(!($result1)) {
-				  	echo "Internal error: procedure failed";
+				  	echo "We do not have information available for this state. Remember that the input must be a valid, capitalized state or US territory name.";
 				  }
 				}
 				  
@@ -85,7 +86,7 @@
              	}
 	   } else {
 	   
-	     echo "We do not have information available for this state. Remember that the input must be a valid, capitalized state name";
+	     echo "Invalid input given. Remember that the input must be a valid, capitalized state or US territory name";
 	   }
 	} else {
 	  echo "State Name Not Set";

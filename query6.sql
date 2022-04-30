@@ -8,9 +8,9 @@ DELIMITER //
 
 DROP PROCEDURE IF EXISTS Query6 //
 
-CREATE PROCEDURE Query6(IN stateName_param VARCHAR(15))
+CREATE PROCEDURE Query6(IN stateName_param VARCHAR(20))
 BEGIN
-	IF (EXISTS(SELECT * FROM Demographics WHERE stateName = stateName_param) AND EXISTS(SELECT * FROM Economoy WHERE stateName = stateName_param)) THEN
+	IF (EXISTS(SELECT * FROM Demographics WHERE stateName = stateName_param) AND EXISTS(SELECT * FROM Economy WHERE stateName = stateName_param)) THEN
 	SELECT * FROM (
 	
         SELECT AVG(E.foreignBornMedianIncome) AS 'maxForeign', AVG(E.USBornMedianIncome) AS 'maxUS', AVG(D.white) AS 'maxWhite', AVG(D.black) AS 'maxBlack', AVG(D.asian) AS 'maxAsian', AVG(D.indigenous) AS 'maxIndigenous', AVG(D.other) AS 'maxOther', AVG(D.hispanicOrLatino) AS 'maxHispanic', AVG(D.notHispanicOrLatino) AS 'maxNonHispanic'
@@ -27,9 +27,7 @@ BEGIN
 	
 	SELECT E.foreignBornMedianIncome, E.USBornMedianIncome, D.white, D.black, D.asian, D.indigenous, D.other, D.hispanicOrLatino, D.notHispanicOrLatino
 	FROM Demographics AS D JOIN Economy AS E ON D.stateName = E.stateName 
-	WHERE D.stateName = stateName_param) AS AllStats;
-	ELSE
-	SELECT 'no such state';	
+	WHERE D.stateName = stateName_param) AS AllStats;	
 	END IF;
 
 END; //

@@ -1,29 +1,20 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
-
+-- query 10: in descending order of education spending per pupil, see each states highschool grad rate and percent completing college
 DELIMITER //
+
+-- get median income for states where teen pregnancy rate is higher than average
 
 DROP PROCEDURE IF EXISTS Query10 //
 
-CREATE PROCEDURE Query10() 
-BEGIN  
-   -- concatenate the assignment name list and associated expressions
-   -- into a larger query string so we can execute it, but leave ?
-   -- in place so we can plug in the specific sid value in a careful way
-   
+CREATE PROCEDURE Query10()
+BEGIN
 
-   SET @sql = CONCAT('SELECT Education.percentCompletingCollege, Education.highschoolGradRate
-                        FROM Education
-                        ORDER BY eduSpendingPerPupil DESC;');
-   -- alert the server we have a statement shell to set up
-   PREPARE stmt FROM @sql;
+SELECT stateName, eduSpendingPerPupil, highschoolGradRate, Education.percentCompletingCollege
+FROM Education
+ORDER BY eduSpendingPerPupil DESC;
 
-   -- now execute the statement shell
-   EXECUTE stmt;
 
-   -- tear down the prepared shell since no longer needed (we won't requery it)
-   DEALLOCATE PREPARE stmt;
-END; 
-//
+END; //
 
 DELIMITER ;
