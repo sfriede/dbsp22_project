@@ -228,7 +228,7 @@ LowestSuicideStates AS
 FROM Health
 ORDER BY suicideRate ASC
 LIMIT 10)
-SELECT E.eduSpendingPerPupil, E.avgTeacherStartingSalary, H.suicideRate, E.stateName
+SELECT E.stateName, E.eduSpendingPerPupil, E.avgTeacherStartingSalary, H.suicideRate
 FROM Education AS E JOIN Health AS H ON E.stateName = H.stateName
 WHERE E.stateName IN (SELECT * FROM HighestSuicideStates) OR E.stateName IN (SELECT * FROM LowestSuicideStates)
 ORDER BY H.suicideRate DESC;

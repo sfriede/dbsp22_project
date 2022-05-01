@@ -1,38 +1,30 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
+-- query 10: For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
 
 DELIMITER //
 
+-- get median income for states where teen pregnancy rate is higher than average
+
 DROP PROCEDURE IF EXISTS Query13 //
 
-CREATE PROCEDURE Query13() 
-BEGIN  
-   -- concatenate the assignment name list and associated expressions
-   -- into a larger query string so we can execute it, but leave ?
-   -- in place so we can plug in the specific sid value in a careful way
-   
+CREATE PROCEDURE Query13()
+BEGIN
 
-   SET @sql = CONCAT('WITH BestStates AS (SELECT stateName
-                      FROM Education
-                      ORDER BY NAEPScoreReading + NAEPScoreMath DESC
-                      LIMIT 10),
-                      WorstStates AS (SELECT stateName
-                      FROM Education
-                      ORDER BY NAEPScoreReading + NAEPScoreMath  ASC
-                      LIMIT 10)
-                      SELECT E.stateName, H.suicideRate, H.homicideRate, H.drugOverdoses 
-                      FROM Education AS E JOIN Health AS H ON E.stateName = H.stateName
-                      WHERE E.stateName IN (SELECT * FROM BestStates) OR E.stateName IN (SELECT * FROM WorstStates)
-                      ORDER BY E.NAEPScoreReading + E.NAEPScoreMath  DESC;');
-   -- alert the server we have a statement shell to set up
-   PREPARE stmt FROM @sql;
+WITH BestStates AS (SELECT stateName
+FROM Education
+ORDER BY NAEPScoreReading + NAEPScoreMath DESC
+LIMIT 10),
+WorstStates AS (SELECT stateName
+FROM Education
+ORDER BY NAEPScoreReading + NAEPScoreMath  ASC
+LIMIT 10)
+SELECT E.stateName, H.homicideRate, H.suicideRate, H.drugOverdoses
+FROM Education AS E JOIN Health AS H ON E.stateName = H.stateName
+WHERE E.stateName IN (SELECT * FROM BestStates) OR E.stateName IN (SELECT * FROM WorstStates)
+ORDER BY E.NAEPScoreReading + E.NAEPScoreMath  DESC;
 
-   -- now execute the statement shell
-   EXECUTE stmt;
 
-   -- tear down the prepared shell since no longer needed (we won't requery it)
-   DEALLOCATE PREPARE stmt;
-END; 
-//
+END; //
 
 DELIMITER ;

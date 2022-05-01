@@ -1,33 +1,25 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
+-- query 10:  For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? 
+-- SAT/ACT scores?
 
 DELIMITER //
 
+
 DROP PROCEDURE IF EXISTS Query9 //
 
-CREATE PROCEDURE Query9() 
-BEGIN  
-   -- concatenate the assignment name list and associated expressions
-   -- into a larger query string so we can execute it, but leave ?
-   -- in place so we can plug in the specific sid value in a careful way
-   
+CREATE PROCEDURE Query9()
+BEGIN
 
-   SET @sql = CONCAT('WITH AggregateStats AS (SELECT AVG(drugOverdoses) AS avgRateDrugs, 
-                     AVG(suicideRate) AS avgRateSuicides, STD(drugOverdoses) AS stddevDrugs, STD(suicideRate) AS stddevSuicides
-                     FROM Health)
-                     SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
-                     FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
-                     WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) 
-                     OR H.suicideRate >= (SELECT avgRateSuicides FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);');
-   -- alert the server we have a statement shell to set up
-   PREPARE stmt FROM @sql;
+WITH AggregateStats AS (SELECT AVG(drugOverdoses) AS 'avgRateDrugs',
+AVG(suicideRate) AS 'avgRateSuicide', STD(drugOverdoses) AS 'stddevDrugs', STD(suicideRate) AS 'stddevSuicides'
+FROM Health)
+SELECT E.stateName, E.highschoolGradRate, E.avgSATScore, E.avgACTScore
+FROM Health AS H JOIN Education AS E ON H.stateName = E.stateName
+WHERE H.drugOverdoses >= (SELECT avgRateDrugs FROM AggregateStats) + 2* (SELECT stddevDrugs FROM AggregateStats) OR H.suicideRate >= (SELECT avgRateSuicide FROM AggregateStats) + 2*(SELECT stddevSuicides FROM AggregateStats);
 
-   -- now execute the statement shell
-   EXECUTE stmt;
 
-   -- tear down the prepared shell since no longer needed (we won't requery it)
-   DEALLOCATE PREPARE stmt;
-END; 
-//
+
+END; //
 
 DELIMITER ;
