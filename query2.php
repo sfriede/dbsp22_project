@@ -19,7 +19,7 @@
 		if (is_numeric($teenPregRate) && $teenPregRate >= 0 && $teenPregRate <= 100) {
 		
    		   //input is within range, so we can make stored procedure calls safely
-		   echo "<h2>What is the average household income for states where the teen pregnancy rate is above $teenPregRate %?</h2><br>";
+		   echo "<h2>Household income change for the states where the teen pregancy rate is above or below $teenPregRate%</h2><br>";
 
 		   //call stored procedures defined on dbase
 
@@ -36,19 +36,14 @@
 
          		      if (($result1) && ($result1->num_rows != 0)) {
 
-            		      //Create table to display results
-           		       echo "<table border=\"1px solid black\">";
-            		       echo "<tr><th> State </th> <th> Median Income </th></tr>";
+			         //construct an array in which we'll store our data
+        			 $dataPoints1 = array();
 
+            		     
             		       //Report result set by visiting each row in it
             		       while ($row1 = $result1->fetch_row()) {
-               		       	     echo "<tr>";
-               			     echo "<td>".$row1[0]."</td>";
-               			     echo "<td>".$row1[1]."</td>";
-               			     echo "</tr>";
+			       	     array_push($dataPoints1, array( "y"=> $row1[1], "label"=> $row1[0]));
             			     }
-
-            			     echo "</table>";
 
          			} else {
         			  if ($result1->num_rows == 0) {
@@ -92,20 +87,14 @@
                               $result2 = $stmt2->get_result();
 
                               if (($result2) && ($result2->num_rows != 0)) {
+                                //construct an array in which we'll store our data
+                                 $dataPoints2 = array();
 
-                              //Create table to display results
-                               echo "<table border=\"1px solid black\">";
-                               echo "<tr><th> State </th> <th> Median Income </th></tr>";
 
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
-                                     echo "<tr>";
-                                     echo "<td>".$row2[0]."</td>";
-                                     echo "<td>".$row2[1]."</td>";
-                                     echo "</tr>";
+                                     array_push($dataPoints2, array( "y"=> $row2[1], "label"=> $row2[0]));
                                      }
-
-                                     echo "</table>";
 
                                 } else {
                                   if ($result2->num_rows == 0) {
@@ -149,4 +138,61 @@
 
 ?>
 </body>
+
+<html>
+<head>
+<script type="text/javascript">
+window.onload = function () {
+        var chart = new CanvasJS.Chart("container1", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Median Household Income for States with Teen Pregnancy Rate Above Threshold",
+			fontFamily: "verdana",
+			fontWeight: "bold"
+                },
+                data: [{
+                        type: "line", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
+                }],
+		axisX:{
+ 		  interval: 1
+	        }
+        });
+	
+        chart.render();
+
+        var chart = new CanvasJS.Chart("container2", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light2", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Median Household Income for States with Teen Pregnancy Rate Below Threshold",
+			fontFamily: "verdana",
+			fontWeight: "bold"
+                },
+                data: [{
+                        type: "line", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+                }],
+                axisX:{
+                  interval: 1
+                }
+
+        });
+	
+        chart.render();
+}
+</script>
+</head>
+<body>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+        <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
+        <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>  
+
+</body>
+</html>
+
 

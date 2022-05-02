@@ -1,5 +1,5 @@
 <head><title>Query 6</title></head>
-<body>
+0;136;0c<body>
 <?php
 	//open a connection to dbase server
         include 'open.php';
@@ -26,24 +26,19 @@
 
 			      echo "<h3>  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. </h3>"; 
 
+                                 //construct an array in which we'll store our data
+                                 $dataPointsTeacherSal = array();
+				 $dataPointsUnemploy = array();
+				 $dataPointsHomeless = array();
 
-            		      //Create table to display results
-           		       echo "<table border=\"1px solid black\">";
-            		       echo "<tr><th> State </th> <th> Education Performance Score </th><th> Average Teacher Starting Salary</th> <th> Unemployment Rate </th> <th> Percent of Population That's Homeless </th></tr>";
-
-            		       //Report result set by visiting each row in it
-            		       while ($row1 = $result1->fetch_row()) {
-               		       	     echo "<tr>";
-               			     echo "<td>".$row1[1]."</td>";
-               			     echo "<td>".$row1[0]."</td>";
-				     echo "<td>".$row1[2]."</td>";
-				     echo "<td>".$row1[3]."</td>";
-				     echo "<td>".$row1[4]."</td>";
-
-               			     echo "</tr>";
-            			     }
-
-            			     echo "</table>";
+                               //Report result set by visiting each row in it
+                               while ($row1 = $result1->fetch_row()) {
+			       	     if (!is_null($row1[0])) {
+                                     array_push($dataPointsTeacherSal, array("y"=> $row1[2], "label"=> $row1[0]));
+				     array_push($dataPointsUnemploy, array("y"=> $row1[3], "label"=> $row1[0]));
+                                     array_push($dataPointsHomeless, array("y"=> $row1[4], "label"=> $row1[0]));
+                                     }
+				     }
 
          			} else {
 
@@ -186,3 +181,85 @@
 ?>
 </body>
 
+<html>
+<head>
+<script type="text/javascript">
+window.onload = function () {
+        var chart = new CanvasJS.Chart("container1", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Average Teacher Starting Salary as a Function of Educational Score",
+                        fontFamily: "verdana",
+                        fontWeight: "bold"
+                },
+                data: [{
+                        type: "line", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPointsTeacherSal, JSON_NUMERIC_CHECK); ?>
+                }],
+                axisX:{
+                        title:"Educational Score",
+                 },
+                 axisY:{
+                        title:"Average Teacher Starting Salary",
+                 }
+
+        });
+
+        chart.render();
+        var chart = new CanvasJS.Chart("container2", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Unemployment Rate as a Function of Educational Score",
+                        fontFamily: "verdana",
+                        fontWeight: "bold"
+                },
+                data: [{
+                        type: "line", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPointsUnemploy, JSON_NUMERIC_CHECK); ?>
+                }],
+		axisX:{
+			title:"Educational Score",
+ 		 },
+		 axisY:{
+			title:"Unemployment Rate",
+ 		 }
+        });
+
+        chart.render();
+        var chart = new CanvasJS.Chart("container3", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Percent of Population that is Homeless as a Function of Educational Score",
+                        fontFamily: "verdana",
+                        fontWeight: "bold"
+                },
+                data: [{
+                        type: "line", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPointsHomeless, JSON_NUMERIC_CHECK); ?>
+                }],
+                axisX:{
+                        title:"Educational Score",
+                 },
+                 axisY:{
+                        title:"Percent of Population that is Homeless",
+                 }
+
+        });
+	chart.render();
+}
+</script>
+</head>
+<body>
+        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
+        <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
+	<div id="container3" style="height: 300px; width: 100%;display: inline-block;"></div>
+
+</body>
+</html>
