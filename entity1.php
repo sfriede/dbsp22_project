@@ -1,5 +1,5 @@
 <head><title>Query 6</title></head>
-0;136;0c<body>
+<body>
 <?php
 	//open a connection to dbase server
         include 'open.php';
@@ -9,9 +9,6 @@
 	//This is useful during development but generally disabled before release
 	ini_set('error_reporting', E_ALL);
 	ini_set('display_errors', true);
-
-
-		   echo "<h2>Effects of Education Quality on Financial Factors Later in Life </h2>";
 
 		   //prepare statements and call queries
 			if ($stmt1 = $conn->prepare("CALL Query1()")) {
@@ -23,8 +20,6 @@
          		      $result1 = $stmt1->get_result();
 
          		      if (($result1) && ($result1->num_rows != 0)) {
-
-			      echo "<h3>  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. </h3>"; 
 
                                  //construct an array in which we'll store our data
                                  $dataPointsTeacherSal = array();
@@ -75,23 +70,13 @@
                               $result2 = $stmt2->get_result();
 
                               if (($result2) && ($result2->num_rows != 0)) {
-
-                              echo "<h3>  See the average income for adults in the five states with the highest high school graduation rate and lowest high school graduation rate</h3>";
-
-                              //Create table to display results
-                               echo "<table border=\"1px solid black\">";
-                               echo "<tr><th> State </th> <th> Highschool Graduation Rate</th><th> Median Income</th></tr>";
+			      
+                                 //construct an array in which we'll store our data
+                                 $dataPointsHighschool = array();
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
-                                     echo "<tr>";
-                                     echo "<td>".$row2[0]."</td>";
-                                     echo "<td>".$row2[2]."</td>";
-                                     echo "<td>".$row2[1]."</td>";
-
-                                     echo "</tr>";
-                                     }
-
-                                     echo "</table>";
+                                     array_push($dataPointsHighschool, array("y"=> $row2[1], "label"=> $row2[0]));
+                                 }
 
                                 } else {
 
@@ -129,23 +114,12 @@
                               $result3 = $stmt3->get_result();
 
                               if (($result3) && ($result3->num_rows != 0)) {
-
-                              echo "<h3>  See how this changes if we use percent of adults completing college instead</h3>";
-
-                              //Create table to display results
-                               echo "<table border=\"1px solid black\">";
-                               echo "<tr><th> State </th> <th> Percent Completing College</th><th> Median Income</th></tr>";
+			        //construct an array in which we'll store our data
+                                 $dataPointsCollege = array();
                                //Report result set by visiting each row in it
                                while ($row3 = $result3->fetch_row()) {
-                                     echo "<tr>";
-                                     echo "<td>".$row3[0]."</td>";
-                                     echo "<td>".$row3[2]."</td>";
-                                     echo "<td>".$row3[1]."</td>";
-
-                                     echo "</tr>";
-                                     }
-
-                                     echo "</table>";
+                                     array_push($dataPointsCollege, array("y"=> $row3[1], "label"=> $row3[0]));
+                                 }
 
                                 } else {
 
@@ -192,7 +166,8 @@ window.onload = function () {
                 title:{
                         text: "Average Teacher Starting Salary as a Function of Educational Score",
                         fontFamily: "verdana",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+			fontSize: 18,
                 },
                 data: [{
                         type: "line", //change type to column, bar, line, area, pie, etc
@@ -215,7 +190,9 @@ window.onload = function () {
                 title:{
                         text: "Unemployment Rate as a Function of Educational Score",
                         fontFamily: "verdana",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+			fontSize: 18,
+
                 },
                 data: [{
                         type: "line", //change type to column, bar, line, area, pie, etc
@@ -237,7 +214,8 @@ window.onload = function () {
                 title:{
                         text: "Percent of Population that is Homeless as a Function of Educational Score",
                         fontFamily: "verdana",
-                        fontWeight: "bold"
+                        fontWeight: "bold",
+			fontSize: 18,
                 },
                 data: [{
                         type: "line", //change type to column, bar, line, area, pie, etc
@@ -252,14 +230,67 @@ window.onload = function () {
 
         });
 	chart.render();
+	        var chart = new CanvasJS.Chart("container4", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Median Income for Top 5 and Bottom 5 States in Terms of High School Graduation Rate",
+                        fontFamily: "verdana",
+                        fontWeight: "bold",
+			fontSize: 18,
+                },
+                data: [{
+                        type: "bar", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPointsHighschool, JSON_NUMERIC_CHECK); ?>
+                }],
+                axisX:{
+                        title:"State",
+                 },
+                 axisY:{
+                        title:"Median Income",
+                 }
+
+        });
+        chart.render();
+        var chart = new CanvasJS.Chart("container5", {
+                animationEnabled: true,
+                exportEnabled: true,
+                theme: "light1", // "light1", "light2", "dark1", "dark2"
+                title:{
+                        text: "Median Income for Top 5 and Bottom 5 States in Terms of Percent of Population Completing College",
+                        fontFamily: "verdana",
+                        fontWeight: "bold",
+			fontSize: 18,
+                },
+                data: [{
+                        type: "bar", //change type to column, bar, line, area, pie, etc
+                        dataPoints: <?php echo json_encode($dataPointsCollege, JSON_NUMERIC_CHECK); ?>
+                }],
+                axisX:{
+                        title:"State",
+                 },
+                 axisY:{
+                        title:"Median Income",
+                 }
+
+        });
+        chart.render();
+
 }
 </script>
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	<h2 style = "font-family: 'verdana'">Effects of Education Quality on Financial Factors Later in Life </h2>
+	<h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. </h3>
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
 	<div id="container3" style="height: 300px; width: 100%;display: inline-block;"></div>
+	<h3 style = "font-family: 'verdana'">  See the average income for adults in the five states with the highest high school graduation rate and lowest high school graduation rate</h3>
+        <div id="container4" style="height: 300px; width: 100%;display: inline-block;"></div>
+	<h3 style = "font-family: 'verdana'">  See how this changes if we use percent of adults completing college instead</h3>
+        <div id="container5" style="height: 300px; width: 100%;display: inline-block;"></div>
 
 </body>
 </html>
