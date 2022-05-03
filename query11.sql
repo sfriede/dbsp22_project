@@ -13,7 +13,6 @@ BEGIN
    
         SET @sql = CONCAT('SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
-                            
                             ORDER BY ', '?');
         
         /* WITH HighestStates AS (SELECT stateName
