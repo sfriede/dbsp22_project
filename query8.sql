@@ -12,7 +12,7 @@ BEGIN
    -- in place so we can plug in the specific sid value in a careful way
    
 
-   SET @sql = CONCAT('SELECT USBornMedianIncome, foreignBornMedianIncome, FORMAT(USBornMedianIncome - foreignBornMedianIncome, 2) AS difference
+   SET @sql = CONCAT('SELECT StateName, USBornMedianIncome, foreignBornMedianIncome, FORMAT(USBornMedianIncome - foreignBornMedianIncome, 2) AS difference
                         FROM Economy;');
    -- alert the server we have a statement shell to set up
    PREPARE stmt FROM @sql;
