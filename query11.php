@@ -29,7 +29,7 @@
 		   //values for states above and below threshold
 		
 			if ($stmt1 = $conn->prepare("CALL Query11(?)")) {
-      			   $stmt1->bind_param($factor);
+      			   $stmt1->bind_param("s", $factor);
 
       			   //Run the actual query
       			   if ($stmt1->execute()) {
