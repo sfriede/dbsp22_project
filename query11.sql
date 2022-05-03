@@ -13,7 +13,7 @@ BEGIN
    
         SET @sql = CONCAT('SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
-                            WHERE E.stateName IN (SELECT * FROM HighestStates) OR E.stateName IN (SELECT * FROM LowestStates)
+                            
                             ORDER BY ', '?');
         
         /* WITH HighestStates AS (SELECT stateName
@@ -23,7 +23,9 @@ BEGIN
                             LowestStates AS (SELECT stateName
                             FROM Economy
                             ORDER BY ', '?',' ASC
-                            LIMIT 10)*/
+                            LIMIT 10)
+                            
+                            WHERE E.stateName IN (SELECT * FROM HighestStates) OR E.stateName IN (SELECT * FROM LowestStates)*/
 
         -- alert the server we have a statement shell to set up
         PREPARE stmt FROM @sql;
