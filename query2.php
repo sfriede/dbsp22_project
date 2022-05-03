@@ -191,6 +191,9 @@ window.onload = function () {
 
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>  
+     <style>
+        body {font-family: 'verdana'; font-size: 18px;}
+     </style>
 
 </body>
 </html>

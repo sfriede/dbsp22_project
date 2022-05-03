@@ -1,4 +1,4 @@
-<head><title>Query 6</title></head>
+<head><title>Entity 1</title></head>
 <body>
 <?php
 	//open a connection to dbase server
@@ -29,9 +29,9 @@
                                //Report result set by visiting each row in it
                                while ($row1 = $result1->fetch_row()) {
 			       	     if (!is_null($row1[0])) {
-                                     array_push($dataPointsTeacherSal, array("y"=> $row1[2], "label"=> $row1[0]));
-				     array_push($dataPointsUnemploy, array("y"=> $row1[3], "label"=> $row1[0]));
-                                     array_push($dataPointsHomeless, array("y"=> $row1[4], "label"=> $row1[0]));
+                                     array_push($dataPointsTeacherSal, array("y"=> $row1[2], "x"=> $row1[0], "label"=>$row1[1]));
+				     array_push($dataPointsUnemploy, array("y"=> $row1[3], "x"=> $row1[0], "label"=>$row1[1]));
+                                     array_push($dataPointsHomeless, array("y"=> $row1[4], "x"=> $row1[0], "label"=>$row1[1]));
                                      }
 				     }
 
@@ -171,10 +171,14 @@ window.onload = function () {
                 },
                 data: [{
                         type: "line", //change type to column, bar, line, area, pie, etc
-                        dataPoints: <?php echo json_encode($dataPointsTeacherSal, JSON_NUMERIC_CHECK); ?>
+                        dataPoints: <?php echo json_encode($dataPointsTeacherSal, JSON_NUMERIC_CHECK); ?>,
                 }],
                 axisX:{
                         title:"Educational Score",
+			        labelFormatter: function ( e ) {
+               			return e.value;  
+         		},
+			interval: 0.05
                  },
                  axisY:{
                         title:"Average Teacher Starting Salary",
@@ -200,6 +204,12 @@ window.onload = function () {
                 }],
 		axisX:{
 			title:"Educational Score",
+			                    
+                                labelFormatter: function ( e ) {
+                                return e.value;
+                        },
+                        interval: 0.05
+
  		 },
 		 axisY:{
 			title:"Unemployment Rate",
@@ -222,7 +232,12 @@ window.onload = function () {
                         dataPoints: <?php echo json_encode($dataPointsHomeless, JSON_NUMERIC_CHECK); ?>
                 }],
                 axisX:{
-                        title:"Educational Score",
+                                title:"Educational Score",
+                                labelFormatter: function ( e ) {
+                                return e.value;
+                        },
+                        interval: 0.05
+
                  },
                  axisY:{
                         title:"Percent of Population that is Homeless",
@@ -282,15 +297,17 @@ window.onload = function () {
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-	<h2 style = "font-family: 'verdana'">Effects of Education Quality on Financial Factors Later in Life </h2>
-	<h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. </h3>
+	<h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state (for which educational data was available. </h3>
+        <h5 style = "font-family: 'verdana'"> Educational Score = (Average SAT Score)/1600 + (Average ACT Score/36) + (NAEP Reading)/500 + (NAEP Math)/500 <\h5>
+	
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
 	<div id="container3" style="height: 300px; width: 100%;display: inline-block;"></div>
-	<h3 style = "font-family: 'verdana'">  See the average income for adults in the five states with the highest high school graduation rate and lowest high school graduation rate</h3>
+        <h3 style = "font-family: 'verdana'">  See the average income for adults in the five states with the highest high school graduation rate and lowest high school graduation rate. The states are listed from lowest graduation rate to highest graduation rate from top to bottom. </h3>
         <div id="container4" style="height: 300px; width: 100%;display: inline-block;"></div>
-	<h3 style = "font-family: 'verdana'">  See how this changes if we use percent of adults completing college instead</h3>
+        <h3 style = "font-family: 'verdana'">  See how this changes if we use percent of adults completing college instead. The states are listed from lowest percentage to highest percentage from top to bottom.</h3>
         <div id="container5" style="height: 300px; width: 100%;display: inline-block;"></div>
+
 
 </body>
 </html>
