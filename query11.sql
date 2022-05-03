@@ -11,7 +11,7 @@ BEGIN
         --  MODIFIED CODE FROM 4/19 CLASS
         SET @sql = NULL;
    
-        SET @sql = CONCAT('SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
+        SET @sql = CONCAT('SELECT E.stateName, E.', '?', ', H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
                             ORDER BY ', '?');
         
