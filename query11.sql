@@ -10,7 +10,7 @@ DROP PROCEDURE IF EXISTS Query11 //
 
 CREATE PROCEDURE Query11(IN factor VARCHAR(30))
 BEGIN
-    IF factor = 'realGDP'
+    IF STRCMP(factor, 'realGDP')
 	    WITH HighestStates AS (SELECT stateName
         FROM Economy
         ORDER BY realGDP DESC
