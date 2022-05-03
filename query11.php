@@ -8,19 +8,19 @@
 	include 'open.php';
 
 	// collect the posted value in a variable called $item
-	$item = $_POST['FACTOR'];
+	$FACTOR = $_POST['FACTOR'];
 
 	// echo some basic header info onto the page
 	echo "<h2>What is the difference in overall health for states for a given economic factor?</h2><br>";
 	echo "Factor: ";
 
     // proceed with query only if supplied SID is non-empty
-	if (!empty($item)) {
-	   echo $item;
+	if (!empty($FACTOR)) {
+	   echo $FACTOR;
 	   echo "<br><br>";
 
        // call the stored procedure we already defined on dbase
-	   if ($result = $conn->query("CALL Query11('".$item."');")) {
+	   if ($result = $conn->query("CALL Query11('".$FACTOR."');")) {
 
 	      echo "<table border=\"2px solid black\">";
 
