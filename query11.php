@@ -50,11 +50,7 @@
                			     echo "<td>".$row1[1]."</td>";
 				     echo "<td>".$row1[2]."</td>";
 				     echo "<td>".$row1[3]."</td>";
-				     echo "<td>".$row1[4]."</td>";
-				     echo "<td>".$row1[5]."</td>";
-				     echo "<td>".$row1[6]."</td>";
-				     echo "<td>".$row1[7]."</td>";
-				     echo "<td>".$row1[8]."</td>";
+	
 				   
                			     echo "</tr>";
             			     }
