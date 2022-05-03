@@ -22,7 +22,7 @@ BEGIN
                             SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
                             WHERE E.stateName IN (SELECT * FROM HighestStates) OR E.stateName IN (SELECT * FROM LowestStates)
-                            ORDER BY E.', '?',' DESC;');
+                            ORDER BY ', '?', ' DESC;');
 
         -- alert the server we have a statement shell to set up
         PREPARE stmt FROM @sql;
