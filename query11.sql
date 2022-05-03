@@ -7,7 +7,7 @@ DROP PROCEDURE IF EXISTS Query11 //
 
 CREATE PROCEDURE Query11(IN factor VARCHAR(20))
 BEGIN    
-    IF EXISTS(SELECT * FROM HW4_Student WHERE HW4_Student.SID = sid) THEN
+    
         --  MODIFIED CODE FROM 4/19 CLASS
         SET @sql = NULL;
    
@@ -32,9 +32,7 @@ BEGIN
 
         -- tear down the prepared shell since no longer needed (we won't requery it)
         DEALLOCATE PREPARE stmt;
-    ELSE
-      SELECT CONCAT('ERROR: SID ', sid, ' not found') AS SID;
-    END IF;
+   
 END; //
 
 DELIMITER ;
