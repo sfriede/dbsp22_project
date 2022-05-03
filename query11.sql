@@ -5,13 +5,13 @@ DELIMITER //
 
 DROP PROCEDURE IF EXISTS Query11 //
 
-CREATE PROCEDURE Query11(IN factor VARCHAR(7))
+CREATE PROCEDURE Query11(IN factor VARCHAR(20))
 BEGIN    
     
         --  MODIFIED CODE FROM 4/19 CLASS
         SET @sql = NULL;
    
-        SET @sql = CONCAT('SELECT E.stateName, E.', '?', ', H.suicideRate, H.teenPregnancyRate 
+        SET @sql = CONCAT('SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
                             ORDER BY ', '?');
         
