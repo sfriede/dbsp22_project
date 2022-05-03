@@ -11,7 +11,7 @@ BEGIN
     IF factor = "percentInPoverty" THEN
         SELECT E.stateName, E.percentInPoverty, H.suicideRate, H.teenPregnancyRate 
         FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
-        ORDER BY E.repercentInPovertyalGDP DESC;
+        ORDER BY E.percentInPoverty DESC;
     ELSEIF factor = "realGDP" THEN
         SELECT E.stateName, E.realGDP, H.suicideRate, H.teenPregnancyRate 
         FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
