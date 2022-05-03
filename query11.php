@@ -29,7 +29,7 @@
 		   //values for states above and below threshold
 		
 			if ($stmt1 = $conn->prepare("CALL Query11(?)")) {
-      			   $stmt1->bind_param("s", $factor);
+      			   $stmt1->bind_param($factor);
 
       			   //Run the actual query
       			   if ($stmt1->execute()) {
@@ -45,15 +45,13 @@
 
             		       //Report result set by visiting each row in it
             		       while ($row1 = $result1->fetch_row()) {
-               		       	     echo "<tr>";
-               			     echo "<td>".$row1[0]."</td>";
-               			     echo "<td>".$row1[1]."</td>";
-				     echo "<td>".$row1[2]."</td>";
-				     echo "<td>".$row1[3]."</td>";
-	
-				   
-               			     echo "</tr>";
-            			     }
+               		       	    echo "<tr>";
+               			        echo "<td>".$row1[0]."</td>";
+               			        echo "<td>".$row1[1]."</td>";
+				                echo "<td>".$row1[2]."</td>";
+				                echo "<td>".$row1[3]."</td>";
+               			        echo "</tr>";
+            			    }
 
             			     echo "</table>";
 
