@@ -14,7 +14,7 @@ BEGIN
         SET @sql = CONCAT('SELECT E.stateName, H.suicideRate, H.teenPregnancyRate 
                             FROM Economy AS E JOIN Health AS H ON E.stateName = H.stateName
                             WHERE E.stateName IN (SELECT * FROM HighestStates) OR E.stateName IN (SELECT * FROM LowestStates)
-                            ORDER BY ', '?', ' DESC');
+                            ORDER BY ', '?');
         
         /* WITH HighestStates AS (SELECT stateName
                             FROM Economy
