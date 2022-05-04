@@ -77,7 +77,8 @@ window.onload = function () {
                 },
                 data: [{
                         type: "rangeColumn", //change type to column, bar, line, area, pie, etc
-                        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>,
+                        toolTipContent: "<b>{US Born to Foreign Born}</b>: {y[0]} to {y[1]}",
                 }],
                 axisX:{
                         title:"State",
