@@ -73,10 +73,10 @@ window.onload = function () {
                         text: "US Born Median Income by State",
                         fontFamily: "verdana",
                         fontWeight: "bold",
-			fontSize: 18,
+			            fontSize: 18,
                 },
                 data: [{
-                        type: "bar", //change type to column, bar, line, area, pie, etc
+                        type: "rangeColumn", //change type to column, bar, line, area, pie, etc
                         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
                 }],
                 axisX:{
