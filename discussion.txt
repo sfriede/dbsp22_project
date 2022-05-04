@@ -1,7 +1,9 @@
 Members: Sydney Friedel (sfriede5) and Shelby Coe (scoe4) 
-<br>
+<br><br>
 Modifications - briefly summarize any changes you made to your project after selecting a domain and list of questions in Phase A (did you change subject domains due to lack of data? did you replace questions from your original list of 15, or expand the list? did you pull in an additional data source to enrich the project?)
 <br>
+
+<br></br>
 Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for insertion into your database
 <br>
 Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
