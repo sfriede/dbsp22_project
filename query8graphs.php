@@ -81,7 +81,7 @@ window.onload = function () {
                 }],
                 axisX:{
                         title:"State",
-                        labelFontSize: 12,
+                        labelFontSize: 14,
                         labelAngle: -90,
                         interval: 1
                  },
