@@ -1,3 +1,6 @@
+<!-- Sydney Friedel and Shelby Coe -->
+<!-- sfriede5 and scoe4 -->
+
 <head><title>Query 16</title></head>
  <body>
 <?php     

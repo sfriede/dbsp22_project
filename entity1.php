@@ -298,7 +298,7 @@ window.onload = function () {
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 	<h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state (for which educational data was available. </h3>
-        <h5 style = "font-family: 'verdana'"> Educational Score = (Average SAT Score)/1600 + (Average ACT Score/36) + (NAEP Reading)/500 + (NAEP Math)/500 <\h5>
+        <h5 style = "font-family: 'verdana'"> Educational Score = (Average SAT Score)/1600 + (Average ACT Score/36) + (NAEP Reading)/500 + (NAEP Math)/500 </h5>
 	
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
