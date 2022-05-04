@@ -70,7 +70,7 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "Median Income for Top 5 and Bottom 5 States in Terms of Percent of Population Completing College",
+                        text: "REPLACE",
                         fontFamily: "verdana",
                         fontWeight: "bold",
 			fontSize: 18,
