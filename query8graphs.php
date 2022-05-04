@@ -82,7 +82,8 @@ window.onload = function () {
                 axisX:{
                         title:"State",
                         labelFontSize: 12,
-                        labelAngle: -90
+                        labelAngle: -90,
+                        interval: 1
                  },
                  axisY:{
                         title:"Median Income",
