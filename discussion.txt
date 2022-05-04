@@ -1,13 +1,49 @@
-Members: Sydney Friedel (sfriede5) and Shelby Coe (scoe4) 
-<br><br>
-Modifications - briefly summarize any changes you made to your project after selecting a domain and list of questions in Phase A (did you change subject domains due to lack of data? did you replace questions from your original list of 15, or expand the list? did you pull in an additional data source to enrich the project?)
-<br>
+### Members: Sydney Friedel (sfriede5) and Shelby Coe (scoe4) 
 
-<br></br>
-Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for insertion into your database
-<br>
-Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
-<br>
-Known Issues - a description of places in the implementation of your project, if any, where you did not fully succeed (are there bugs? are there unimplemented features?)
-<br>
-Extensions - beyond fixing any known issues mentioned above, what additional functionality do you most wish you had time to add to your project? Describe at least two new features.
+##### Modifications - briefly summarize any changes you made to your project after selecting a domain and list of questions in Phase A (did you change 
+##### subject domains due to lack of data? did you replace questions from your original list of 15, or expand the list? did you pull in an additional 
+##### data source to enrich the project?)
+Since Phase A, we decided to change our domain slightly and only collected data from the 2019-2020 period. hile retrieving data, we realized that 
+many attributes, all of which stem from U.S. government data, were severely limited in terms of number/frequency of recordings. This meant we were 
+not able to find two sets of recordings (old and new) for all attributes, so we could not create the "RelationOld" and "RelationNew" relations we 
+described in our Phase B schema without having mostly null values in each table. 
+Given this change, we eliminated proposed queries concerned with how different state statistics changed over time. We modified our database schema 
+to not have "old" and "new" versions of each relation, but just a single version of each. Although this eliminated some of our original proposed 
+queries, we created additional, equally complex queries to make up for it. All our final queries are listed below. 
+Also, there are a few slight tweaks to the schema described in Phase B: some attribute names were changed to better reflect the data we found (e.g. 
+'obesityPercent' was renamed to 'obesityPrevalence'), a few new race attributes were added to the Demographics relation, and the avgMotherAge and 
+avgFatherAge attributes had to be removed from the Health relation, as we could not find this data for the 2019-2020 time period. 
+Final queries implemented in Phase E
+1. In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), list the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state. 
+2. What is the average household income for states where the teen pregnancy rate is higher than the average rate for all states? - done (added canvas JS)
+3. Do states with the healthiest states (in terms of cancer mortality, obesity, drug overdoses, etc.) have the highest average incomes and GDP?
+4. What is the average income for adults in the five states with the highest high school graduation rate? Lowest high school graduation rate?
+-- Does this change when using college graduation rates?
+-- using highschool graduation rates
+-- using percent completing college
+5. Of the states in which abortion rate is significantly higher than the average rate for all states, what was the average household income for that state that year? What percent of the state's population was at or under the poverty line?
+6. For states with the highest and lowest median incomes, what is the difference between the US-born and foreign-born median incomes, and how racially diverse is this state?
+7. What is the average salary of teachers in the best performing states in terms of standardized test scores and highschool graduation rates?
+8. What is the mean average income in each state for U.S. born individuals across all 50 states? How does this compare to foreign born individuals? 
+9. For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? Average SAT/ACT scores? 
+10. In descending order of education spending per pupil, list each state's percentage of adults who have completed college and the highschool graduation rate. 
+11. What is the difference in overall health for states with very different rates of unhoused people?
+12. For states with a relatively high unemployment rate compared to the average of all states, list the risk factor and health statistics.
+13. For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
+14. What is the average graduation rate of each state for the five states with the lowest poverty levels? What is the poverty level of each state for the five states with the highest graduation rate? 
+15. Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? How does this compare to states with the lowest rates of suicide?
+16. List the states and the average income of working adults for states ordered by the average teacher salary of the state.
+17. Ordering the states from least to most racially diverse, list the state GDP and median household income.
+
+
+##### Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for 
+##### insertion into your database
+
+##### Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging 
+##### aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
+
+##### Known Issues - a description of places in the implementation of your project, if any, where you did not fully succeed (are there bugs? are there 
+##### unimplemented features?)
+
+##### Extensions - beyond fixing any known issues mentioned above, what additional functionality do you most wish you had time to add to your project? 
+##### Describe at least two new features.
