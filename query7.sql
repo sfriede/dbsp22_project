@@ -29,7 +29,7 @@ BEGIN
 	   WITH avgStats AS
 	   (SELECT AVG(highschoolGradRate) AS 'avgHS', AVG(percentCompletingCollege) AS 'avgCollege'
 	   FROM Education)
-	   SELECT avgTeacherStartingSalary, (avgStats.avgHS - highschoolGradRate) AS 'hsDeviation', (avgStats.avgCollege - percentCompletingCollege) AS 'collegeDeviation'
+	   SELECT avgTeacherStartingSalary, (-avgStats.avgHS + highschoolGradRate) AS 'hsDeviation', (-avgStats.avgCollege + percentCompletingCollege) AS 'collegeDeviation'
 	   FROM Education JOIN avgStats
 	   WHERE stateName = stateName_param;
 	END IF;

@@ -13,7 +13,24 @@
 
         if(!empty($q6state)) {
                 $q6state = trim($q6state);
-                if (1 == 1) {
+                if (strcmp($q6state, 'Alabama') == 0 || strcmp($q6state, 'Alaska') == 0 || strcmp($q6state, 'Arizona') == 0 ||
+		strcmp($q6state, 'Arkansas') == 0 || strcmp($q6state, 'California') == 0 || strcmp($q6state, 'Colorado') == 0 ||
+		strcmp($q6state, 'Connecticut') == 0 || strcmp($q6state, 'Delaware') == 0 || strcmp($q6state, 'Flordia') == 0 ||
+		strcmp($q6state, 'Georgia') == 0 || strcmp($q6state, 'Hawaii') == 0 || strcmp($q6state, 'Idaho') == 0 ||
+		strcmp($q6state, 'Illinois') == 0 || strcmp($q6state, 'Indiana') == 0 || strcmp($q6state, 'Iowa') == 0 ||
+		strcmp($q6state, 'Kansas') == 0 || strcmp($q6state, 'Kentucky') == 0 || strcmp($q6state, 'Louisiana') == 0 ||
+		strcmp($q6state, 'Maine') == 0 || strcmp($q6state, 'Maryland') == 0 || strcmp($q6state, 'Massachusetts') == 0 ||
+		strcmp($q6state, 'Michigan') == 0 || strcmp($q6state, 'Minnesota') == 0 || strcmp($q6state, 'Mississippi') == 0 ||
+		strcmp($q6state, 'Missouri') == 0|| strcmp($q6state, 'Montana') == 0 || strcmp($q6state, 'Nebraska') == 0 ||
+		strcmp($q6state, 'Nevada') == 0 || strcmp($q6state, 'New Hampshire') == 0 || strcmp($q6state, 'New Jersey') == 0 ||
+		strcmp($q6state, 'New Mexico') == 0 || strcmp($q6state, 'New York') == 0 || strcmp($q6state, 'North Carolina') == 0 ||
+		strcmp($q6state, 'North Dakota') == 0 || strcmp($q6state, 'Ohio') == 0 || strcmp($q6state, 'Oklahoma') == 0 ||
+		strcmp($q6state, 'Oregon') == 0 || strcmp($q6state, 'Pennsylvania') == 0 || strcmp($q6state, 'Rhode Island') == 0 ||
+		strcmp($q6state, 'South Carolina') == 0 || strcmp($q6state, 'South Dakota') == 0 || strcmp($q6state, 'Tennessee') == 0 ||
+		strcmp($q6state, 'Texas') == 0 || strcmp($q6state, 'Utah') == 0 || strcmp($q6state, 'Vermont') == 0 ||
+		strcmp($q6state, 'Virginia') == 0 || strcmp($q6state, 'Washington') == 0 || strcmp($q6state, 'West Virginia') == 0 ||
+		strcmp($q6state, 'Wisconsin') == 0 || strcmp($q6state,'Wyoming') == 0 || strcmp($q6state, 'Washington DC') == 0 ||
+		strcmp($q6state, 'Puerto Rico') == 0) {
  
 		   echo "<h2>In descending order of education spending per pupil, see each states highschool graduation rate and percent of adults who have completed at least some part of college </h2>";
 
@@ -128,7 +145,7 @@
 
                               if (($result5) && ($result5->num_rows != 0)) {
 
-                              echo "<h3> Here is the average teacher starting salary for the state you chose, along with how far it deviates from the mean high school graduation rate and percent of adults who've completed college for all states.</h3>";
+                              echo "<h3> Here is the average teacher starting salary for $q6state, along with how far it deviates from the mean high school graduation rate and percent of adults who've completed college for all states.</h3>";
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
@@ -147,7 +164,7 @@
                                 } else {
 
                                   if(!($result5)) {
-                                     echo "We do not have information available for this state. Remember that the input must be a valid, capitalized state or US territory name.";
+                                     echo "We do not have information available for $q6state. Remember that the input must be a valid, capitalized state or US territory name.";
                                   }
                                 }
                                   if(($result5)) {
@@ -175,6 +192,7 @@
         } else {
           echo "State Name Not Set";
         }
+	
 
       
    // close the connection opened by open.php

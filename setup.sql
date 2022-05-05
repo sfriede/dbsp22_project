@@ -1,5 +1,5 @@
 -- Shelby Coe and Sydney Friedel
--- scoe4 and sfriede5
+0;136;0c-- scoe4 and sfriede5
 
 
 -- Describe the schema for the States relation
@@ -92,7 +92,7 @@ CREATE TABLE RiskFactors
 stateName       VARCHAR(15),
 cancerMortality   FLOAT(5, 2),
 STISPer100K    INT, 
-obesityPrevalence   FLOAT(4, 2),
+obesityPrevalence   FLOAT(5, 2),
 PRIMARY KEY(stateName),
 FOREIGN KEY(stateName) REFERENCES States(stateName) ON DELETE CASCADE ON UPDATE CASCADE,
 CHECK(cancerMortality >= 0),

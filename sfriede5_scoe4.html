@@ -83,7 +83,6 @@
 	  </form>
 
 
-
 	<!-- (13) -->
 <!--	<h2>For states with the best and worst public school systems, how do the number of homicides, 
 		suicides, and drug overdose statistics compare?</h2>
@@ -113,6 +112,48 @@
 		<input type="submit" value="click here to see">
 	</form>
 	<br/><br/>
+
+	<!-- (insert health) -->
+        <h2>Insert a record containing health statistics about a state into the Health table</h2>
+        <form action="inserthealth.php" method="post">
+          State Name (capitalized): <input type="text" name="healthState"> <br/>
+	  State Population: <input type="number" name="healthPop"> <br/>
+	  Abortion Rate (% Between 0 and 100): <input type="number" name="abortion"> <br/>
+          Suicide Rate (% Between 0 and 100): <input type="number" name="suicide"> <br/>
+          Homicide Rate (% Between 0 and 100): <input type="number" name="homicide"> <br/>
+          Number of Drug Overdoses (In 1000s): <input type="number" name="drugODs"> <br/>
+	  Teen Pregnancy Rate (% Between 0 and 100): <input type="number" name="teenPreg"> <br/>
+          <input type="submit">
+        </form>
+
+        <!-- (insert education) -->
+        <h2>Insert a record containing education statistics about a state into the Education table</h2>
+        <form action="inserteducation.php" method="post">
+          State Name (capitalized): <input type="text" name="eduState"> <br/>
+          State Population: <input type="number" name="eduPop"> <br/>
+          Average Teacher Starting Salary (Integer Value, In USD): <input type="number" name="teacherSal"> <br/>
+          Average SAT Score (Integer Between 0 and 1600): <input type="number" name="SAT"> <br/>
+          Average ACT Score (Between 0 and 36, Up to 2 Decimal Places): <input type="number" name="ACT"> <br/>
+          NAEP Reading Score (Integer Between 0 and 500): <input type="number" name="NAEPRead"> <br/>
+          NAEP Math Score (Integer Between 0 and 500): <input type="number" name="NAEPMath"> <br/>
+	  Education Spending Per Pupil (In USD, Up to 5 Decimal Places, Between $0 and $99999): <input type="number" name="eduSpending"> <br/>
+          Average High School Graduation Rate (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" name="percentCollege"> <br/>
+          Percent of Adults Who've Completed at Least Some College (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" name="hsGradRate"> <br/>
+          <input type="submit">
+	</form>
+	
+        <!-- (insert risk factors) -->
+        <h2>Insert a record containing risk factor statistics about a state into the Risk Factors table</h2>
+        <form action="insertriskfactors.php" method="post">
+          State Name (capitalized): <input type="text" name="rfState"> <br/>
+          State Population: <input type="number" name="rfPop"> <br/>
+          Cancer Mortality Rate(% Between 0 and 100, Up to 2 Decimal Places): <input type="number" name="cancer"> <br/>
+          Obesity Prevalence (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" name="obesity"> <br/>
+          STI Cases Per 100,000 People (Nonnegative Integer): <input type="number" name="sti"> <br/>
+         
+          <input type="submit">
+        </form>
+
 
   </body>
 
