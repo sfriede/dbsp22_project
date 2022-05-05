@@ -48,3 +48,11 @@
 
 ?>
 </body>
+<html>
+<body>
+     <style>
+        body {font-family: 'verdana'; font-size: 18px;}
+     </style>
+
+</body>
+</html>

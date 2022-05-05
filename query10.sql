@@ -12,6 +12,7 @@ BEGIN
 
 SELECT stateName, eduSpendingPerPupil, highschoolGradRate, Education.percentCompletingCollege
 FROM Education
+WHERE eduSpendingPerPupil IS NOT NULL
 ORDER BY eduSpendingPerPupil DESC;
 
 

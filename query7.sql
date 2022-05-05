@@ -21,4 +21,20 @@ WHERE stateName IN (SELECT * FROM BestEduPerformance);
 
 END; //
 
+DROP PROCEDURE IF EXISTS Query7UI //
+
+CREATE PROCEDURE Query7UI(IN stateName_param VARCHAR(20))
+BEGIN
+        IF (EXISTS(SELECT * FROM Education WHERE stateName = stateName_param)) THEN
+	   WITH avgStats AS
+	   (SELECT AVG(highschoolGradRate) AS 'avgHS', AVG(percentCompletingCollege) AS 'avgCollege'
+	   FROM Education)
+	   SELECT avgTeacherStartingSalary, (avgStats.avgHS - highschoolGradRate) AS 'hsDeviation', (avgStats.avgCollege - percentCompletingCollege) AS 'collegeDeviation'
+	   FROM Education JOIN avgStats
+	   WHERE stateName = stateName_param;
+	END IF;
+
+END; //
+
 DELIMITER ;
+

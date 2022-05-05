@@ -16,8 +16,8 @@
 	//get user input and perform error-checking on it
 	$teenPregRate = $_POST['teenPregRate'];
 
-
-	if(!empty($teenPregRate)) {
+	
+	if(isset($teenPregRate)) {
 
 		if (is_numeric($teenPregRate) && $teenPregRate >= 0 && $teenPregRate <= 100) {
 		
@@ -50,6 +50,7 @@
 
          			} else {
         			  if ($result1->num_rows == 0) {
+				     	
 				     	echo "No states have a teen pregnancy rate above this threshold";
 						     
 				  }
@@ -101,6 +102,7 @@
 
                                 } else {
                                   if ($result2->num_rows == 0) {
+				      
                                         echo "No states have a teen pregnancy rate below this threshold";
 
                                   }
@@ -146,6 +148,7 @@
 <head>
 <script type="text/javascript">
 window.onload = function () {
+	
         var chart = new CanvasJS.Chart("container1", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -163,9 +166,8 @@ window.onload = function () {
  		  interval: 1
 	        }
         });
+      	chart.render();
 	
-        chart.render();
-
         var chart = new CanvasJS.Chart("container2", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -185,7 +187,7 @@ window.onload = function () {
 
         });
 	
-        chart.render();
+	chart.render();
 }
 </script>
 </head>

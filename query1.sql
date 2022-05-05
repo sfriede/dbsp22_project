@@ -10,7 +10,7 @@ CREATE FUNCTION GetEduScore(stateName_param VARCHAR(15))
 RETURNS DECIMAL(5,3)
 BEGIN
         IF EXISTS (SELECT * FROM Education WHERE stateName = stateName_param) THEN
-           SELECT FORMAT(avgSATScore / 1600 + avgACTScore / 36 + NAEPScoreMath / 500 + NAEPScoreReading / 500,3)
+           SELECT FORMAT(avgSATScore / 1600 + avgACTScore / 36 + NAEPScoreMath / 300 + NAEPScoreReading / 300,3)
            INTO @eduScore
            FROM Education
            WHERE stateName = stateName_param;

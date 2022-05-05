@@ -343,7 +343,7 @@ window.onload = function () {
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         
-        <h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), here is the unemployment rate, percent of population that is homeless, and the average starting salary of teachers for each state (for which educational data was available.) </h3>       
+        <h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP scores), here is the suicide rate, homicide rate, and number of drug overdoses for each state (for which educational data was available.) </h3>       
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container3" style="height: 300px; width: 100%;display: inline-block;"></div>

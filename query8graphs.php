@@ -73,7 +73,7 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "US Born Median Income by State",
+                        text: "Difference Between US Born and Foreign Born Median Income by State",
                         fontFamily: "verdana",
                         fontWeight: "bold",
 			            fontSize: 18,
@@ -104,6 +104,9 @@ window.onload = function () {
         <h3 style = "font-family: 'verdana'">What is the mean average income in each state for U.S. born individuals across all 50 states? How does this compare to foreign born individuals?</h3>
         <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
 
+     <style>
+        body {font-family: 'verdana'; font-size: 18px;}
+     </style>
 
 </body>
 </html>
