@@ -126,6 +126,14 @@
           <input type="submit">
         </form>
 
+
+	<!-- (delete health) -->
+        <h2>Delete a record from the Health table</h2>
+        <form action="deletehealth.php" method="post">
+          State Name (capitalized): <input type="text" name="healthDelState"> <br/>
+          <input type="submit">
+        </form>
+
         <!-- (insert education) -->
         <h2>Insert a record containing education statistics about a state into the Education table</h2>
         <form action="inserteducation.php" method="post">
@@ -141,6 +149,14 @@
           Percent of Adults Who've Completed at Least Some College (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" name="hsGradRate"> <br/>
           <input type="submit">
 	</form>
+
+	<!-- (delete education) -->
+        <h2>Delete a record from the Education table</h2>
+        <form action="deleteeducation.php" method="post">
+          State Name (capitalized): <input type="text" name="eduDelState"> <br/>
+          <input type="submit">
+        </form>
+
 	
         <!-- (insert risk factors) -->
         <h2>Insert a record containing risk factor statistics about a state into the Risk Factors table</h2>
@@ -154,6 +170,12 @@
           <input type="submit">
         </form>
 
+        <!-- (delete risk factors) -->
+        <h2>Delete a record from the Risk Factors table</h2>
+        <form action="deleteriskfactors.php" method="post">
+          State Name (capitalized): <input type="text" name="rfDelState"> <br/>
+          <input type="submit">
+        </form>
 
   </body>
 
