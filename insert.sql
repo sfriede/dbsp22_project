@@ -104,3 +104,34 @@ BEGIN
 END; //
 DELIMITER ;
 
+-- Statements for inserting a new tuple into the Health table
+-- First checks if the state we're inserting a Health tuple for already exists in the States table.
+-- If it does, foregin key constraints are satisfied, so we can just perform the insertion.
+-- If it doesn't exist, we have to first insert into the States table for this new state to satisfy foreign key constraints
+-- The procedure also does primary key constraint error checking in case the user is trying to insert a tuple for a state that
+-- already has an associated Health tuple. This error will mostly be handled on the PHP level in Phase E.
+
+-- START HERE
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS InsertHealth //
+
+CREATE PROCEDURE InsertHealth(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN abortRate_param FLOAT(10,7) , IN homRate_param FLOAT(5,2), IN suicideRate_param FLOAT(5,2),IN drugOver_param FLOAT(5,2), IN teenPregRate_param FLOAT(5,2))
+BEGIN
+        DECLARE EXIT HANDLER FOR 1062
+        SELECT 'Error, a record for this state/territory already exists in the Health table';
+
+	DECLARE EXIT HANDLER FOR 1264
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
+
+        IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
+		   INSERT INTO Health VALUES (stateName_param, abortRate_param, homRate_param, drugOver_param, suicideRate_param, teenPregRate_param);
+		  
+	ELSE
+                   INSERT INTO States VALUES(stateName_param, population_param);
+                   INSERT INTO Health VALUES(stateName_param, abortRate_param, homRate_param, drugOver_param, suicideRate_param, teenPregRate_param);
+        END IF;      
+
+END; //
+DELIMITER ;
+

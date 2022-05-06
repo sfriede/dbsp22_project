@@ -160,6 +160,31 @@
           <input type="submit">
         </form>
 
+        <!-- (insert economy) -->
+        <h2>Insert a record containing economic statistics about a state into the Economy table</h2>
+        <form action="inserteconomy.php" method="post">
+          State Name (capitalized): <input type="text" name="economyState"> <br/>
+	  State Population: <input type="number" name="economyPop"> <br/>
+	  Percent in Poverty (% Between 0 and 100): <input type="number" name="percentInPoverty"> <br/>
+          Unemployment Rate (% Between 0 and 100): <input type="number" name="unemploymentRate"> <br/>
+          RealGDP: <input type="number" name="realGDP"> <br/>
+          Percent Unhoused (% Between 0 and 100): <input type="number" name="percentUnhoused"> <br/>
+	  Homelessness rate per 10000 (Between 0 and 10000): <input type="number" name="homelessnessRatePer10000"> <br/>
+          Median Income: <input type="number" name="medianIncome"> <br/>
+          Median Income of Foreign Born Residents: <input type="number" name="foreignBornMedianIncome"> <br/>
+	  Median Income of US Born Residents: <input type="number" name="USBornMedianIncome"> <br/>
+          <input type="submit">
+        </form>
+
+
+	<!-- (delete health) -->
+        <h2>Delete a record from the Economy table</h2>
+        <form action="deleteeconomy.php" method="post">
+          State Name (capitalized): <input type="text" name="economyDelState"> <br/>
+          <input type="submit">
+        </form>
+
+
   </body>
 
      <style>

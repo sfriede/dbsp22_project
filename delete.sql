@@ -59,3 +59,23 @@ BEGIN
 
 END; //
 DELIMITER ;
+
+
+-- Statements for delelting a tuple from the Economy table.
+-- There aren't any foreign key constraints with Economy (or any table except States) as the referenced table,
+-- so deleting a tuple from one of those relations will not result in any cascading behavior.
+-- This procedure also begins a little error checking by first ensuring that such a tuple for this state actually exists in Economy.
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS DeleteEconomy //
+CREATE PROCEDURE DeleteEconomy(IN stateName_param VARCHAR(15))
+BEGIN
+        IF EXISTS(SELECT * FROM Economy WHERE stateName = stateName_param) THEN
+           DELETE FROM Economy WHERE stateName = stateName_param;
+           SELECT 'There was not a record for this state in the table and was successfully deleted' AS existsCheck;
+        ELSE
+           SELECT 'There was not a record for this state in the table' AS existsCheck;
+        END IF;
+
+END; //
+DELIMITER ;
