@@ -11,7 +11,7 @@
 	//get user input and perform error-checking on it
 	$state = $_POST['rfDelState'];
 	
-	if(isset($state)) {
+	if(!empty($state)) {
 
 			   if ($stmt1 = $conn->prepare("CALL DeleteRiskFactors(?)")) {
                            $stmt1->bind_param("s", $state);

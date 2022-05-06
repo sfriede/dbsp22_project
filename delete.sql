@@ -14,7 +14,7 @@ CREATE PROCEDURE DeleteHealth(IN stateName_param VARCHAR(15))
 BEGIN
         IF EXISTS(SELECT * FROM Health WHERE stateName = stateName_param) THEN
            DELETE FROM Health WHERE stateName = stateName_param;
-           SELECT 'There was not a record for this state in the table and was successfully deleted' AS existsCheck;
+           SELECT 'There was a record for this state in the table, and it was successfully deleted' AS existsCheck;
         ELSE
            SELECT 'There was not a record for this state in the table' AS existsCheck;
         END IF;
@@ -33,7 +33,7 @@ CREATE PROCEDURE DeleteEducation(IN stateName_param VARCHAR(15))
 BEGIN
         IF EXISTS(SELECT * FROM Education WHERE stateName = stateName_param) THEN
            DELETE FROM Education WHERE stateName = stateName_param;
-           SELECT 'There was not a record for this state in the table and was successfully deleted' AS existsCheck;
+           SELECT 'There was a record for this state in the table, and it was successfully deleted' AS existsCheck;
         ELSE
            SELECT 'There was not a record for this state in this table' AS existsCheck;
         END IF;
@@ -52,7 +52,7 @@ CREATE PROCEDURE DeleteRiskFactors(IN stateName_param VARCHAR(15))
 BEGIN
         IF EXISTS(SELECT * FROM RiskFactors WHERE stateName = stateName_param) THEN
            DELETE FROM RiskFactors WHERE stateName = stateName_param;
-           SELECT 'There was not a record for this state in the table and was successfully deleted' AS existsCheck;
+           SELECT 'There was a record for this state in the table, and it was successfully deleted' AS existsCheck;
         ELSE
            SELECT 'There was not a record for this state in this table' AS existsCheck;
         END IF;

@@ -32,7 +32,7 @@
 		strcmp($q6state, 'Wisconsin') == 0 || strcmp($q6state,'Wyoming') == 0 || strcmp($q6state, 'Washington DC') == 0 ||
 		strcmp($q6state, 'Puerto Rico') == 0) {
  
-		   echo "<h2>In descending order of education spending per pupil, see each states highschool graduation rate and percent of adults who have completed at least some part of college </h2>";
+		   echo "<h3>In descending order of education spending per pupil, see each states highschool graduation rate and percent of adults who have completed at least some part of college. How do these statistics compare for $q6state? </h3>";
 
 		   //prepare statement and call query
 			if ($stmt1 = $conn->prepare("CALL Query10()")) {
@@ -149,7 +149,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-                               echo "<tr><th> Average Teacher Starting Salary </th> <th> Deviation from Mean High School Graduation Rate</th><th> Deviation from Mean Percent of Adults Completing College </th></tr>";
+                               echo "<tr><th> Average Teacher Starting Salary </th> <th> Deviation from Mean High School Graduation Rate (%) </th><th> Deviation from Mean Percent of Adults Completing College (%)</th></tr>";
 			       
                                //Report result set by visiting each row in it
                                while ($row5 = $result5->fetch_row()) {
@@ -264,6 +264,7 @@ window.onload = function () {
 </head>
 <body>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<br>
 <div id="container1" style="height: 300px; width: 100%;"></div>
 <div id="container2" style="height: 300px; width: 100%;"></div>
      <style>

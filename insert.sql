@@ -17,12 +17,16 @@ DROP PROCEDURE IF EXISTS InsertHealth //
 
 CREATE PROCEDURE InsertHealth(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN abortRate_param FLOAT(10,7) , IN homRate_param FLOAT(5,2), IN suicideRate_param FLOAT(5,2),IN drugOver_param FLOAT(5,2), IN teenPregRate_param FLOAT(5,2))
 BEGIN
-        DECLARE EXIT HANDLER FOR 1062
+        DECLARE CONTINUE HANDLER FOR 1062
+	 BEGIN
         SELECT 'Error, a record for this state/territory already exists in the Health table';
-
-	DECLARE EXIT HANDLER FOR 1264
-        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
-
+	 END;
+	
+	DECLARE CONTINUE HANDLER FOR 1264
+	BEGIN 
+	      SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
+	END;
+	
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
 		   INSERT INTO Health VALUES (stateName_param, abortRate_param, homRate_param, drugOver_param, suicideRate_param, teenPregRate_param);
 		  
@@ -44,13 +48,16 @@ DELIMITER ;
 DELIMITER //
 DROP PROCEDURE IF EXISTS InsertEducation //
 
-CREATE PROCEDURE InsertEducation(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN teacherSal_param INT , IN avgSAT_param INT, IN avgACT_param FLOAT(4,2),IN NAEPReading_param INT, IN NAEPMath_param INT, IN hsGradeRate_param FLOAT(5,2), IN percentCollege_param FLOAT(5,2), IN eduSpending_param FLOAT(10,5))
+CREATE PROCEDURE InsertEducation(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN teacherSal_param INT , IN avgSAT_param INT, IN avgACT_param FLOAT(4,2),IN NAEPReading_param INT, IN NAEPMath_param INT, IN hsGradRate_param FLOAT(5,2), IN percentCollege_param FLOAT(5,2), IN eduSpending_param FLOAT(10,5))
 BEGIN
         DECLARE CONTINUE HANDLER FOR 1062
         SELECT 'Error, a record for this state/territory already exists in the Education table';
 
         DECLARE CONTINUE HANDLER FOR 1264
-        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
+
+	DECLARE CONTINUE HANDLER FOR 4025
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
 
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
                    INSERT INTO Education VALUES (stateName_param, teacherSal_param, avgSAT_param, avgACT_param, NAEPReading_param, NAEPMath_param, hsGradRate_param, percentCollege_param, eduSpending_param);
@@ -80,7 +87,10 @@ BEGIN
         SELECT 'Error, a record for this state/territory already exists in the RiskFactors table';
 
         DECLARE CONTINUE HANDLER FOR 1264
-        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
+
+        DECLARE CONTINUE HANDLER FOR 4025
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
 
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
                    INSERT INTO RiskFactors VALUES(stateName_param, cancer_param, sti_param, obesity_param);

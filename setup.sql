@@ -1,5 +1,5 @@
 -- Shelby Coe and Sydney Friedel
-0;136;0c-- scoe4 and sfriede5
+-- scoe4 and sfriede5
 
 
 -- Describe the schema for the States relation

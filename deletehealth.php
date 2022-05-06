@@ -11,7 +11,7 @@
 	//get user input and perform error-checking on it
 	$state = $_POST['healthDelState'];
 	
-	if(isset($state)) {
+	if(!empty($state)) {
 
 			   if ($stmt1 = $conn->prepare("CALL DeleteHealth(?)")) {
                            $stmt1->bind_param("s", $state);

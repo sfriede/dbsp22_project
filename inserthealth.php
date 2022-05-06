@@ -24,7 +24,7 @@
 
 	$success = 0;
 	
-	if(isset($state) && isset($population) && isset($abortion) && isset($homicide) && isset($drugODs) && isset($suicide) && isset($teenPreg)) {
+	if(!empty($state) && isset($population) && isset($abortion) && isset($homicide) && isset($drugODs) && isset($suicide) && isset($teenPreg)) {
 
 			   if ($stmt1 = $conn->prepare("CALL InsertHealth(?, ?, ?, ?, ?, ?, ?)")) {
                            $stmt1->bind_param("siddddd", $state, $population, $abortion, $homicide, $drugODs, $suicide, $teenPreg);
@@ -69,7 +69,7 @@
                         } else {
                            //Call to execute failed, e.g. because server is no longer reachable,
                            //or because supplied values are of the wrong type
-                           echo "Execute failed.<br>";
+                           echo "Unable to insert record into the Health table because the supplied values were of the wrong type or out of range. Please ensure all inputs match their given descriptions.<br>";
                         }
                 } else {
                   //A problem occurred when preparing the statement; check for syntax errors

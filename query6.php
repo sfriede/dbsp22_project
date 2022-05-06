@@ -173,7 +173,7 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "Average Racial Diversity Statistics For This State",
+                        text: "Average Racial Diversity Statistics For The Given State",
                         fontFamily: "verdana",
                         fontWeight: "bold"
                 },

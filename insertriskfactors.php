@@ -22,10 +22,10 @@
         
 	$success = 0;
 	
-	if(isset($state) && isset($population) && isset($cancer) && isset($obesity) && isset($sti)) {
+	if(!empty($state) && isset($population) && isset($cancer) && isset($obesity) && isset($sti)) {
 
 			   if ($stmt1 = $conn->prepare("CALL InsertRiskFactors(?, ?, ?, ?, ?)")) {
-                           $stmt1->bind_param("sidid", $state, $population, $cancer, $sti, $obesity);
+                           $stmt1->bind_param("siddi", $state, $population, $cancer, $obesity, $sti);
 
                            //Run the actual query
                            if ($stmt1->execute()) {
@@ -67,7 +67,8 @@
                         } else {
                            //Call to execute failed, e.g. because server is no longer reachable,
                            //or because supplied values are of the wrong type
-                           echo "Execute failed.<br>";
+                           echo "Unable to insert record into the Risk Factors table because the supplied values were of the wrong type or out of range. Please ensure all inputs match their given descriptions.<br>";
+
                         }
                 } else {
                   //A problem occurred when preparing the statement; check for syntax errors

@@ -33,7 +33,7 @@
 			      $result1Worked = 1;
 			      
 			      echo "<h3> For states in which the rate of drug overdoses or sucide are significantly higher or lower than other states, what was the highschool graduation rate? Average SAT/ACT scores?</h3>";
-			      echo "<h4> Here, we defined 'significantly lower or higher' as states where the suicide rate or number of drug doses were greater than or equal to 1.5 standard deviations above or below the mean value of that statistic across all 50 states</h4>";
+			      echo "<h4> Here, we defined 'significantly lower or higher' as states where the suicide rate or number of drug overdoses were greater than or equal to 1.5 standard deviations above or below the mean value of that statistic across all 50 states</h4>";
 
 			      echo "<h5> Statistics for states with siginificantly high suicide rates or number of drug overdoses </h5>";
             		      //Create table to display results
@@ -343,7 +343,8 @@ window.onload = function () {
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         
-        <h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP scores), here is the suicide rate, homicide rate, and number of drug overdoses for each state (for which educational data was available.) </h3>       
+        <h3 style = "font-family: 'verdana'">  In order of best to worst-scored public education system (in terms of NAEP scores), here is the suicide rate, homicide rate, and number of drug overdoses for each state (for which educational and health data was available.) </h3>
+	<h5 style = "font-family: 'verdana'"> Cummulative NAEP Score = NAEP Reading + NAEP Math </h5>
         <div id="container1" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container2" style="height: 300px; width: 100%;display: inline-block;"></div>
         <div id="container3" style="height: 300px; width: 100%;display: inline-block;"></div>
