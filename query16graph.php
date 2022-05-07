@@ -84,12 +84,11 @@ window.onload = function () {
                         toolTipContent: "<b>{label} </b>",
                 }],
                 axisX:{
-                        title:"Poverty Level",
+                        title:"Median Income",
                         labelFontSize: 14,
-                        interval: 0.5
                  },
                  axisY:{
-                        title:"Graduation Rate",
+                        title:"Average Teacher Starting Salary",
                  }
 
         });
