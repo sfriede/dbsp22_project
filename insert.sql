@@ -116,7 +116,7 @@ DELIMITER ;
 DELIMITER //
 DROP PROCEDURE IF EXISTS InsertEconomy //
 
-CREATE PROCEDURE InsertEconomy(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,3) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(9,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
+CREATE PROCEDURE InsertEconomy(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,2) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(10,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
 BEGIN
         DECLARE EXIT HANDLER FOR 1062
         SELECT 'Error, a record for this state/territory already exists in the Health table';
