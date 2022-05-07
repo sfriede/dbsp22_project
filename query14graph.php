@@ -84,7 +84,7 @@ window.onload = function () {
                         toolTipContent: "<b>{label} </b>",
                 }],
                 axisX:{
-                        title:"State",
+                        title:"Poverty LevelS",
                         labelFontSize: 14,
                         interval: 1
                  },
