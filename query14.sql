@@ -18,7 +18,7 @@ BEGIN
                         FROM Economy
                         ORDER BY percentInPoverty ASC
                         LIMIT 10)
-                        SELECT E.highschoolGradRate
+                        SELECT E.stateName, E.highschoolGradRate
                         FROM Education AS E JOIN LowestPovertyStates
                         ON E.stateName = LowestPovertyStates.stateName
                         ORDER BY LowestPovertyStates.percentInPoverty DESC;');
