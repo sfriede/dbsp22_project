@@ -16,21 +16,20 @@
 	//get user input and perform error-checking on it
 	$state = $_POST['demographicsState'];
 	$population = $_POST['demographicsPop'];
-	$poverty = $_POST['percentInPoverty'];
-   	$unemployment = $_POST['unemploymentRate'];
-    $gdp = $_POST['realGDP'];
-    $percentUnhoused = $_POST['percentUnhoused'];
-    $homelessness = $_POST['homelessnessRatePer10000'];
-    $income = $_POST['medianIncome'];
-    $foreignBorn = $_POST['foreignBornMedianIncome'];
-   	$USBorn = $_POST['USBornMedianIncome'];
+	$white = $_POST['white'];
+   	$black = $_POST['black'];
+    $asian = $_POST['asian'];
+    $indigenous = $_POST['indigenous'];
+    $other = $_POST['other'];
+    $hispanicOrLatino = $_POST['hispanicOrLatino'];
+    $notHispanicOrLatino = $_POST['notHispanicOrLatino'];
 
 	$success = 0;
 	
-	if(!empty($state) && isset($population) && isset($poverty) && isset($unemployment) && isset($gdp) && isset($percentUnhoused) && isset($homelessness) && isset($income) && isset($foreignBorn) && isset($USBorn)) {
+	if(!empty($state) && isset($population) && isset($white) && isset($black) && isset($asian) && isset($indigenous) && isset($other) && isset($hispanicOrLatino) && isset($notHispanicOrLatino)) {
 
-			   if ($stmt1 = $conn->prepare("CALL InsertEconomy(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-                           $stmt1->bind_param("sidddddddd", $state, $population, $poverty, $unemployment, $gdp, $percentUnhoused, $homelessness, $income, $foreignBorn, $USBorn);
+			   if ($stmt1 = $conn->prepare("CALL InsertDemographics(?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+                           $stmt1->bind_param("siddddddd", $state, $population, $white, $black, $asian, $indigenous, $other, $hispanicOrLatino, $notHispanicOrLatino);
 
                            //Run the actual query
                            if ($stmt1->execute()) {
@@ -57,7 +56,7 @@
 
                                 } else {
 
-				  echo "Your record was successfully inserted into the Economy table! See it in the table below";
+				  echo "Your record was successfully inserted into the Demographics table! See it in the table below";
 
 				  $success = 1;
 				}
@@ -90,7 +89,7 @@
 
 	if($success == 1) {
 
-		    if ($stmt2 = $conn->prepare("SELECT * FROM Economy")) {
+		    if ($stmt2 = $conn->prepare("SELECT * FROM Demographics")) {
 		    
 		           //Run the actual query
                            if ($stmt2->execute()) {
@@ -103,7 +102,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-			       echo "<tr><th>State</th><th>Percent in Poverty</th><th>Unemployment Rate</th><th>Real GDP</th><th>Percent Unhoused</th><th>Homelessness Rate Per 10,000</th><th>Median Income</th><th>Foreign Born Median Income</th><th>US Born Median Income</th></tr>";
+			       echo "<tr><th>State</th><th>White</th><th>Black</th><th>Asian</th><th>Indigenous</th><th>Other/th><th>Hispanic or Latino</th><th>Not Hispanic or Latino</th></tr>";
                               //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";
@@ -115,7 +114,6 @@
                                         echo "<td>".$row2[5]."</td>";
                                         echo "<td>".$row2[6]."</td>";
                                         echo "<td>".$row2[7]."</td>";
-                                        echo "<td>".$row2[8]."</td>";
                                         echo "</tr>";
                                     }
 
