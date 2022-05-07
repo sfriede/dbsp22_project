@@ -30,7 +30,7 @@
 	if(isset($state) && isset($population) && isset($poverty) && isset($unemployment) && isset($gdp) && isset($percentUnhoused) && isset($homelessness) && isset($income) && isset($foreignBorn) && isset($USBorn)) {
 
 			   if ($stmt1 = $conn->prepare("CALL InsertHealth(?, ?, ?, ?, ?, ?, ?)")) {
-                           $stmt1->bind_param("siddddd", $state, $population, $poverty, $unemployment, $gdp, $percentUnhoused, $homelessness, $income, $foreignBorn, $USBorn);
+                           $stmt1->bind_param("sidddddddd", $state, $population, $poverty, $unemployment, $gdp, $percentUnhoused, $homelessness, $income, $foreignBorn, $USBorn);
 
                            //Run the actual query
                            if ($stmt1->execute()) {

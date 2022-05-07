@@ -72,7 +72,7 @@ CREATE PROCEDURE DeleteEconomy(IN stateName_param VARCHAR(15))
 BEGIN
         IF EXISTS(SELECT * FROM Economy WHERE stateName = stateName_param) THEN
            DELETE FROM Economy WHERE stateName = stateName_param;
-           SELECT 'There was not a record for this state in the table and was successfully deleted' AS existsCheck;
+           SELECT 'There was a record for this state in the table and was successfully deleted' AS existsCheck;
         ELSE
            SELECT 'There was not a record for this state in the table' AS existsCheck;
         END IF;
