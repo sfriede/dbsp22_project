@@ -86,11 +86,13 @@ window.onload = function () {
                 }],
                 axisX:{
                         title:"Median Income",
-                        labelFontSize: 10,
+                        labelFontSize: 14,
+                        titleFontSize: 16,
                  },
                  axisY:{
                         title:"Average Teacher Starting Salary",
-                        labelFontSize: 10,
+                        labelFontSize: 14,
+                        titleFontSize: 16,
                  }
 
         });
