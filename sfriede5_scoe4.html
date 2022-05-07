@@ -184,6 +184,27 @@
           <input type="submit">
         </form>
 
+        <!-- (insert demographics) -->
+        <h2>Insert a record containing demographic statistics about a state into the Demographic table</h2>
+        <form action="insertdemographics.php" method="post">
+          State Name (capitalized): <input type="text" name="demographicsState"> <br/> <br/>
+	  State Population: <input type="number" name="demographicsPop"> <br/> <br/>
+	  Abortion Rate (% Between 0 and 100, up to 7 Decimal Places): <input type="number" step='0.0000001' name="abortion"> <br/> <br/>
+          Suicide Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="suicide"> <br/> <br/>
+          Homicide Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="homicide"> <br/> <br/>
+          Number of Drug Overdoses (In 1000s, up to 2 Decimal Places): <input type="number" step='0.01' name="drugODs"> <br/> <br/>
+	  Teen Pregnancy Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="teenPreg"> <br/> <br/>
+          <input type="submit">
+        </form>
+
+
+	<!-- (delete demographics) -->
+        <h2>Delete a record from the Demographics table</h2>
+        <form action="deletedemographics.php" method="post">
+          State Name (capitalized): <input type="text" name="demographicsDelState"> <br/>
+          <input type="submit">
+        </form>
+
 
   </body>
 
