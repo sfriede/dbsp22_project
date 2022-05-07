@@ -100,7 +100,7 @@ window.onload = function () {
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <h3 style = "font-family: 'verdana'">Show the states and the average income of working adults for states ordered by the average teacher salary of the state.</h3>
-        <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
+        <div id="container5" style="height: 150%; width: 100%;display: inline-block;"></div>
 
      <style>
         body {font-family: 'verdana'; font-size: 18px;}
