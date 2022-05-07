@@ -27,7 +27,7 @@
                   $dataPoints = array();
                 //Report result set by visiting each row in it
                 while ($row3 = $result3->fetch_row()) {
-                      array_push($dataPoints, array("y"=> $row3[1]));
+                      array_push($dataPoints, array("y"=> $row3[1], "x"=> $row3[2]));
                   }
 
                  } else {
