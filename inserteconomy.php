@@ -108,7 +108,7 @@
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";
                                         echo "<td>".$row2[0]."</td>";
-				        echo "<td>".$row2[1]."</td>";
+				                        echo "<td>".$row2[1]."</td>";
                                         echo "<td>".$row2[2]."</td>";
                                         echo "<td>".$row2[3]."</td>";
                                         echo "<td>".$row2[4]."</td>";
