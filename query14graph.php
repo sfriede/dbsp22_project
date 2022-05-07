@@ -27,7 +27,7 @@
                   $dataPoints = array();
                 //Report result set by visiting each row in it
                 while ($row3 = $result3->fetch_row()) {
-                      array_push($dataPoints, array("y"=> $row3[2], "x"=> $row3[1], "label"=>$row3[0]));
+                      array_push($dataPoints, array("y"=> $row3[1], "x"=> $row3[2], "label"=>$row3[0]));
                   }
 
                  } else {
@@ -100,7 +100,7 @@ window.onload = function () {
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <h3 style = "font-family: 'verdana'">What is the mean average income in each state for U.S. born individuals across all 50 states? How does this compare to foreign born individuals?</h3>
+        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the ten states with the lowest poverty levels</h3>
         <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
 
      <style>
