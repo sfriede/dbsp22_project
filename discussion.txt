@@ -4,7 +4,7 @@ Modifications - briefly summarize any changes you made to your project after sel
 subject domains due to lack of data? did you replace questions from your original list of 15, or expand the list? did you pull in an additional 
 data source to enrich the project?)
 
-Since Phase A, we decided to change our domain slightly and only collected data from the 2019-2020 period. hile retrieving data, we realized that 
+Since Phase A, we decided to change our domain slightly and only collected data from the 2019-2020 period. While retrieving data, we realized that 
 many attributes, all of which stem from U.S. government data, were severely limited in terms of number/frequency of recordings. This meant we were 
 not able to find two sets of recordings (old and new) for all attributes, so we could not create the "RelationOld" and "RelationNew" relations we 
 described in our Phase B schema without having mostly null values in each table. 
@@ -14,6 +14,7 @@ queries, we created additional, equally complex queries to make up for it. All o
 Also, there are a few slight tweaks to the schema described in Phase B: some attribute names were changed to better reflect the data we found (e.g. 
 'obesityPercent' was renamed to 'obesityPrevalence'), a few new race attributes were added to the Demographics relation, and the avgMotherAge and 
 avgFatherAge attributes had to be removed from the Health relation, as we could not find this data for the 2019-2020 time period. 
+Lastly, for Phase E, we slight modified/advanced the queries written in Phase D by adding subsequent, related queries that took user input in order to gain even more intersting/interactive results.
 
 Final queries implemented in Phase E
 1. In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), list the unemployment rate, percent of 
@@ -49,14 +50,26 @@ for the five states with the highest graduation rate?
 Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for 
 insertion into your database
 
+We did not make any changes to our process from Phase C, but we included the original process.txt in our submission.
 
 Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging 
 aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
 
+(brainstorming)
+-making the datasets was a very involved process, and we put a lot of time into getting features form many sources in place
+-meaningful graphs for query results, taking in interesting user input
 
 Known Issues - a description of places in the implementation of your project, if any, where you did not fully succeed (are there bugs? are there 
 unimplemented features?)
 
+(brainstorming)
+- not as much UI as we would like
+-inserts?
 
 Extensions - beyond fixing any known issues mentioned above, what additional functionality do you most wish you had time to add to your project? 
 Describe at least two new features.
+
+(brainstorming)
+- add more intersting queries that evaluate the statitics and relationships between different metrics. this includes adding trendlines to graphs, doing some basic statistical analysis, etc.
+-expand number of attributes/features used to allow for more intersting results
+-accomodate data for different years (once a good source was found) for dyamic updating of the database as more information becomes available over time
