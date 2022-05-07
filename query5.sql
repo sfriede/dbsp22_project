@@ -17,7 +17,7 @@ BEGIN
                     (SELECT AVG(abortionRate) AS avgRate, STD(abortionRate) AS stddev FROM Health)
                     SELECT E.stateName, E.medianIncome, E.percentInPoverty
                     FROM Health AS H JOIN Economy AS E ON H.stateName = E.stateName
-                    WHERE H.abortionRate >= (SELECT avgRate FROM AggregateStats) + 2*(SELECT stddev FROM AggregateStats);');
+                    WHERE H.abortionRate >= (SELECT avgRate FROM AggregateStats);');
    -- alert the server we have a statement shell to set up
    PREPARE stmt FROM @sql;
 
