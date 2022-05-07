@@ -8,7 +8,7 @@
 	include 'open.php';
 
 	// echo some basic header info onto the page
-	echo "<h2>For states with a relatively high unemployment rate compared to the average of all states, list the risk factor and health statistics.</h2><br>";
+	echo "<h2>For states with a relatively high unemployment rate compared to the average of all states, list the health statistics.</h2><br>";
 	
     // call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query12();")) {
