@@ -114,9 +114,9 @@ DELIMITER ;
 -- START HERE
 
 DELIMITER //
-DROP PROCEDURE IF EXISTS InsertHealth //
+DROP PROCEDURE IF EXISTS InsertEconomy //
 
-CREATE PROCEDURE InsertHealth(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN abortRate_param FLOAT(10,7) , IN homRate_param FLOAT(5,2), IN suicideRate_param FLOAT(5,2),IN drugOver_param FLOAT(5,2), IN teenPregRate_param FLOAT(5,2))
+CREATE PROCEDURE InsertEconomy(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,3) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(9,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
 BEGIN
         DECLARE EXIT HANDLER FOR 1062
         SELECT 'Error, a record for this state/territory already exists in the Health table';
@@ -125,11 +125,11 @@ BEGIN
         SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
 
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
-		   INSERT INTO Health VALUES (stateName_param, abortRate_param, homRate_param, drugOver_param, suicideRate_param, teenPregRate_param);
+		   INSERT INTO Economy VALUES (stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
 		  
 	ELSE
                    INSERT INTO States VALUES(stateName_param, population_param);
-                   INSERT INTO Health VALUES(stateName_param, abortRate_param, homRate_param, drugOver_param, suicideRate_param, teenPregRate_param);
+                   INSERT INTO Economy VALUES(stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
         END IF;      
 
 END; //
