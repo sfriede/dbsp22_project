@@ -88,7 +88,7 @@ window.onload = function () {
                         title:"Diversity Index",
 			labelFormatter: function ( e ) {
                                 return e.value; },
-			minimum: 1,
+			minimum: 1.4,
 
                  },
                  axisY:{
@@ -118,7 +118,7 @@ window.onload = function () {
                         title:"Diversity Index",
 			labelFormatter: function ( e ) {
                                 return e.value; },
-			minimum: 1
+			minimum: 1.4
                  },
                  axisY:{
                         title:"Median Income ($)",
