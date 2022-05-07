@@ -12,7 +12,7 @@ BEGIN
    -- in place so we can plug in the specific sid value in a careful way
    
 
-   SET @sql = CONCAT('SELECT Ed.avgTeacherStartingSalary, Ed.stateName, Ec.medianIncome
+   SET @sql = CONCAT('SELECT Ed.stateName, Ed.avgTeacherStartingSalary, Ec.medianIncome
                         FROM Education AS Ed JOIN Economy AS Ec ON Ed.stateName = Ec.stateName
                         ORDER BY Ed.avgTeacherStartingSalary DESC;');
    -- alert the server we have a statement shell to set up
