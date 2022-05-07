@@ -86,11 +86,10 @@ window.onload = function () {
                 axisX:{
                         title:"State",
                         labelFontSize: 14,
-                        labelAngle: -90,
                         interval: 1
                  },
                  axisY:{
-                        title:"Median Income",
+                        title:"Graduation Rate",
                  }
 
         });
