@@ -104,14 +104,13 @@ BEGIN
 END; //
 DELIMITER ;
 
--- Statements for inserting a new tuple into the Health table
--- First checks if the state we're inserting a Health tuple for already exists in the States table.
+-- Statements for inserting a new tuple into the Economy table
+-- First checks if the state we're inserting a Economy tuple for already exists in the States table.
 -- If it does, foregin key constraints are satisfied, so we can just perform the insertion.
 -- If it doesn't exist, we have to first insert into the States table for this new state to satisfy foreign key constraints
 -- The procedure also does primary key constraint error checking in case the user is trying to insert a tuple for a state that
--- already has an associated Health tuple. This error will mostly be handled on the PHP level in Phase E.
+-- already has an associated Economy tuple. 
 
--- START HERE
 
 DELIMITER //
 DROP PROCEDURE IF EXISTS InsertEconomy //
@@ -133,6 +132,39 @@ BEGIN
 	ELSE
                    INSERT INTO States VALUES(stateName_param, population_param);
                    INSERT INTO Economy VALUES(stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
+        END IF;      
+
+END; //
+DELIMITER ;
+
+-- Statements for inserting a new tuple into the Demographics table
+-- First checks if the state we're inserting a Demographics tuple for already exists in the States table.
+-- If it does, foregin key constraints are satisfied, so we can just perform the insertion.
+-- If it doesn't exist, we have to first insert into the States table for this new state to satisfy foreign key constraints
+-- The procedure also does primary key constraint error checking in case the user is trying to insert a tuple for a state that
+-- already has an associated Demographics tuple. 
+
+
+DELIMITER //
+DROP PROCEDURE IF EXISTS InsertDemographics //
+
+CREATE PROCEDURE InsertDemographics(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,2) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(12,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
+BEGIN
+        DECLARE CONTINUE HANDLER FOR 1062
+        SELECT 'Error, a record for this state/territory already exists in the Health table';
+
+	DECLARE CONTINUE HANDLER FOR 1264
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
+	
+        DECLARE CONTINUE HANDLER FOR 4025
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
+
+        IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
+		   INSERT INTO Demographics VALUES (stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
+		  
+	ELSE
+                   INSERT INTO States VALUES(stateName_param, population_param);
+                   INSERT INTO Demographics VALUES(stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
         END IF;      
 
 END; //
