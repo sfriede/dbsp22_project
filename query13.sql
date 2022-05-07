@@ -1,6 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
--- query 10: For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
+-- query 13: For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
 
 DELIMITER //
 

@@ -10,55 +10,131 @@
         include 'open.php';
 
 
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
 
-		   //prepare statements and call queries
-           if ($stmt3 = $conn->prepare("CALL Query14()")) {
+        //get user input and perform error-checking on it
+        $state1 = $_POST['q16state1'];
+	$state2 = $_POST['q16state2'];
 
+	$state1Valid = 0;
+	$state2Valid = 0;
+
+	
+        if(!empty($state1)) {
+                $state1 = trim($state1);
+                if (strcmp($state1, 'Alabama') == 0 || strcmp($state1, 'Alaska') == 0 || strcmp($state1, 'Arizona') == 0 ||
+                strcmp($state1, 'Arkansas') == 0 || strcmp($state1, 'California') == 0 || strcmp($state1, 'Colorado') == 0 ||
+                strcmp($state1, 'Connecticut') == 0 || strcmp($state1, 'Delaware') == 0 || strcmp($state1, 'Flordia') == 0 ||
+                strcmp($state1, 'Georgia') == 0 || strcmp($state1, 'Hawaii') == 0 || strcmp($state1, 'Idaho') == 0 ||
+                strcmp($state1, 'Illinois') == 0 || strcmp($state1, 'Indiana') == 0 || strcmp($state1, 'Iowa') == 0 ||
+                strcmp($state1, 'Kansas') == 0 || strcmp($state1, 'Kentucky') == 0 || strcmp($state1, 'Louisiana') == 0 ||
+                strcmp($state1, 'Maine') == 0 || strcmp($state1, 'Maryland') == 0 || strcmp($state1, 'Massachusetts') == 0 ||
+                strcmp($state1, 'Michigan') == 0 || strcmp($state1, 'Minnesota') == 0 || strcmp($state1, 'Mississippi') == 0 ||
+                strcmp($state1, 'Missouri') == 0|| strcmp($state1, 'Montana') == 0 || strcmp($state1, 'Nebraska') == 0 ||
+                strcmp($state1, 'Nevada') == 0 || strcmp($state1, 'New Hampshire') == 0 || strcmp($state1, 'New Jersey') == 0 ||
+                strcmp($state1, 'New Mexico') == 0 || strcmp($state1, 'New York') == 0 || strcmp($state1, 'North Carolina') == 0 ||
+                strcmp($state1, 'North Dakota') == 0 || strcmp($state1, 'Ohio') == 0 || strcmp($state1, 'Oklahoma') == 0 ||
+                strcmp($state1, 'Oregon') == 0 || strcmp($state1, 'Pennsylvania') == 0 || strcmp($state1, 'Rhode Island') == 0 ||
+                strcmp($state1, 'South Carolina') == 0 || strcmp($state1, 'South Dakota') == 0 || strcmp($state1, 'Tennessee') == 0 ||
+                strcmp($state1, 'Texas') == 0 || strcmp($state1, 'Utah') == 0 || strcmp($state1, 'Vermont') == 0 ||
+                strcmp($state1, 'Virginia') == 0 || strcmp($state1, 'Washington') == 0 || strcmp($state1, 'West Virginia') == 0 ||
+                strcmp($state1, 'Wisconsin') == 0 || strcmp($state1,'Wyoming') == 0 || strcmp($state1, 'Washington DC') == 0 ||
+                strcmp($state1, 'Puerto Rico') == 0) {
+				
+				 $state1Valid = 1;
+				 }} 
+
+	        if(!empty($state2)) {
+                $state2 = trim($state2);
+                if (strcmp($state2, 'Alabama') == 0 || strcmp($state2, 'Alaska') == 0 || strcmp($state2, 'Arizona') == 0 ||
+                strcmp($state2, 'Arkansas') == 0 || strcmp($state2, 'California') == 0 || strcmp($state2, 'Colorado') == 0 ||
+                strcmp($state2, 'Connecticut') == 0 || strcmp($state2, 'Delaware') == 0 || strcmp($state2, 'Flordia') == 0 ||
+                strcmp($state2, 'Georgia') == 0 || strcmp($state2, 'Hawaii') == 0 || strcmp($state2, 'Idaho') == 0 ||
+                strcmp($state2, 'Illinois') == 0 || strcmp($state2, 'Indiana') == 0 || strcmp($state2, 'Iowa') == 0 ||
+                strcmp($state2, 'Kansas') == 0 || strcmp($state2, 'Kentucky') == 0 || strcmp($state2, 'Louisiana') == 0 ||
+                strcmp($state2, 'Maine') == 0 || strcmp($state2, 'Maryland') == 0 || strcmp($state2, 'Massachusetts') == 0 ||
+                strcmp($state2, 'Michigan') == 0 || strcmp($state2, 'Minnesota') == 0 || strcmp($state2, 'Mississippi') == 0 ||
+                strcmp($state2, 'Missouri') == 0|| strcmp($state2, 'Montana') == 0 || strcmp($state2, 'Nebraska') == 0 ||
+                strcmp($state2, 'Nevada') == 0 || strcmp($state2, 'New Hampshire') == 0 || strcmp($state2, 'New Jersey') == 0 ||
+                strcmp($state2, 'New Mexico') == 0 || strcmp($state2, 'New York') == 0 || strcmp($state2, 'North Carolina') == 0 ||
+                strcmp($state2, 'North Dakota') == 0 || strcmp($state2, 'Ohio') == 0 || strcmp($state2, 'Oklahoma') == 0 ||
+                strcmp($state2, 'Oregon') == 0 || strcmp($state2, 'Pennsylvania') == 0 || strcmp($state2, 'Rhode Island') == 0 ||
+                strcmp($state2, 'South Carolina') == 0 || strcmp($state2, 'South Dakota') == 0 || strcmp($state2, 'Tennessee') == 0 ||
+                strcmp($state2, 'Texas') == 0 || strcmp($state2, 'Utah') == 0 || strcmp($state2, 'Vermont') == 0 ||
+                strcmp($state2, 'Virginia') == 0 || strcmp($state2, 'Washington') == 0 || strcmp($state2, 'West Virginia') == 0 ||
+                strcmp($state2, 'Wisconsin') == 0 || strcmp($state2,'Wyoming') == 0 || strcmp($state2, 'Washington DC') == 0 ||
+                strcmp($state2, 'Puerto Rico') == 0) {
+
+                                 $state2Valid = 1;
+                                 } }
+
+
+	if ($state1Valid == 1 && $state2Valid == 1) {
+
+          //prepare statements and call queries
+           if ($stmt = $conn->prepare("CALL Query16UI(?, ?)")) {
+	   $stmt->bind_param("ss", $state1, $state2);
             //Run the actual query
-            if ($stmt3->execute()) {
+            if ($stmt->execute()) {
 
                //Store result set generated by the prepared statement
-               $result3 = $stmt3->get_result();
+               $result = $stmt->get_result();
 
-               if (($result3) && ($result3->num_rows != 0)) {
-                //construct an array in which we'll store our data
-                  $dataPoints = array();
-                //Report result set by visiting each row in it
-                while ($row3 = $result3->fetch_row()) {
-                      array_push($dataPoints, array("y"=> $row3[1], "x"=> $row3[2], "label"=>$row3[0]));
-                  }
+               if (($result) && ($result->num_rows != 0)) {
 
-                 } else {
+	       echo "<h4>For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h4>";
+		  
+		  echo "States Chosen: $state1 and $state2";
 
-                   if(!($result3)) {
-                         echo "Internal error: procedure failed";
-                   }
-                 }
 
-                   if(($result3)) {
-                         //We are done with the result set returned above, so free it
-                         $result3->free_result();
-                   }
+	                       //Create table to display results
+                               echo "<table border=\"1px solid black\">";
+                               echo "<tr><th> State </th> <th> Median Income - Average Teacher Starting Salary</th><th> National Average for Income-Salary Difference - This State's Difference</th><th>Average SAT Score</th><th>Average ACT Score</th><th>NAEP Reading Score</th><th>NAEP Math Score </th></tr>";
+                               //Report result set by visiting each row in it
+                               while ($row = $result->fetch_row()) {
 
-                 // close down prepared statement
-                 $stmt3->close();
-         } else {
-            //Call to execute failed, e.g. because server is no longer reachable,
-            //or because supplied values are of the wrong type
-            echo "Execute failed.<br>";
-         }
- } else {
-   //A problem occurred when preparing the statement; check for syntax errors
-   //and misspelled attribute names in the statement string.
-   echo "Prepare failed.<br>";
-   $error = $conn->errno . ' ' . $conn->error;
-   echo $error;
- }
+                                     echo "<tr>";
+                                     echo "<td>".$row[0]."</td>";
+                                     echo "<td>".$row[1]."</td>";
+				     echo "<td>".$row[2]."</td>";
+                                     echo "<td>".$row[3]."</td>";
+                                     echo "<td>".$row[4]."</td>";
+				     echo "<td>".$row[5]."</td>";
+				     echo "<td>".$row[6]."</td>";
+                                     echo "</tr>";
+                                     }
 
+                                     echo "</table>";               	  	 
+
+				 } else {
+
+				 if(!($result)) {
+                        	    echo "Internal error: procedure failed";
+                  	      		 }
+				 }
+
+				 if(($result)) {
+                         	  //We are done with the result set returned above, so free it
+                              	   $result->free_result();
+                  	  	   }
+
+			    // close down prepared statement
+                    	   $stmt->close();
+			 } else {
+				 //Call to execute failed, e.g. because server is no longer reachable,
+    	    	      	         //or because supplied values are of the wrong type
+            	 	 	  echo "Execute failed.<br>";
+            	 	  }
+			 } else {
+  			    //A problem occurred when preparing the statement; check for syntax errors
+   			    //and misspelled attribute names in the statement string.
+  			     echo "Prepare failed.<br>";
+   			     $error = $conn->errno . ' ' . $conn->error;
+			  }
+		} else {
+
+		  echo "Invalid input given. Remember that both names provided must be valid, capitalized U.S. states or territories";
+
+		  }
                       
    // close the connection opened by open.php
    $conn->close();
@@ -67,102 +143,66 @@
 </body>
 
 <html>
-<head>
-<script type="text/javascript">
-window.onload = function () {
-        var chart = new CanvasJS.Chart("container5", {
-                animationEnabled: true,
-                exportEnabled: true,
-                theme: "light1", // "light1", "light2", "dark1", "dark2"
-                title:{
-                        text: "Graduation Rates for State with the Lowest Poverty Levels",
-                        fontFamily: "verdana",
-                        fontWeight: "bold",
-			            fontSize: 18,
-                },
-                data: [{
-                        type: "bar", //change type to column, bar, line, area, pie, etc
-                        dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>,
-                        toolTipContent: "<b>{label} </b>",
-                }],
-                axisX:{
-                        title:"Poverty Level",
-                        labelFontSize: 14,
-                        interval: 0.5
-                 },
-                 axisY:{
-                        title:"Graduation Rate",
-                 }
-
-        });
-        chart.render();
-
-}
-</script>
-</head>
 <body>
-        <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the ten states with the lowest poverty levels</h3>
-        <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
-
      <style>
         body {font-family: 'verdana'; font-size: 18px;}
      </style>
-
 </body>
 </html>
+
 <head><title>Query 16</title></head>
  <body>
-<?php     
+ 
+//<?php     
     //open a connection to dbase server 
-	include 'open.php';
+//	include 'open.php';
 
 	// echo some basic header info onto the page
-	echo "<h2>List the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2><br>";
+//	echo "<h2>List the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2><br>";
 	
     // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query16();")) {
+//	if ($result = $conn->query("CALL Query16();")) {
 
-	    echo "<table border=\"2px solid black\">";
+//	    echo "<table border=\"2px solid black\">";
 
         // output a row of table headers
-	    echo "<tr>";
+//	    echo "<tr>";
 	    // collect an array holding all attribute names in $result
-	    $flist = $result->fetch_fields();
+//	    $flist = $result->fetch_fields();
         // output the name of each attribute in flist
-	    foreach($flist as $fname){
-	        echo "<td>".$fname->name."</td>";
-	    }
-	    echo "</tr>";
-
+//	    foreach($flist as $fname){
+//	        echo "<td>".$fname->name."</td>";
+//	    }
+//	    echo "</tr>";
+//
         // output a row of table for each row in result, using flist names
         // to obtain the appropriate attribute value for each column
-	    foreach($result as $row){
+//	    foreach($result as $row){
             // reset the attribute names array
-    	    $flist = $result->fetch_fields(); 
-	        echo "<tr>";
-	        foreach($flist as $fname){
-                echo "<td>".$row[$fname->name]."</td>";
-            }
-  	        echo "</tr>";
-	    }
-	    echo "</table>";
-
-        } else {
-            echo "Call to Query16 failed<br>";
-	  }   
-
+    //	    $flist = $result->fetch_fields(); 
+//	        echo "<tr>";
+///	        foreach($flist as $fname){
+   //             echo "<td>".$row[$fname->name]."</td>";
+     //       }
+  //	        echo "</tr>";
+//	    }
+//	    echo "</table>";
+//
+  //      } else {
+    //        echo "Call to Query16 failed<br>";
+//	  }   
+//
 
    // close the connection opened by open.php
-   $conn->close();
+  // $conn->close();
 
-?>
-</body>
-<html>
-<body>
-     <style>
-        body {font-family: 'verdana'; font-size: 18px;}
-     </style>
+//?>
+//</body>
+//<html>
+//<body>
+  //   <style>
+    //    body {font-family: 'verdana'; font-size: 18px;}
+    // </style>
 
-</body>
-</html>
+//</body>
+//</html>

@@ -23,7 +23,25 @@ BEGIN
 
    -- tear down the prepared shell since no longer needed (we won't requery it)
    DEALLOCATE PREPARE stmt;
-END; 
-//
+END; //
+
+
+DROP PROCEDURE IF EXISTS Query16UI //
+
+CREATE PROCEDURE Query16UI(IN state1 VARCHAR(20), IN state2 VARCHAR(20))
+BEGIN
+
+	IF (EXISTS(SELECT * FROM Education WHERE stateName = state1) AND EXISTS(SELECT * FROM Education WHERE stateName = state2) AND EXISTS(SELECT * FROM Economy WHERE stateName = state1) AND EXISTS(SELECT * FROM Economy WHERE stateName = state2)) THEN
+
+	   WITH AvgStats AS
+	   (SELECT AVG(Ec.medianIncome - Ed.avgTeacherStartingSalary) AS 'avgDiff'
+	   FROM Economy AS Ec JOIN Education AS Ed ON Ec.stateName = Ed.stateName)
+	   SELECT Education.stateName, (medianIncome - avgTeacherStartingSalary) AS 'diffPay', (AvgStats.avgDiff - medianIncome + avgTeacherStartingSalary) AS 'diff between avg and state', avgSATScore, avgACTScore, NAEPScoreReading, NAEPScoreMath
+	   FROM (Education JOIN Economy ON Education.stateName = Economy.stateName) JOIN AvgStats
+	   WHERE Education.stateName = state1 OR Education.stateName = state2;
+
+	END IF;
+
+END; //
 
 DELIMITER ;

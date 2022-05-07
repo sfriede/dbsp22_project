@@ -100,9 +100,10 @@
           <br/><br/>
 
         <!-- (12) -->
-	<h2>For states with a relatively high unemployment rate compared to the average of all states, list the health statistics.</h2>
+	<h2>For states with an unemployment rate X standard deviations above the national average,  list the health and risk factor statistics. How do these compare to the national averages of these statistics?</h2>
 	<form action="query12.php" method="post">
-		<input type="submit" value="click here to see">
+	  Number of Standard Deviations(Up to 2 Decimal Places): <input type="number" step='0.01' name="stddev12"> <br/> <br/>
+	                  <input type="submit">
 	</form>
 	<br/><br/>
 
@@ -119,6 +120,15 @@
 		<input type="submit" value="click here to see">
 	</form>
 	<br/><br/>
+
+	<h3 style="margin-left: 40px">For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h3>
+        <form action="query16.php" method="post"  style="margin-left: 40px">
+          First State Name (capitalized): <input type="text" name="q16state1"> <br><br>
+	  Second State Name (capitalized): <input type="text" name="q16state2"> <br>
+                <input type="submit">
+        </form>
+        <br/><br>
+
 
 	 <!-- (17) -->
         <h2>In order of least to most racially diverse, list each state's real GDP and median household income.</h2>

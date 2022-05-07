@@ -24,6 +24,4 @@ After running cleanup.sql and setup.sql or setup-small.sql, please run the follo
 17. query15.sql
 18. query16.sql
 19. query17.sql
-=======
-Sydney Friedel (sfriede5) and Shelby Coe (scoe4) 
->>>>>>> 013bb0978408e8ac7dca0a4a19416b35e406ff59
+

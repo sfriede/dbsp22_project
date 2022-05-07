@@ -73,7 +73,7 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "Average Starting Salary of Teachers based on Overall Median Income",
+                        text: "Average Starting Salary of Teachers as a Function of Overall Median Income",
                         fontFamily: "verdana",
                         fontWeight: "bold",
 			            fontSize: 18,

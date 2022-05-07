@@ -18,7 +18,7 @@ BEGIN
                     FROM Economy)
                     SELECT E.stateName, H.abortionRate, H.homicideRate, H.drugOverdoses, H.suicideRate, H.teenPregnancyRate
                     FROM Health AS H JOIN Economy AS E ON H.stateName = E.stateName
-                    WHERE E.unemploymentRate >= (SELECT avgUnemploymentRate FROM AggregateStats) + 2*(SELECT stddevUnemploymentRate FROM AggregateStats);');
+                    WHERE E.unemploymentRate >= (SELECT avgUnemploymentRate FROM AggregateStats) + 1.5*(SELECT stddevUnemploymentRate FROM AggregateStats);');
    -- alert the server we have a statement shell to set up
    PREPARE stmt FROM @sql;
 
@@ -30,4 +30,27 @@ BEGIN
 END; 
 //
 
+
+DROP PROCEDURE IF EXISTS Query12UI //
+
+CREATE PROCEDURE Query12UI(IN stddev FLOAT(10,2))
+BEGIN
+	SELECT Economy.stateName, unemploymentRate, abortionRate, homicideRate, drugOverdoses, suicideRate, teenPregnancyRate, cancerMortality, STIsPer100k, obesityPrevalence
+	FROM Economy JOIN Health ON Economy.stateName = Health.stateName JOIN RiskFactors ON Health.stateName = RiskFactors.stateName
+	WHERE unemploymentRate >= (SELECT AVG(unemploymentRate) + stddev*STD(unemploymentRate) FROM Economy);
+
+END;
+//
+
+
+DROP PROCEDURE IF EXISTS Query12Avg //
+CREATE PROCEDURE Query12Avg()
+BEGIN
+        SELECT FORMAT(AVG(unemploymentRate), 3), FORMAT(AVG(abortionRate), 5), FORMAT(AVG(homicideRate), 3), FORMAT(AVG(drugOverdoses), 3), FORMAT(AVG(suicideRate), 3), FORMAT(AVG(teenPregnancyRate), 3), FORMAT(AVG(cancerMortality), 3), FORMAT(AVG(STIsPer100k),3), FORMAT(AVG(obesityPrevalence),3)
+        FROM Economy JOIN Health ON Economy.stateName = Health.stateName JOIN RiskFactors ON Health.stateName = RiskFactors.stateName;
+
+END;//
+
 DELIMITER ;
+
+

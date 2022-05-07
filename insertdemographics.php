@@ -102,7 +102,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-			       echo "<tr><th>State</th><th>White</th><th>Black</th><th>Asian</th><th>Indigenous</th><th>Other/th><th>Hispanic or Latino</th><th>Not Hispanic or Latino</th></tr>";
+			       echo "<tr><th>State</th><th>White</th><th>Black</th><th>Asian</th><th>Indigenous</th><th>Other</th><th>Hispanic or Latino</th><th>Not Hispanic or Latino</th></tr>";
                               //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";

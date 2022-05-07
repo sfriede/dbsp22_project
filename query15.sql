@@ -5,8 +5,6 @@
 
 DELIMITER //
 
--- get median income for states where teen pregnancy rate is higher than average
-
 DROP PROCEDURE IF EXISTS Query15 //
 
 CREATE PROCEDURE Query15()
