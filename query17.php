@@ -132,8 +132,8 @@ window.onload = function () {
 <body>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <br>
-<div id="container1" style="height: 400px; width: 100%;"></div>
-<div id="container2" style="height: 400px; width: 100%;"></div>
+<div id="container1" style="height: 600px; width: 100%;"></div>
+<div id="container2" style="height: 600px; width: 100%;"></div>
      <style>
         body {font-family: 'verdana'; font-size: 18px;}
      </style>
