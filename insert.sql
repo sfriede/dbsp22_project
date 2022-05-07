@@ -116,13 +116,16 @@ DELIMITER ;
 DELIMITER //
 DROP PROCEDURE IF EXISTS InsertEconomy //
 
-CREATE PROCEDURE InsertEconomy(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,2) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(10,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
+CREATE PROCEDURE InsertEconomy(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,2) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(12,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
 BEGIN
-        DECLARE EXIT HANDLER FOR 1062
+        DECLARE CONTINUE HANDLER FOR 1062
         SELECT 'Error, a record for this state/territory already exists in the Health table';
 
-	DECLARE EXIT HANDLER FOR 1264
+	DECLARE CONTINUE HANDLER FOR 1264
         SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges';
+	
+        DECLARE CONTINUE HANDLER FOR 4025
+        SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
 
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
 		   INSERT INTO Economy VALUES (stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);

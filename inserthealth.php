@@ -100,12 +100,12 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-
+			       echo "<tr><th>State</th><th>Abortion Rate</th><th>Homicide Rate</th><th>Number of Drug Overdoses in 1000s</th><th>Suicide Rate</th><th>Teen Pregnancy</th></tr>";
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";
                                         echo "<td>".$row2[0]."</td>";
-				                              echo "<td>".$row2[1]."</td>";
+				        echo "<td>".$row2[1]."</td>";
                                         echo "<td>".$row2[2]."</td>";
                                         echo "<td>".$row2[3]."</td>";
                                         echo "<td>".$row2[4]."</td>";

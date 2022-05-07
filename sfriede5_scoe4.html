@@ -3,7 +3,10 @@
 
 <html>
   <body>
-    
+
+        <!--(heading and description)-->
+	<h1> United States Socioeconomic, Educational, and Basic Health Dataset </h1>
+	<h4> Use these features to see important statistics and figures on these metrics across the U.S. states and territories, as well as add your own records to the dataset. </h5>
         <!-- (1, 4, 7) -->
         <h2>See the effects of quality of education on financial factors later in life</h2>
         <form action="entity1.php" method="post">
@@ -165,14 +168,14 @@
         <form action="inserteconomy.php" method="post">
           State Name (capitalized): <input type="text" name="economyState"> <br/>
 	  State Population: <input type="number" name="economyPop"> <br/>
-	  Percent in Poverty (% Between 0 and 100): <input type="number" name="percentInPoverty"> <br/>
-          Unemployment Rate (% Between 0 and 100): <input type="number" name="unemploymentRate"> <br/>
-          RealGDP: <input type="number" name="realGDP"> <br/>
-          Percent Unhoused (% Between 0 and 100): <input type="number" name="percentUnhoused"> <br/>
-	  Homelessness rate per 10000 (Between 0 and 10000): <input type="number" name="homelessnessRatePer10000"> <br/>
-          Median Income: <input type="number" name="medianIncome"> <br/>
-          Median Income of Foreign Born Residents: <input type="number" name="foreignBornMedianIncome"> <br/>
-	  Median Income of US Born Residents: <input type="number" name="USBornMedianIncome"> <br/>
+	  Percent in Poverty (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01' name="percentInPoverty"> <br/>
+          Unemployment Rate (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01'name="unemploymentRate"> <br/>
+          RealGDP (Up to 2 Decimal Places): <input type="number"  step='0.01' name="realGDP"> <br/>
+          Percent Unhoused (% Between 0 and 100, Up to 9 Decimal Places): <input type="number"  step='0.000000001' name="percentUnhoused"> <br/>
+	  Homelessness rate Per 10000 (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01' name="homelessnessRatePer10000"> <br/>
+          Median Income (Nonnegative Integer Value): <input type="number" name="medianIncome"> <br/>
+          Median Income of Foreign Born Residents (Nonnegative Integer Value): <input type="number" name="foreignBornMedianIncome"> <br/>
+	  Median Income of US Born Residents (Nonnegative Integer Value): <input type="number" name="USBornMedianIncome"> <br/>
           <input type="submit">
         </form>
 

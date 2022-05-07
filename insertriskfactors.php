@@ -99,6 +99,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
+			       echo "<tr><th>State</th><th>Cancer Mortality Per 100,000 People</th><th>STIs Per 100,000</th><th>Obesity Prevalence</th></tr>";
 
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {

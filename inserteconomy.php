@@ -1,4 +1,4 @@
-<!-- Sydney Friedel and Shelby Coe -->
+\0;136;0c<!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
 <head><title>Insert Economy</title></head>
@@ -17,19 +17,19 @@
 	$state = $_POST['economyState'];
 	$population = $_POST['economyPop'];
 	$poverty = $_POST['percentInPoverty'];
-    $unemployment = $_POST['unemploymentRate'];
-    $gdp = $_POST['realGDP'];
-    $percentUnhoused = $_POST['percentUnhoused'];
-    $homelessness = $_POST['homelessnessRatePer10000'];
-    $income = $_POST['medianIncome'];
-    $foreignBorn = $_POST['foreignBornMedianIncome'];
-    $USBorn = $_POST['USBornMedianIncome'];
+   	 $unemployment = $_POST['unemploymentRate'];
+    	 $gdp = $_POST['realGDP'];
+    	 $percentUnhoused = $_POST['percentUnhoused'];
+    	 $homelessness = $_POST['homelessnessRatePer10000'];
+    	 $income = $_POST['medianIncome'];
+    	 $foreignBorn = $_POST['foreignBornMedianIncome'];
+   	  $USBorn = $_POST['USBornMedianIncome'];
 
 	$success = 0;
 	
-	if(isset($state) && isset($population) && isset($poverty) && isset($unemployment) && isset($gdp) && isset($percentUnhoused) && isset($homelessness) && isset($income) && isset($foreignBorn) && isset($USBorn)) {
+	if(!empty($state) && isset($population) && isset($poverty) && isset($unemployment) && isset($gdp) && isset($percentUnhoused) && isset($homelessness) && isset($income) && isset($foreignBorn) && isset($USBorn)) {
 
-			   if ($stmt1 = $conn->prepare("CALL InsertHealth(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+			   if ($stmt1 = $conn->prepare("CALL InsertEconomy(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
                            $stmt1->bind_param("sidddddddd", $state, $population, $poverty, $unemployment, $gdp, $percentUnhoused, $homelessness, $income, $foreignBorn, $USBorn);
 
                            //Run the actual query
@@ -103,8 +103,8 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-
-                               //Report result set by visiting each row in it
+			       echo "<tr><th>State</th><th>Percent in Poverty</th><th>Unemployment Rate</th><th>Real GDP</th><th>Percent Unhoused</th><th>Homelessness Rate Per 10,000</th><th>Median Income</th><th>Foreign Born Median Income</th><th>US Born Median Income</th></tr>";
+                              //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";
                                         echo "<td>".$row2[0]."</td>";

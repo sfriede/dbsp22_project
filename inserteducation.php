@@ -104,6 +104,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
+			       echo "<tr><th>State</th><th>Average Teacher Starting Salary</th><th>Average SAT Score</th><th>Average ACT Score</th><th>NAEP Reading Score</th><th>NAEP Math Score</th><th>High School Graduation Rate</th><th>Percent of Adults Completing at Least Some College</th><th>Education Spending Per Pupil</th></tr>";
 
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
