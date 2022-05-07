@@ -86,7 +86,7 @@ window.onload = function () {
                 axisX:{
                         title:"Poverty Level",
                         labelFontSize: 14,
-                        interval: 1
+                        interval: 0.5
                  },
                  axisY:{
                         title:"Graduation Rate",
