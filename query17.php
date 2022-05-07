@@ -79,6 +79,7 @@ window.onload = function () {
                         fontWeight: "bold",
                         fontSize: 18,
                 },
+                dataPointWidth: 5,
                 data: [{
                         type: "bar", //change type to column, bar, line, area, pie, etc
                         dataPoints: <?php echo json_encode($dataPointsGDP, JSON_NUMERIC_CHECK); ?>
@@ -108,7 +109,7 @@ window.onload = function () {
                         fontWeight: "bold",
                         fontSize: 18,
                 },
-                dataPointWidth: 10,
+                dataPointWidth: 5,
                 data: [{
                         type: "bar", //change type to column, bar, line, area, pie, etc
                         dataPoints: <?php echo json_encode($dataPointsIncome, JSON_NUMERIC_CHECK); ?>
