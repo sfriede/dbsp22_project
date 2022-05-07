@@ -148,7 +148,7 @@ DELIMITER ;
 DELIMITER //
 DROP PROCEDURE IF EXISTS InsertDemographics //
 
-CREATE PROCEDURE InsertDemographics(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN poverty_param FLOAT(5,2) , IN unemployment_param FLOAT(5,2), IN gdp_param FLOAT(10,2), IN unhoused_param FLOAT(12,9), IN homeless_param FLOAT(6,2), IN income_param INT, IN foreignBorn_param INT, IN USBorn_param INT)
+CREATE PROCEDURE InsertDemographics(IN stateName_param VARCHAR(15), IN population_param INTEGER, IN white_param FLOAT(7,4) , IN black_param FLOAT(7,4), IN asian_param FLOAT(7,4), IN indigenous_param FLOAT(7,4), IN other_param FLOAT(7,4), IN hispanicOrLatino_param FLOAT(7,4), IN notHispanicOrLatino_param FLOAT(8,4))
 BEGIN
         DECLARE CONTINUE HANDLER FOR 1062
         SELECT 'Error, a record for this state/territory already exists in the Health table';
@@ -160,11 +160,11 @@ BEGIN
         SELECT 'Error, a supplied value was out of range. Please input numeric values within the specified ranges and number of decimal places';
 
         IF EXISTS(SELECT * FROM States WHERE stateName = stateName_param) THEN
-		   INSERT INTO Demographics VALUES (stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
+		   INSERT INTO Demographics VALUES (stateName_param, white_param, black_param, asian_param, indigenous_param, other_param, hispanicOrLatino_param, notHispanicOrLatino_param);
 		  
 	ELSE
                    INSERT INTO States VALUES(stateName_param, population_param);
-                   INSERT INTO Demographics VALUES(stateName_param, poverty_param, unemployment_param, gdp_param, unhoused_param, homeless_param, income_param, foreignBorn_param, USBorn_param);
+                   INSERT INTO Demographics VALUES(stateName_param, white_param, black_param, asian_param, indigenous_param, other_param, hispanicOrLatino_param, notHispanicOrLatino_param);
         END IF;      
 
 END; //
