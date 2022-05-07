@@ -86,10 +86,15 @@ window.onload = function () {
                 axisX:{
                         title:"Poverty Level",
                         labelFontSize: 14,
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                         interval: 0.5
                  },
                  axisY:{
                         title:"Graduation Rate",
+                        labelFontSize: 14,
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                  }
 
         });
