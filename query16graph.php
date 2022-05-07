@@ -73,7 +73,7 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "Graduation Rates for State with the Lowest Poverty Levels",
+                        text: "Average Starting Salary of Teachers based on Overall Median Income",
                         fontFamily: "verdana",
                         fontWeight: "bold",
 			            fontSize: 18,
