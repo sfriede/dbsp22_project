@@ -49,8 +49,12 @@ for the five states with the highest graduation rate?
 
 Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for 
 insertion into your database
+<<<<<<< HEAD
 
 We did not make any changes to our process from Phase C, but we included the original process.txt in our submission.
+=======
+no updates from Phase C
+>>>>>>> 013bb0978408e8ac7dca0a4a19416b35e406ff59
 
 Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging 
 aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)

@@ -8,7 +8,7 @@
 	include 'open.php';
 
 	// echo some basic header info onto the page
-	echo "<h2>What is the average graduation rate of each state for the five states with the lowest poverty levels?</h2><br>";
+	echo "<h2>What is the average graduation rate of each state for the ten states with the lowest poverty levels?</h2><br>";
 	
     // call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query14();")) {

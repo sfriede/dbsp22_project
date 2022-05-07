@@ -1,9 +1,7 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
-<!-- Sydney Friedel and Shelby Coe -->
-<!-- sfriede5 and scoe4 -->
 
-<head><title>Query 14</title></head>
+<head><title>Query 16</title></head>
 <body>
 <?php
 	//open a connection to dbase server
@@ -16,7 +14,7 @@
 	ini_set('display_errors', true);
 
 		   //prepare statements and call queries
-           if ($stmt3 = $conn->prepare("CALL Query14()")) {
+           if ($stmt3 = $conn->prepare("CALL Query16()")) {
 
             //Run the actual query
             if ($stmt3->execute()) {
@@ -75,23 +73,28 @@ window.onload = function () {
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
                 title:{
-                        text: "Graduation Rates for State with the Lowest Poverty Levels",
+                        text: "Average Starting Salary of Teachers based on Overall Median Income",
                         fontFamily: "verdana",
                         fontWeight: "bold",
 			            fontSize: 18,
                 },
+                dataPointWidth: 16,
                 data: [{
                         type: "bar", //change type to column, bar, line, area, pie, etc
                         dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>,
                         toolTipContent: "<b>{label} </b>",
                 }],
                 axisX:{
-                        title:"Poverty Level",
+                        title:"Median Income",
                         labelFontSize: 14,
-                        interval: 0.5
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                  },
                  axisY:{
-                        title:"Graduation Rate",
+                        title:"Average Teacher Starting Salary",
+                        labelFontSize: 14,
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                  }
 
         });
@@ -102,64 +105,9 @@ window.onload = function () {
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the ten states with the lowest poverty levels</h3>
-        <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
+        <h3 style = "font-family: 'verdana'">Show the states and the average income of working adults for states ordered by the average teacher salary of the state.</h3>
+        <div id="container5" style="height: 1000px; width: 100%;display: inline-block;"></div>
 
-     <style>
-        body {font-family: 'verdana'; font-size: 18px;}
-     </style>
-
-</body>
-</html>
-<head><title>Query 16</title></head>
- <body>
-<?php     
-    //open a connection to dbase server 
-	include 'open.php';
-
-	// echo some basic header info onto the page
-	echo "<h2>List the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2><br>";
-	
-    // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query16();")) {
-
-	    echo "<table border=\"2px solid black\">";
-
-        // output a row of table headers
-	    echo "<tr>";
-	    // collect an array holding all attribute names in $result
-	    $flist = $result->fetch_fields();
-        // output the name of each attribute in flist
-	    foreach($flist as $fname){
-	        echo "<td>".$fname->name."</td>";
-	    }
-	    echo "</tr>";
-
-        // output a row of table for each row in result, using flist names
-        // to obtain the appropriate attribute value for each column
-	    foreach($result as $row){
-            // reset the attribute names array
-    	    $flist = $result->fetch_fields(); 
-	        echo "<tr>";
-	        foreach($flist as $fname){
-                echo "<td>".$row[$fname->name]."</td>";
-            }
-  	        echo "</tr>";
-	    }
-	    echo "</table>";
-
-        } else {
-            echo "Call to Query16 failed<br>";
-	  }   
-
-
-   // close the connection opened by open.php
-   $conn->close();
-
-?>
-</body>
-<html>
-<body>
      <style>
         body {font-family: 'verdana'; font-size: 18px;}
      </style>

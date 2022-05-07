@@ -1,7 +1,5 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
-<!-- Sydney Friedel and Shelby Coe -->
-<!-- sfriede5 and scoe4 -->
 
 <head><title>Query 14</title></head>
 <body>
@@ -88,10 +86,15 @@ window.onload = function () {
                 axisX:{
                         title:"Poverty Level",
                         labelFontSize: 14,
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                         interval: 0.5
                  },
                  axisY:{
                         title:"Graduation Rate",
+                        labelFontSize: 14,
+                        titleFontSize: 16,
+                        fontWeight: "bold",
                  }
 
         });
@@ -105,61 +108,6 @@ window.onload = function () {
         <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the ten states with the lowest poverty levels</h3>
         <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
 
-     <style>
-        body {font-family: 'verdana'; font-size: 18px;}
-     </style>
-
-</body>
-</html>
-<head><title>Query 16</title></head>
- <body>
-<?php     
-    //open a connection to dbase server 
-	include 'open.php';
-
-	// echo some basic header info onto the page
-	echo "<h2>List the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2><br>";
-	
-    // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query16();")) {
-
-	    echo "<table border=\"2px solid black\">";
-
-        // output a row of table headers
-	    echo "<tr>";
-	    // collect an array holding all attribute names in $result
-	    $flist = $result->fetch_fields();
-        // output the name of each attribute in flist
-	    foreach($flist as $fname){
-	        echo "<td>".$fname->name."</td>";
-	    }
-	    echo "</tr>";
-
-        // output a row of table for each row in result, using flist names
-        // to obtain the appropriate attribute value for each column
-	    foreach($result as $row){
-            // reset the attribute names array
-    	    $flist = $result->fetch_fields(); 
-	        echo "<tr>";
-	        foreach($flist as $fname){
-                echo "<td>".$row[$fname->name]."</td>";
-            }
-  	        echo "</tr>";
-	    }
-	    echo "</table>";
-
-        } else {
-            echo "Call to Query16 failed<br>";
-	  }   
-
-
-   // close the connection opened by open.php
-   $conn->close();
-
-?>
-</body>
-<html>
-<body>
      <style>
         body {font-family: 'verdana'; font-size: 18px;}
      </style>

@@ -1,17 +1,17 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
-<head><title>Query 12</title></head>
+<head><title>Query 5</title></head>
  <body>
 <?php     
     //open a connection to dbase server 
 	include 'open.php';
 
 	// echo some basic header info onto the page
-	echo "<h2>For states with a relatively high unemployment rate compared to the average of all states, list the health statistics.</h2><br>";
+	echo "<h2>Of the states in which abortion rate is higher than the average rate for all states, what was the average household income?</h2><br>";
 	
     // call the stored procedure we already defined on dbase
-	if ($result = $conn->query("CALL Query12();")) {
+	if ($result = $conn->query("CALL Query5();")) {
 
 	    echo "<table border=\"2px solid black\">";
 
@@ -39,7 +39,7 @@
 	    echo "</table>";
 
         } else {
-            echo "Call to Query12 failed<br>";
+            echo "Call to Query5 failed<br>";
 	  }   
 
 

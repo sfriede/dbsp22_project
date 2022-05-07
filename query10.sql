@@ -2,8 +2,8 @@
 -- sfriede5 and scoe4
 -- query 10: in descending order of education spending per pupil, see each states highschool grad rate and percent completing college
 
-DELIMITER //
 
+DELIMITER //
 DROP PROCEDURE IF EXISTS Query10 //
 
 CREATE PROCEDURE Query10()

@@ -1,20 +1,23 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
 
+
 DELIMITER //
 
-DROP PROCEDURE IF EXISTS Query16 //
+DROP PROCEDURE IF EXISTS Query5 //
 
-CREATE PROCEDURE Query16() 
+CREATE PROCEDURE Query5() 
 BEGIN  
    -- concatenate the assignment name list and associated expressions
    -- into a larger query string so we can execute it, but leave ?
    -- in place so we can plug in the specific sid value in a careful way
    
 
-   SET @sql = CONCAT('SELECT Ed.stateName, Ed.avgTeacherStartingSalary, Ec.medianIncome
-                        FROM Education AS Ed JOIN Economy AS Ec ON Ed.stateName = Ec.stateName
-                        ORDER BY Ed.avgTeacherStartingSalary DESC;');
+   SET @sql = CONCAT('WITH AggregateStats AS
+                    (SELECT AVG(abortionRate) AS avgRate, STD(abortionRate) AS stddev FROM Health)
+                    SELECT E.stateName, E.medianIncome
+                    FROM Health AS H JOIN Economy AS E ON H.stateName = E.stateName
+                    WHERE H.abortionRate >= (SELECT avgRate FROM AggregateStats);');
    -- alert the server we have a statement shell to set up
    PREPARE stmt FROM @sql;
 
