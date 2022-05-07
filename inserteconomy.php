@@ -1,4 +1,4 @@
-\0;136;0c<!-- Sydney Friedel and Shelby Coe -->
+<!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
 <head><title>Insert Economy</title></head>
