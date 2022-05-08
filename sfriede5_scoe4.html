@@ -40,8 +40,19 @@
         <!-- (5) -->
 	<h2>Of the states in which abortion rate is higher than the average rate for all states, what was the average household income?</h2>
 	<form action="query5.php" method="post">
-		<input type="submit" value="click here to see">
-	</form>
+		<label for="factor">Factor:</label>
+		<select id="factor" name="factor">
+		  <option name="factor" value="abortionRate">abortion rate</option>
+		  <option name="factor" value="homicideRate">homicide rate</option>
+		  <option name="factor" value="drugOverdoses">drug overdoses</option>
+		  <option name="factor" value="suicideRate">suicide rate</option>
+		  <option name="factor" value="teenPregnancyRate">teen pregnancy rate</option>
+		</select><br>
+		<br/>
+		<input type="submit"> 
+		
+	  </form>
+          <br/><br/>
 	<br/><br/>
 	
         <!-- (6) -->
