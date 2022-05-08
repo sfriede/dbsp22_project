@@ -22,7 +22,7 @@
 		if (strcmp($factor, 'abortionRate') == 0 || strcmp($factor, 'homicideRate') == 0 || strcmp($factor, 'drugOverdoses') == 0 || strcmp($factor, 'suicideRate') == 0 || strcmp($factor, 'teenPregnancyRate') == 0 ) {
 		
    		   //input is within range, so we can make stored procedure calls safely
-		   echo "<h2>What is the difference in overall health for states ordered by $factor?</h2><br>";
+		   echo "<h2>What is the difference in overall health for states where the $factor is higher than average?</h2><br>";
 
 		   //call stored procedures defined on dbase
 
