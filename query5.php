@@ -48,6 +48,7 @@
                		       	    echo "<tr>";
                			        echo "<td>".$row1[0]."</td>";
                			        echo "<td>".$row1[1]."</td>";
+				                echo "<td>".$row1[2]."</td>";
                			        echo "</tr>";
             			    }
 
