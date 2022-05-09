@@ -1,17 +1,12 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
-<head><title>Query 11</title></head>
+<head><title>Query 5</title></head>
 <body>
 <?php
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
 
 	//get user input and perform error-checking on it
 	$factor = $_POST['factor'];

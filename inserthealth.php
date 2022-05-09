@@ -7,12 +7,6 @@
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
-
 	//get user input and perform error-checking on it
 	$state1 = $_POST['healthState'];
 	$population = $_POST['healthPop'];

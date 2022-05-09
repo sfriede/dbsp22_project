@@ -8,8 +8,7 @@
 	include 'open.php';
 
 
-	$stddev = $_POST['stddev12'];
-//	echo $stddev; 
+	$stddev = $_POST['stddev12']; 
 	if ($stddev >= 0 && $stddev <= 99999999.99) {
 
 	// echo some basic header info onto the page

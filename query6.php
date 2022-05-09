@@ -7,19 +7,35 @@
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
-
 	//get user input and perform error-checking on it
 	$q6state = $_POST['q6state'];
 
 
 	if(!empty($q6state)) {
 		$q6state = trim($q6state);
-		if (strcmp($q6state, 'Alabama') == 0 || strcmp($q6state, 'Alaska') == 0 || strcmp($q6state, 'Arizona') == 0 || strcmp($q6state, 'Arkansas') == 0 || strcmp($q6state, 'California') == 0 || strcmp($q6state, 'Colorado') == 0 || strcmp($q6state, 'Connecticut') == 0 || strcmp($q6state, 'Delaware') == 0 || strcmp($q6state, 'Flordia') == 0 || strcmp($q6state, 'Georgia') == 0 || strcmp($q6state, 'Hawaii') == 0 || strcmp($q6state, 'Idaho') == 0 || strcmp($q6state, 'Illinois') == 0 || strcmp($q6state, 'Indiana') == 0 || strcmp($q6state, 'Iowa') == 0 || strcmp($q6state, 'Kansas') == 0 || strcmp($q6state, 'Kentucky') == 0 || strcmp($q6state, 'Louisiana') == 0 || strcmp($q6state, 'Maine') == 0 || strcmp($q6state, 'Maryland') == 0 || strcmp($q6state, 'Massachusetts') == 0 || strcmp($q6state, 'Michigan') == 0 || strcmp($q6state, 'Minnesota') == 0 || strcmp($q6state, 'Mississippi') == 0 || strcmp($q6state, 'Missouri') == 0 || strcmp($q6state, 'Montana') == 0 || strcmp($q6state, 'Nebraska') == 0 || strcmp($q6state, 'Nevada') == 0 || strcmp($q6state, 'New Hampshire') == 0 || strcmp($q6state, 'New Jersey') == 0 || strcmp($q6state, 'New Mexico') == 0 || strcmp($q6state, 'New York') == 0 || strcmp($q6state, 'North Carolina') == 0 || strcmp($q6state, 'North Dakota') == 0 || strcmp($q6state, 'Ohio') == 0 || strcmp($q6state, 'Oklahoma') == 0 || strcmp($q6state, 'Oregon') == 0 || strcmp($q6state, 'Pennsylvania') == 0 || strcmp($q6state, 'Rhode Island') == 0 || strcmp($q6state, 'South Carolina') == 0 || strcmp($q6state, 'South Dakota') == 0 || strcmp($q6state, 'Tennessee') == 0 || strcmp($q6state, 'Texas') == 0 || strcmp($q6state, 'Utah') == 0 || strcmp($q6state, 'Vermont') == 0 || strcmp($q6state, 'Virginia') == 0 || strcmp($q6state, 'Washington') == 0 || strcmp($q6state, 'West Virginia') == 0 || strcmp($q6state, 'Wisconsin') == 0 || strcmp($q6state, 'Wyoming') == 0 || strcmp($q6state, 'Washington DC') == 0 || strcmp($q6state, 'Puerto Rico') == 0 || strcmp($q6state, 'Washington D.C.') == 0 || strcmp($q6state, 'Guam') == 0 ||  strcmp($q6state, 'US Virgin Islands') == 0 ||  strcmp($q6state, 'Northern Mariana Islands') == 0 ||  strcmp($q6state, 'American Samoa') == 0 ||  strcmp($q6state, 'Midway Atoll') == 0 ||  strcmp($q6state, 'Palmyra Atoll') == 0 ||  strcmp($q6state, 'Baker Island') == 0 ||  strcmp($q6state, 'Howland Island') == 0 ||  strcmp($q6state, 'Jarvis Island') == 0 ||  strcmp($q6state, 'Johnston Atoll') == 0 ||  strcmp($q6state, 'Kingman Reef') == 0 ||  strcmp($q6state, 'Wake Island') == 0 ||  strcmp($q6state, 'Navassa Island') == 0) {
+		if (strcmp($q6state, 'Alabama') == 0 || strcmp($q6state, 'Alaska') == 0 || strcmp($q6state, 'Arizona') == 0
+		|| strcmp($q6state, 'Arkansas') == 0 || strcmp($q6state, 'California') == 0 || strcmp($q6state, 'Colorado') == 0
+		|| strcmp($q6state, 'Connecticut') == 0 || strcmp($q6state, 'Delaware') == 0 || strcmp($q6state, 'Flordia') == 0
+		|| strcmp($q6state, 'Georgia') == 0 || strcmp($q6state, 'Hawaii') == 0 || strcmp($q6state, 'Idaho') == 0
+		|| strcmp($q6state, 'Illinois') == 0 || strcmp($q6state, 'Indiana') == 0 || strcmp($q6state, 'Iowa') == 0
+		|| strcmp($q6state, 'Kansas') == 0 || strcmp($q6state, 'Kentucky') == 0 || strcmp($q6state, 'Louisiana') == 0
+		|| strcmp($q6state, 'Maine') == 0 || strcmp($q6state, 'Maryland') == 0 || strcmp($q6state, 'Massachusetts') == 0
+		|| strcmp($q6state, 'Michigan') == 0 || strcmp($q6state, 'Minnesota') == 0 || strcmp($q6state, 'Mississippi') == 0
+		|| strcmp($q6state, 'Missouri') == 0 || strcmp($q6state, 'Montana') == 0 || strcmp($q6state, 'Nebraska') == 0
+		|| strcmp($q6state, 'Nevada') == 0 || strcmp($q6state, 'New Hampshire') == 0 || strcmp($q6state, 'New Jersey') == 0
+		|| strcmp($q6state, 'New Mexico') == 0 || strcmp($q6state, 'New York') == 0 || strcmp($q6state, 'North Carolina') == 0
+		|| strcmp($q6state, 'North Dakota') == 0 || strcmp($q6state, 'Ohio') == 0 || strcmp($q6state, 'Oklahoma') == 0
+		|| strcmp($q6state, 'Oregon') == 0 || strcmp($q6state, 'Pennsylvania') == 0 || strcmp($q6state, 'Rhode Island') == 0
+		|| strcmp($q6state, 'South Carolina') == 0 || strcmp($q6state, 'South Dakota') == 0 || strcmp($q6state, 'Tennessee') == 0
+		|| strcmp($q6state, 'Texas') == 0 || strcmp($q6state, 'Utah') == 0 || strcmp($q6state, 'Vermont') == 0
+		|| strcmp($q6state, 'Virginia') == 0 || strcmp($q6state, 'Washington') == 0 || strcmp($q6state, 'West Virginia') == 0
+		|| strcmp($q6state, 'Wisconsin') == 0 || strcmp($q6state, 'Wyoming') == 0 || strcmp($q6state, 'Washington DC') == 0
+		|| strcmp($q6state, 'Puerto Rico') == 0 || strcmp($q6state, 'Washington D.C.') == 0 || strcmp($q6state, 'Guam') == 0
+		||  strcmp($q6state, 'US Virgin Islands') == 0 ||  strcmp($q6state, 'Northern Mariana Islands') == 0
+		|| strcmp($q6state, 'American Samoa') == 0 ||  strcmp($q6state, 'Midway Atoll') == 0 ||  strcmp($q6state, 'Palmyra Atoll') == 0
+		||  strcmp($q6state, 'Baker Island') == 0 ||  strcmp($q6state, 'Howland Island') == 0 ||  strcmp($q6state, 'Jarvis Island') == 0
+		||  strcmp($q6state, 'Johnston Atoll') == 0 ||  strcmp($q6state, 'Kingman Reef') == 0 ||  strcmp($q6state, 'Wake Island') == 0
+		||  strcmp($q6state, 'Navassa Island') == 0) {
 		
    		   //input is within range, so we can make stored procedure calls safely
 		   echo "<h2>What is the difference between the US born and foreign born median incomes for $q6state, and how racially diverse is this state? How does this compare to states with the minimum and maximum median incomes?</h2><br>";

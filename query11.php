@@ -7,19 +7,15 @@
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
-
 	//get user input and perform error-checking on it
 	$factor = $_POST['factor'];
 
 
 	if(!empty($factor)) {
 		$factor = trim($factor);
-		if (strcmp($factor, 'percentInPoverty') == 0 || strcmp($factor, 'unemploymentRate') == 0 || strcmp($factor, 'realGDP') == 0 || strcmp($factor, 'percentUnhoused') == 0 || strcmp($factor, 'homelessnessRatePer10000') == 0 || strcmp($factor, 'medianIncome') == 0 || strcmp($factor, 'foreignBornMedianIncome') == 0 || strcmp($factor, 'USBornMedianIncome') == 0 ) {
+		if (strcmp($factor, 'percentInPoverty') == 0 || strcmp($factor, 'unemploymentRate') == 0 || strcmp($factor, 'realGDP') == 0 ||
+		strcmp($factor, 'percentUnhoused') == 0 || strcmp($factor, 'homelessnessRatePer10000') == 0 || strcmp($factor, 'medianIncome') == 0
+		|| strcmp($factor, 'foreignBornMedianIncome') == 0 || strcmp($factor, 'USBornMedianIncome') == 0 ) {
 		
    		   //input is within range, so we can make stored procedure calls safely
 		   echo "<h2>What is the difference in overall health for states ordered by $factor?</h2><br>";

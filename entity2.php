@@ -7,14 +7,6 @@
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-
 		   echo "<h2>Effects of Education Quality on Health Factors Later in Life</h2>";
 
 		   //prepare statements and call queries

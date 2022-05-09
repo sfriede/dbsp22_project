@@ -9,7 +9,7 @@
 
 	// echo some basic header info onto the page
 	echo "<h2>Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? 
-    How does this compare to states with the lowest rates of suicide?</h2><br>";
+    	How does this compare to states with the lowest rates of suicide?</h2><br>";
 	
     // call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query15();")) {

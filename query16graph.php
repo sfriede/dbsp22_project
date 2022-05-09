@@ -8,12 +8,7 @@
         include 'open.php';
 
 
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
-
-		   //prepare statements and call queries
+	   //prepare statements and call queries
            if ($stmt3 = $conn->prepare("CALL Query16()")) {
 
             //Run the actual query

@@ -1,6 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
-
+-- stored procedures for query 14
 -- this is the top query, not the one with the example of one more interactive
 
 DELIMITER //

@@ -9,9 +9,9 @@
 
 	// echo some basic header info onto the page
 	echo "<h2>For states with the best and worst public school systems, how do the number of 
-    homicides, suicides, and drug overdose statistics compare?</h2><br>";
+    	homicides, suicides, and drug overdose statistics compare?</h2><br>";
 	
-    // call the stored procedure we already defined on dbase
+    //call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query13();")) {
 
 	    echo "<table border=\"2px solid black\">";

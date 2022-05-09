@@ -1,5 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
+-- stored procedure for query 8
 
 DELIMITER //
 

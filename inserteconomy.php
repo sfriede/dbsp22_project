@@ -8,22 +8,17 @@
         include 'open.php';
 
 
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
-
 	//get user input and perform error-checking on it
 	$state1 = $_POST['economyState'];
 	$population = $_POST['economyPop'];
 	$poverty = $_POST['percentInPoverty'];
-   	 $unemployment = $_POST['unemploymentRate'];
-    	 $gdp = $_POST['realGDP'];
-    	 $percentUnhoused = $_POST['percentUnhoused'];
-    	 $homelessness = $_POST['homelessnessRatePer10000'];
-    	 $income = $_POST['medianIncome'];
-    	 $foreignBorn = $_POST['foreignBornMedianIncome'];
-   	  $USBorn = $_POST['USBornMedianIncome'];
+   	$unemployment = $_POST['unemploymentRate'];
+    	$gdp = $_POST['realGDP'];
+    	$percentUnhoused = $_POST['percentUnhoused'];
+    	$homelessness = $_POST['homelessnessRatePer10000'];
+    	$income = $_POST['medianIncome'];
+    	$foreignBorn = $_POST['foreignBornMedianIncome'];
+   	$USBorn = $_POST['USBornMedianIncome'];
 
 
 

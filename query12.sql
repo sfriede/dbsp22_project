@@ -1,6 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
-
+-- stored procedures for query 12, one taking user input and one not
 
 DELIMITER //
 
@@ -30,6 +30,7 @@ BEGIN
 END; 
 //
 
+-- version of query 12 that takes UI
 
 DROP PROCEDURE IF EXISTS Query12UI //
 
@@ -42,6 +43,7 @@ BEGIN
 END;
 //
 
+-- version of query 12 that computes average statistics for all data
 
 DROP PROCEDURE IF EXISTS Query12Avg //
 CREATE PROCEDURE Query12Avg()

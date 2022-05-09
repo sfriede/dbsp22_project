@@ -1,14 +1,13 @@
+<!-- Sydney Friedel and Shelby Coe -->
+<!-- sfriede5 and scoe4 -->
+
+
 <head><title>Entity 1</title></head>
 <body>
 <?php
 	//open a connection to dbase server
         include 'open.php';
 
-
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
 
 		   //prepare statements and call queries
 			if ($stmt1 = $conn->prepare("CALL Query1()")) {
@@ -29,11 +28,11 @@
                                //Report result set by visiting each row in it
                                while ($row1 = $result1->fetch_row()) {
 			       	     if (!is_null($row1[0])) {
-                                     array_push($dataPointsTeacherSal, array("y"=> $row1[2], "x"=> $row1[0], "label"=>$row1[1]));
-				     array_push($dataPointsUnemploy, array("y"=> $row1[4], "x"=> $row1[0], "label"=>$row1[1]));
-                                     array_push($dataPointsHomeless, array("y"=> $row1[3], "x"=> $row1[0], "label"=>$row1[1]));
+                                           array_push($dataPointsTeacherSal, array("y"=> $row1[2], "x"=> $row1[0], "label"=>$row1[1]));
+				    	   array_push($dataPointsUnemploy, array("y"=> $row1[4], "x"=> $row1[0], "label"=>$row1[1]));
+                                    	   array_push($dataPointsHomeless, array("y"=> $row1[3], "x"=> $row1[0], "label"=>$row1[1]));
                                      }
-				     }
+				}
 
          			} else {
 

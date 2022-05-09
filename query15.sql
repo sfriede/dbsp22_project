@@ -1,6 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
--- query 10:  Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? How does this compare
+-- query 15:  Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? How does this compare
 -- to states with the lowest rates of suicide?
 
 DELIMITER //

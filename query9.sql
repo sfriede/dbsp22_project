@@ -1,6 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
--- query 10:  For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? 
+-- query 9:  For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? 
 -- SAT/ACT scores?
 
 DELIMITER //

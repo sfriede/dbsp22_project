@@ -1,5 +1,6 @@
 -- Sydney Friedel and Shelby Coe
 -- sfriede5 and scoe4
+-- stored procedures for query 16, some taking user input and some not
 
 DELIMITER //
 
@@ -25,6 +26,8 @@ BEGIN
    DEALLOCATE PREPARE stmt;
 END; //
 
+
+-- version of query 16 taking user input
 
 DROP PROCEDURE IF EXISTS Query16UI //
 

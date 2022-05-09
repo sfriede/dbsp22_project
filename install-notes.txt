@@ -3,7 +3,7 @@ Sydney Friedel (sfriede5) and Shelby Coe (scoe4)
 
 Setup Instructions:
 
-After running cleanup.sql and setup.sql or setup-small.sql, please run the following SQL files in this order:
+After running cleanup.sql and setup.sql or setup-small.sql, please run the following SQL files in this order (all files are contained within the dbase_setup subfolder):
 
 1. insert.sql
 2. delete.sql
