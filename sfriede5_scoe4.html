@@ -6,7 +6,10 @@
 
         <!--(heading and description)-->
 	<h1> United States Socioeconomic, Educational, and Basic Health Dataset </h1>
-	<h4> Use these features to see important statistics and figures on these metrics across the U.S. states and territories, as well as add your own records to the dataset. All data is taken from 2019-2020 government datasets.</h5>
+	<h4> Use these features to see important statistics and figures on these metrics across the U.S. states and territories, as well as add your own records to the dataset. All data is taken from 2019-2020 government datasets.</h4>
+
+      <h4> Note this database only supports records for these states/territories (all properly spellec and capitalized): any of the U.S. 50 states, Guam, Puerto Rico, Washington DC/Washington D.C., US Virgin Islands, Northern Mariana Islands, Howland Isalnd, Jarvis Island, Johnston Atoll, Kingman Reef, Wake Island, Navassa Island, Baker Island, Palmyra Atoll, Midway Atoll, American Samoa  </h4>
+
         <!-- (1, 4) -->
         <h2>See the effects of quality of education on financial factors later in life</h2>
         <form action="entity1.php" method="post">
@@ -38,7 +41,7 @@
 	<br/><br/>-->
 
         <!-- (5) -->
-	<h2>Of the states in which a health factor is higher than the average rate for all states, what was the average household income?</h2>
+	<h2>Of the states in which a health factor of your choice is higher than the average rate for all states, what was the average household income?</h2>
 	<form action="query5.php" method="post">
 		<label for="factor">Factor:</label>
 		<select id="factor" name="factor">
@@ -148,6 +151,9 @@
         </form>
         <br/><br/>
 
+	<h1> Inserting and Deleting Records from the Database </h1>
+	<h4> Please ensure that any state/territory for which you are inserting a record matches one of the titles described above! Only these inputs will be accepted </h4>
+	
 	<!-- (insert health) -->
         <h2>Insert a record containing health statistics about a state into the Health table</h2>
         <form action="inserthealth.php" method="post">

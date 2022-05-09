@@ -10,10 +10,10 @@
 
 	$stddev = $_POST['stddev12'];
 //	echo $stddev; 
-	if ($stddev >= 0) {
+	if ($stddev >= 0 && $stddev <= 99999999.99) {
 
 	// echo some basic header info onto the page
-	echo "<h2>For states with an unemployment rate $stddev standard deviations above the national average,list the health and risk factor statistics.</h2>";
+	echo "<h2>For states with an unemployment rate $stddev standard deviations above the national average, list the health and risk factor statistics.</h2>";
 
 	                //prepare statements and call queries
                         if ($stmt1 = $conn->prepare("CALL Query12UI(?)")) {
@@ -51,6 +51,11 @@
 				     echo "</table>";
 
                                 } else {
+
+				  if($result1->num_rows == 0) {
+
+				  	echo "No states have an unemployment rate this far from the national average";
+				  }
 
                                   if(!($result1)) {
                                         echo "Internal error: procedure failed";
@@ -147,7 +152,7 @@
 
 	  } else {
 
-	    echo "Please enter a nonnegative number";
+	    echo "Please enter a nonnegative number between 0 and 99999999.99";
 	  }
 	  
    // close the connection opened by open.php

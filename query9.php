@@ -9,8 +9,8 @@
 
 	// echo some basic header info onto the page
 	echo "<h2>For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
-    what was the highschool graduation rate? Average SAT/ACT scores?</h2><br>";
-	
+    what was the highschool graduation rate? Average SAT/ACT scores?</h2>";
+    	 echo "<h4> Here, we defined 'significantly lower' as at least 1.5 standard deviations lower than the average suicide rate across all existing states/territories in the dataset </h4>";	
     // call the stored procedure we already defined on dbase
 	if ($result = $conn->query("CALL Query9();")) {
 

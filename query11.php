@@ -41,7 +41,7 @@
 
             		      //Create table to display results
            		       echo "<table border=\"1px solid black\">";
-            		       echo "<tr><th> State Name </th> <th> $factor </th><th> suicideRate </th><th> teenPregnancyRate </th></tr>";
+            		       echo "<tr><th> State Name </th> <th> $factor </th><th> suicideRate </th><th> teenPregnancyRate </th><th>number of drug overdoses<th>cancer mortality rate </th> <th> obesity prevalence</th> <th> STIs per 100k people</th></tr>";
 
             		       //Report result set by visiting each row in it
             		       while ($row1 = $result1->fetch_row()) {
@@ -50,6 +50,11 @@
                			        echo "<td>".$row1[1]."</td>";
 				                echo "<td>".$row1[2]."</td>";
 				                echo "<td>".$row1[3]."</td>";
+						echo "<td>".$row1[4]."</td>";
+                                                echo "<td>".$row1[5]."</td>";
+                                                echo "<td>".$row1[6]."</td>";
+                                                echo "<td>".$row1[7]."</td>";
+
                			        echo "</tr>";
             			    }
 

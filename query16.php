@@ -38,7 +38,12 @@
                 strcmp($state1, 'Texas') == 0 || strcmp($state1, 'Utah') == 0 || strcmp($state1, 'Vermont') == 0 ||
                 strcmp($state1, 'Virginia') == 0 || strcmp($state1, 'Washington') == 0 || strcmp($state1, 'West Virginia') == 0 ||
                 strcmp($state1, 'Wisconsin') == 0 || strcmp($state1,'Wyoming') == 0 || strcmp($state1, 'Washington DC') == 0 ||
-                strcmp($state1, 'Puerto Rico') == 0) {
+                strcmp($state1, 'Puerto Rico') == 0 || strcmp($state1, 'Washington D.C.') == 0 || strcmp($state1, 'Guam') == 0 ||
+                strcmp($state1, 'US Virgin Islands') == 0 ||  strcmp($state1, 'Northern Mariana Islands') == 0 ||
+                strcmp($state1, 'American Samoa') == 0 ||  strcmp($state1, 'Midway Atoll') == 0 ||  strcmp($state1, 'Palmyra Atoll') == 0 ||
+                strcmp($state1, 'Baker Island') == 0 ||  strcmp($state1,'Howland Island') == 0 ||  strcmp($state1, 'Jarvis Island') == 0 ||
+                strcmp($state1, 'Johnston Atoll') == 0 ||  strcmp($state1, 'Kingman Reef') == 0 || strcmp($state1, 'Wake Island') == 0 ||
+                strcmp($state1, 'Navassa Island') == 0) {
 				
 				 $state1Valid = 1;
 				 }} 
@@ -62,14 +67,19 @@
                 strcmp($state2, 'Texas') == 0 || strcmp($state2, 'Utah') == 0 || strcmp($state2, 'Vermont') == 0 ||
                 strcmp($state2, 'Virginia') == 0 || strcmp($state2, 'Washington') == 0 || strcmp($state2, 'West Virginia') == 0 ||
                 strcmp($state2, 'Wisconsin') == 0 || strcmp($state2,'Wyoming') == 0 || strcmp($state2, 'Washington DC') == 0 ||
-                strcmp($state2, 'Puerto Rico') == 0) {
+                strcmp($state2, 'Puerto Rico') == 0 || strcmp($state2, 'Washington D.C.') == 0 || strcmp($state2, 'Guam') == 0 ||
+                strcmp($state2, 'US Virgin Islands') == 0 ||  strcmp($state2, 'Northern Mariana Islands') == 0 ||
+                strcmp($state2, 'American Samoa') == 0 ||  strcmp($state2, 'Midway Atoll') == 0 ||  strcmp($state2, 'Palmyra Atoll') == 0 ||
+                strcmp($state2, 'Baker Island') == 0 ||  strcmp($state2,'Howland Island') == 0 ||  strcmp($state2, 'Jarvis Island') == 0 ||
+                strcmp($state2, 'Johnston Atoll') == 0 ||  strcmp($state2, 'Kingman Reef') == 0 || strcmp($state2, 'Wake Island') == 0 ||
+                strcmp($state2, 'Navassa Island') == 0) {
 
                                  $state2Valid = 1;
                                  } }
 
 
 	if ($state1Valid == 1 && $state2Valid == 1) {
-	 echo "<h4>For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h4>";
+	 echo "<h4>For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores? Note that not all educational information may be available for some states.</h4>";
 
           //prepare statements and call queries
            if ($stmt = $conn->prepare("CALL Query16UI(?, ?)")) {
@@ -107,7 +117,7 @@
 				 } else {
 
 				 if(!($result)) {
-                        	    echo "Error: We do not have this educational and economic information available for both of these states";
+                        	    echo "Error: We do not have records for at least one of these states/territories in our educational and/or economic datasets";
                   	      		 }
 				 }
 

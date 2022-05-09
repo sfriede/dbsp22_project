@@ -14,7 +14,7 @@
 	ini_set('display_errors', true);
 
 	//get user input and perform error-checking on it
-	$state = $_POST['healthState'];
+	$state1 = $_POST['healthState'];
 	$population = $_POST['healthPop'];
 	$abortion = $_POST['abortion'];
         $homicide = $_POST['homicide'];
@@ -22,12 +22,46 @@
         $suicide = $_POST['suicide'];
         $teenPreg = $_POST['teenPreg'];
 
+	$state1Valid = 0;
+
+	//check state/territory provided
+	        if(!empty($state1)) {
+                $state1 = trim($state1);
+                if (strcmp($state1, 'Alabama') == 0 || strcmp($state1, 'Alaska') == 0 || strcmp($state1, 'Arizona') == 0 ||
+                strcmp($state1, 'Arkansas') == 0 || strcmp($state1, 'California') == 0 || strcmp($state1, 'Colorado') == 0 ||
+                strcmp($state1, 'Connecticut') == 0 || strcmp($state1, 'Delaware') == 0 || strcmp($state1, 'Flordia') == 0 ||
+                strcmp($state1, 'Georgia') == 0 || strcmp($state1, 'Hawaii') == 0 || strcmp($state1, 'Idaho') == 0 ||
+                strcmp($state1, 'Illinois') == 0 || strcmp($state1, 'Indiana') == 0 || strcmp($state1, 'Iowa') == 0 ||
+                strcmp($state1, 'Kansas') == 0 || strcmp($state1, 'Kentucky') == 0 || strcmp($state1, 'Louisiana') == 0 ||
+                strcmp($state1, 'Maine') == 0 || strcmp($state1, 'Maryland') == 0 || strcmp($state1, 'Massachusetts') == 0 ||
+                strcmp($state1, 'Michigan') == 0 || strcmp($state1, 'Minnesota') == 0 || strcmp($state1, 'Mississippi') == 0 ||
+                strcmp($state1, 'Missouri') == 0|| strcmp($state1, 'Montana') == 0 || strcmp($state1, 'Nebraska') == 0 ||
+                strcmp($state1, 'Nevada') == 0 || strcmp($state1, 'New Hampshire') == 0 || strcmp($state1, 'New Jersey') == 0 ||
+                strcmp($state1, 'New Mexico') == 0 || strcmp($state1, 'New York') == 0 || strcmp($state1, 'North Carolina') == 0 ||
+                strcmp($state1, 'North Dakota') == 0 || strcmp($state1, 'Ohio') == 0 || strcmp($state1, 'Oklahoma') == 0 ||
+                strcmp($state1, 'Oregon') == 0 || strcmp($state1, 'Pennsylvania') == 0 || strcmp($state1, 'Rhode Island') == 0 ||
+                strcmp($state1, 'South Carolina') == 0 || strcmp($state1, 'South Dakota') == 0 || strcmp($state1, 'Tennessee') == 0 ||
+                strcmp($state1, 'Texas') == 0 || strcmp($state1, 'Utah') == 0 || strcmp($state1, 'Vermont') == 0 ||
+                strcmp($state1, 'Virginia') == 0 || strcmp($state1, 'Washington') == 0 || strcmp($state1, 'West Virginia') == 0 ||
+                strcmp($state1, 'Wisconsin') == 0 || strcmp($state1,'Wyoming') == 0 || strcmp($state1, 'Washington DC') == 0 ||
+                strcmp($state1, 'Puerto Rico') == 0 || strcmp($state1, 'Washington D.C.') == 0 || strcmp($state1, 'Guam') == 0 ||
+                strcmp($state1, 'US Virgin Islands') == 0 ||  strcmp($state1, 'Northern Mariana Islands') == 0 ||
+                strcmp($state1, 'American Samoa') == 0 ||  strcmp($state1, 'Midway Atoll') == 0 ||  strcmp($state1, 'Palmyra Atoll') == 0 ||
+                strcmp($state1, 'Baker Island') == 0 ||  strcmp($state1,'Howland Island') == 0 ||  strcmp($state1, 'Jarvis Island') == 0 ||
+                strcmp($state1, 'Johnston Atoll') == 0 ||  strcmp($state1, 'Kingman Reef') == 0 || strcmp($state1, 'Wake Island') == 0 ||
+                strcmp($state1, 'Navassa Island') == 0) {
+
+                                 $state1Valid = 1;
+                                 }}
+
+
+
 	$success = 0;
 	
-	if(!empty($state) && isset($population) && isset($abortion) && isset($homicide) && isset($drugODs) && isset($suicide) && isset($teenPreg)) {
+	if($state1Valid && isset($population) && isset($abortion) && isset($homicide) && isset($drugODs) && isset($suicide) && isset($teenPreg)) {
 
 			   if ($stmt1 = $conn->prepare("CALL InsertHealth(?, ?, ?, ?, ?, ?, ?)")) {
-                           $stmt1->bind_param("siddddd", $state, $population, $abortion, $homicide, $drugODs, $suicide, $teenPreg);
+                           $stmt1->bind_param("siddddd", $state1, $population, $abortion, $homicide,  $suicide,$drugODs,  $teenPreg);
 
                            //Run the actual query
                            if ($stmt1->execute()) {
@@ -82,7 +116,7 @@
 
 	} else {
 
-	  echo "Please ensure all parameters are set";
+	  echo "Please ensure all parameters are set and that the state/territory provided is valid";
 	}
 
 	if($success == 1) {
@@ -100,7 +134,7 @@
 
                               //Create table to display results
                                echo "<table border=\"1px solid black\">";
-			       echo "<tr><th>State</th><th>Abortion Rate</th><th>Homicide Rate</th><th>Number of Drug Overdoses in 1000s</th><th>Suicide Rate</th><th>Teen Pregnancy</th></tr>";
+			       echo "<tr><th>State</th><th>Abortion Rate</th><th>Homicide Rate</th><th>Number of Drug Overdoses in 1000s</th><th>Suicide Rate</th><th>Teen Pregnancy Rate</th></tr>";
                                //Report result set by visiting each row in it
                                while ($row2 = $result2->fetch_row()) {
                                     echo "<tr>";

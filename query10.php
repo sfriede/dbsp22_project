@@ -30,7 +30,12 @@
 		strcmp($q6state, 'Texas') == 0 || strcmp($q6state, 'Utah') == 0 || strcmp($q6state, 'Vermont') == 0 ||
 		strcmp($q6state, 'Virginia') == 0 || strcmp($q6state, 'Washington') == 0 || strcmp($q6state, 'West Virginia') == 0 ||
 		strcmp($q6state, 'Wisconsin') == 0 || strcmp($q6state,'Wyoming') == 0 || strcmp($q6state, 'Washington DC') == 0 ||
-		strcmp($q6state, 'Puerto Rico') == 0) {
+		strcmp($q6state, 'Puerto Rico') == 0 || strcmp($q6state, 'Washington D.C.') == 0 || strcmp($q6state, 'Guam') == 0 ||
+		strcmp($q6state, 'US Virgin Islands') == 0 ||  strcmp($q6state, 'Northern Mariana Islands') == 0 ||
+		strcmp($q6state, 'American Samoa') == 0 ||  strcmp($q6state, 'Midway Atoll') == 0 ||  strcmp($q6state, 'Palmyra Atoll') == 0 ||
+		strcmp($q6state, 'Baker Island') == 0 ||  strcmp($q6state,'Howland Island') == 0 ||  strcmp($q6state, 'Jarvis Island') == 0 ||
+		strcmp($q6state, 'Johnston Atoll') == 0 ||  strcmp($q6state, 'Kingman Reef') == 0 || strcmp($q6state, 'Wake Island') == 0 ||
+		strcmp($q6state, 'Navassa Island') == 0) {
  
 		   echo "<h3>In descending order of education spending per pupil, see each states highschool graduation rate and percent of adults who have completed at least some part of college. How do these statistics compare for $q6state? </h3>";
 
@@ -164,7 +169,7 @@
                                 } else {
 
                                   if(!($result5)) {
-                                     echo "We do not have information available for $q6state. Remember that the input must be a valid, capitalized state or US territory name.";
+                                     echo "<br>We do not have information available for $q6state. Remember that the input must be a valid, capitalized state or US territory name.<br>";
                                   }
                                 }
                                   if(($result5)) {
