@@ -49,31 +49,28 @@ for the five states with the highest graduation rate?
 
 Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for 
 insertion into your database
-<<<<<<< HEAD
 
 We did not make any changes to our process from Phase C, but we included the original process.txt in our submission.
-=======
-no updates from Phase C
->>>>>>> 013bb0978408e8ac7dca0a4a19416b35e406ff59
 
 Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging 
 aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
 
 (brainstorming)
--making the datasets was a very involved process, and we put a lot of time into getting features form many sources in place
--meaningful graphs for query results, taking in interesting user input
+- making the datasets was a very involved process, and we put a lot of time into getting features form many sources in place
+- meaningful graphs for query results, taking in interesting user input
+    - used different kinds of graphs (line, bar, pie chart, waterfall) based on the result of the query
 
 Known Issues - a description of places in the implementation of your project, if any, where you did not fully succeed (are there bugs? are there 
 unimplemented features?)
 
 (brainstorming)
-- not as much UI as we would like
--inserts?
+- There is not as much UI as we would like
+- I think we implemented the inserts fully but this aspect of Phase E took was difficult at times
 
 Extensions - beyond fixing any known issues mentioned above, what additional functionality do you most wish you had time to add to your project? 
 Describe at least two new features.
 
 (brainstorming)
-- add more intersting queries that evaluate the statitics and relationships between different metrics. this includes adding trendlines to graphs, doing some basic statistical analysis, etc.
--expand number of attributes/features used to allow for more intersting results
--accomodate data for different years (once a good source was found) for dyamic updating of the database as more information becomes available over time
+- add more intersting queries that evaluate the statitics and relationships between different metrics. this includes adding trendlines and aggregate statistics to graphs, doing some basic statistical analysis, etc.
+- expand number of attributes/features used to allow for more intersting results
+- accomodate data for different years (once a good source was found) for dyamic updating of the database as more information becomes available over time
