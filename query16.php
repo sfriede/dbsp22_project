@@ -3,7 +3,7 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
-<head><title>Query 14</title></head>
+<head><title>Query 16 User Input</title></head>
 <body>
 <?php
 	//open a connection to dbase server
@@ -69,6 +69,7 @@
 
 
 	if ($state1Valid == 1 && $state2Valid == 1) {
+	 echo "<h4>For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h4>";
 
           //prepare statements and call queries
            if ($stmt = $conn->prepare("CALL Query16UI(?, ?)")) {
@@ -80,8 +81,6 @@
                $result = $stmt->get_result();
 
                if (($result) && ($result->num_rows != 0)) {
-
-	       echo "<h4>For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h4>";
 		  
 		  echo "States Chosen: $state1 and $state2";
 
@@ -108,7 +107,7 @@
 				 } else {
 
 				 if(!($result)) {
-                        	    echo "Internal error: procedure failed";
+                        	    echo "Error: We do not have this educational and economic information available for both of these states";
                   	      		 }
 				 }
 
@@ -149,60 +148,3 @@
      </style>
 </body>
 </html>
-
-<head><title>Query 16</title></head>
- <body>
- 
-//<?php     
-    //open a connection to dbase server 
-//	include 'open.php';
-
-	// echo some basic header info onto the page
-//	echo "<h2>List the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2><br>";
-	
-    // call the stored procedure we already defined on dbase
-//	if ($result = $conn->query("CALL Query16();")) {
-
-//	    echo "<table border=\"2px solid black\">";
-
-        // output a row of table headers
-//	    echo "<tr>";
-	    // collect an array holding all attribute names in $result
-//	    $flist = $result->fetch_fields();
-        // output the name of each attribute in flist
-//	    foreach($flist as $fname){
-//	        echo "<td>".$fname->name."</td>";
-//	    }
-//	    echo "</tr>";
-//
-        // output a row of table for each row in result, using flist names
-        // to obtain the appropriate attribute value for each column
-//	    foreach($result as $row){
-            // reset the attribute names array
-    //	    $flist = $result->fetch_fields(); 
-//	        echo "<tr>";
-///	        foreach($flist as $fname){
-   //             echo "<td>".$row[$fname->name]."</td>";
-     //       }
-  //	        echo "</tr>";
-//	    }
-//	    echo "</table>";
-//
-  //      } else {
-    //        echo "Call to Query16 failed<br>";
-//	  }   
-//
-
-   // close the connection opened by open.php
-  // $conn->close();
-
-//?>
-//</body>
-//<html>
-//<body>
-  //   <style>
-    //    body {font-family: 'verdana'; font-size: 18px;}
-    // </style>
-
-//</body>
-//</html>
