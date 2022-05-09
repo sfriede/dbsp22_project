@@ -7,14 +7,15 @@
 	//open a connection to dbase server
         include 'open.php';
 
+	//get UI and validate
+	$numStates = $_POST['q14num'];
 
-	//Override the PHP configuration file to display all errors
-	//This is useful during development but generally disabled before release
-	ini_set('error_reporting', E_ALL);
-	ini_set('display_errors', true);
+	if ($numStates > 0) {
 
-		   //prepare statements and call queries
-           if ($stmt3 = $conn->prepare("CALL Query14()")) {
+	   //prepare statements and call queries
+           if ($stmt3 = $conn->prepare("CALL Query14(?)")) {
+	   
+	   $stmt3->bind_param("i", $numStates);
 
             //Run the actual query
             if ($stmt3->execute()) {
@@ -49,12 +50,16 @@
             //or because supplied values are of the wrong type
             echo "Execute failed.<br>";
          }
+ 	} else {
+   	//A problem occurred when preparing the statement; check for syntax errors
+       //and misspelled attribute names in the statement string.
+   	 echo "Prepare failed.<br>";
+   	$error = $conn->errno . ' ' . $conn->error;
+   	  echo $error;
+   }
  } else {
-   //A problem occurred when preparing the statement; check for syntax errors
-   //and misspelled attribute names in the statement string.
-   echo "Prepare failed.<br>";
-   $error = $conn->errno . ' ' . $conn->error;
-   echo $error;
+
+   echo "Invalid input: please enter a positive integer";
  }
 
                       
@@ -105,7 +110,7 @@ window.onload = function () {
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the ten states with the lowest poverty levels</h3>
+        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the X number of states with the lowest poverty levels</h3>
         <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
 
      <style>

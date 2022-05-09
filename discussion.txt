@@ -19,33 +19,26 @@ Lastly, for Phase E, we slight modified/advanced the queries written in Phase D 
 Final queries implemented in Phase E
 1. In order of best to worst-scored public education system (in terms of NAEP and standardized test scores), list the unemployment rate, percent of 
 population that is homeless, and the average starting salary of teachers for each state. 
-2. What is the average household income for states where the teen pregnancy rate is higher than the average rate for all states?
-3. Do states with the healthiest states (in terms of cancer mortality, obesity, drug overdoses, etc.) have the highest average incomes and GDP?
+2. What is the median household income for states where the teen pregnancy rate is higher than X%?
+3. unimplemented in Phase E
 4. What is the average income for adults in the five states with the highest high school graduation rate? Lowest high school graduation rate?
 -- Does this change when using college graduation rates?
 -- using highschool graduation rates
 -- using percent completing college
-5. Of the states in which abortion rate is significantly higher than the average rate for all states, what was the average household income for that 
-state that year? What percent of the state's population was at or under the poverty line?
-6. For states with the highest and lowest median incomes, what is the difference between the US-born and foreign-born median incomes, and how racially 
-diverse is this state?
+5. Of the states in which a health factor of your choice is higher than the average rate for all states, what was the average household income?
+6. What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state? How does this compare to states with the highest and lowest median incomes?
 7. What is the average salary of teachers in the best performing states in terms of standardized test scores and highschool graduation rates?
 8. What is the mean average income in each state for U.S. born individuals across all 50 states? How does this compare to foreign born individuals? 
 9. For states in which the rate of drug overdoses or sucide are significantly lower than other states, what was the highschool graduation rate? 
 Average SAT/ACT scores? 
-10. In descending order of education spending per pupil, list each state's percentage of adults who have completed college and the highschool 
-graduation rate. 
-11. What is the difference in overall health for states with very different rates of unhoused people?
-12. For states with a relatively high unemployment rate compared to the average of all states, list the risk factor and health statistics.
+10. In descending order of education spending per pupil, see each state's percentage of adults who have completed college and the highschool graduation rate. How does a state of your choice compare to the averages of these statistics for all states? 
+11. What is the difference in overall health for states in descending order of a given economic factor?
+12. For states with an unemployment rate X standard deviations above the national average, list the health and risk factor statistics. How do these compare to the national averages of these statistics?
 13. For states with the best and worst public school systems, how do the number of homicides, suicides, and drug overdose statistics compare?
-14. What is the average graduation rate of each state for the five states with the lowest poverty levels? What is the poverty level of each state 
-for the five states with the highest graduation rate? 
-15. Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? How does this compare to
- states with the lowest rates of suicide?
-16. List the states and the average income of working adults for states ordered by the average teacher salary of the state.
+14. What is the average graduation rate of each state for the X number of states with the lowest poverty levels?
+15. Of states with the highest rates of suicide, what is their average annual education funding and teacher starting salary? How does this compare to states with the lowest rates of suicide?
+16. List the states and the average income of working adults for states ordered by the average teacher salary of the state. For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?
 17. Ordering the states from least to most racially diverse, list the state GDP and median household income.
-
-
 
 Process - an (updated, if necessary) version of process.txt from Phase C, explaining your data sources and how you cleaned and prepared the data for 
 insertion into your database
@@ -55,22 +48,24 @@ We did not make any changes to our process from Phase C, but we included the ori
 Successes - describe 2-3 technical portions of your project about which you’d like to brag a little (for example, what was a particularly challenging 
 aspect of writing your database that you’d like to highlight so the course staff don’t overlook its complexity?)
 
+One particularly challenging aspect of this project was creating the database itself. We sourced data from many different government datasets and did an extensive amount of research to find high-quality, verified data from the correct time period. Processing and combining the data into meaningul tables was a very involved process, but it turned out well in the end.
+
+Another aspect we're proud of is the abundant use of visualization (via Canvas JS) of our data. Our database constains information that naturally lends itself to graphical analysis/visualization, and we feel we were able to successfully incorporate user input and display meaningul graphs for many queries.
 (brainstorming)
-- making the datasets was a very involved process, and we put a lot of time into getting features form many sources in place
-- meaningful graphs for query results, taking in interesting user input
-    - used different kinds of graphs (line, bar, pie chart, waterfall) based on the result of the query
 
 Known Issues - a description of places in the implementation of your project, if any, where you did not fully succeed (are there bugs? are there 
 unimplemented features?)
 
-(brainstorming)
-- There is not as much UI as we would like
-- I think we implemented the inserts fully but this aspect of Phase E took was difficult at times
+One known issue is if the user does not input a valid state or US territory name for query 10 ("In descending order of education spending per pupil, see each state's percentage of adults who have completed college and the highschool graduation rate. How does a state of your choice compare to the averages of these statistics for all states?"), the correct "invalid input message" will be displayed, but there qill also be empty canvas JS chart boxes. We were unable to find a way to hide these chart boxes in time. However, when acceptable input is given, the correct output is given ragrdless of whether or not there actually exists a relevant record for that state/territory.
+
+    This same issue holds for query 14 ("What is the average graduation rate of each state for the X number of states with the lowest poverty levels?"). If the user inputs a negative integer or 0, the empty chart box is displayed with the appropriate error message.
+
+Other than that bug, another unimplemented feature is the use of user input for query 9, wehre it would have been fitting/more intersting to incorporate some UI. This is one place we would like to expand upon but unfortunately did not have the time to implement.
 
 Extensions - beyond fixing any known issues mentioned above, what additional functionality do you most wish you had time to add to your project? 
 Describe at least two new features.
 
-(brainstorming)
-- add more intersting queries that evaluate the statitics and relationships between different metrics. this includes adding trendlines and aggregate statistics to graphs, doing some basic statistical analysis, etc.
-- expand number of attributes/features used to allow for more intersting results
-- accomodate data for different years (once a good source was found) for dyamic updating of the database as more information becomes available over time
+One place to expand would be to accomodate data for different years/time periods, as this was our initial plan, but we were limited by the data available. It would be extremely useful to modify the database to dynamically take new data and automatically create different time periods by clumping the stored data based on the years they came form. This would allow for a lot of intersting statistical analysis on trends/changes in these various metrics over time. On a related note, having more time to incorporate some more sophisticated statistical analysis of the data (even if all from the same 2019-2020 time period) to analyze the relations between different metrics would have been an extremely interesting evolution of the project. 
+
+
+Another aspect to expand upon would be to add more attributes/features to each relation and incorporate more user input into the queries. We were unfortunatley limited by time to fully implement all the features we had in mind, but this would be a great plae to improve in order to yield a more interesting and dynamic database.

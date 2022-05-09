@@ -59,7 +59,7 @@
 	<br/><br/>
 	
         <!-- (6) -->
-        <h2> What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state?</h2>
+        <h2> What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state? How does this compare to states with the highest and lowest median incomes?</h2>
         <form action="query6.php" method="post">
                 State Name (capitalized): <input type="text" name="q6state"> <br/>
                 <input type="submit">
@@ -94,7 +94,7 @@
         <br/><br>
 
 	<!-- (11) -->
-	<h2>What is the difference in overall health for states for a given economic factor?</h2>
+	<h2>What is the difference in overall health for states in descending order of  a given economic factor?</h2>
 
 	<form action="query11.php" method="post">
 		<label for="factor">Factor:</label>
@@ -122,9 +122,10 @@
 	<br/><br/>
 
 	<!-- (14) -->
-	<h2>What is the average graduation rate of each state for the ten states with the lowest poverty levels?</h2>
+	<h2>What is the average graduation rate of each state for the X number of states with the lowest poverty levels?</h2>
 	<form action="query14graph.php" method="post">
-		<input type="submit" value="click here to see">
+	         Number of states (Positive Integer): <input type="number" name="q14num"> <br><br>
+		<input type="submit">
 	</form>
 	<br/><br/>
 

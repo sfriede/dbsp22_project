@@ -7,7 +7,7 @@ DELIMITER //
 
 DROP PROCEDURE IF EXISTS Query14 //
 
-CREATE PROCEDURE Query14() 
+CREATE PROCEDURE Query14(IN numStates INT) 
 BEGIN  
    -- concatenate the assignment name list and associated expressions
    -- into a larger query string so we can execute it, but leave ?
@@ -17,7 +17,7 @@ BEGIN
    SET @sql = CONCAT('WITH LowestPovertyStates AS (SELECT stateName, percentInPoverty
                         FROM Economy
                         ORDER BY percentInPoverty ASC
-                        LIMIT 10)
+                        LIMIT ', numStates, ')
                         SELECT E.stateName, E.highschoolGradRate, LowestPovertyStates.percentInPoverty
                         FROM Education AS E JOIN LowestPovertyStates
                         ON E.stateName = LowestPovertyStates.stateName
