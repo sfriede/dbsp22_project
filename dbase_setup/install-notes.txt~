@@ -1,0 +1,27 @@
+<<<<<<< HEAD
+Sydney Friedel (sfriede5) and Shelby Coe (scoe4)
+
+Setup Instructions:
+
+After running cleanup.sql and setup.sql or setup-small.sql, please run the following SQL files in this order (all files are contained within the dbase_setup subfolder):
+
+1. insert.sql
+2. delete.sql
+3. query1.sql
+4. query2.sql
+5. query3.sql
+6. query4.sql
+7. query5.sql
+8. query6.sql
+9. query7.sql
+10. query8.sql
+11. query9.sql
+12. query10.sql
+13. query11.sql
+14. query12.sql
+15. query13.sql
+16. query14.sql
+17. query15.sql
+18. query16.sql
+19. query17.sql
+

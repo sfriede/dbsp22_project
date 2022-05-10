@@ -1,0 +1,275 @@
+<!-- Sydney Friedel and Shelby Coe -->
+<!-- sfriede5_scoe4.html -->
+
+<html>
+  <body>
+
+        <!--(heading and description)-->
+	<h1> United States Socioeconomic, Educational, and Basic Health Dataset </h1>
+	<h4> Use these features to see important statistics and figures on these metrics across the U.S. states and territories, as well as add your own records to the dataset. All data is taken from 2019-2020 government datasets.</h4>
+
+      <h4> Note this database only supports records for these states/territories (all properly spellec and capitalized): any of the U.S. 50 states, Guam, Puerto Rico, Washington DC/Washington D.C., US Virgin Islands, Northern Mariana Islands, Howland Isalnd, Jarvis Island, Johnston Atoll, Kingman Reef, Wake Island, Navassa Island, Baker Island, Palmyra Atoll, Midway Atoll, American Samoa  </h4>
+
+        <!-- (1, 4) -->
+        <h2>See the effects of quality of education on financial factors later in life</h2>
+        <form action="entity1.php" method="post">
+                <input type="submit" value="click here to see">
+        </form>
+        <br/><br/>
+
+        <!-- (9, 13, 15) -->
+        <h2>See the effects of quality of education on health factors later in life</h2>
+        <form action="entity2.php" method="post">
+                <input type="submit" value="click here to see">
+        </form>
+        <br/><br/>
+
+	
+        <!-- (2) -->
+        <h2> What is the median household income for states where the teen pregnancy rate is higher than X%?</h2>
+        <form action="query2.php" method="post">
+                Threshold (0-100%): <input type="text" name="teenPregRate"> <br/>
+                <input type="submit">
+        </form>
+        <br/><br/>
+
+        <!-- (3) 
+	<h2>Do states with the healthiest states (in terms of cancer mortality, obesity, drug overdoses, etc.) have the highest average incomes and GDP?</h2>
+	<form action="query3.php" method="post">
+		<input type="submit" value="click here to see">
+	</form>
+	<br/><br/>-->
+
+        <!-- (5) -->
+	<h2>Of the states in which a health factor of your choice is higher than the average rate for all states, what was the average household income?</h2>
+	<form action="query5.php" method="post">
+		<label for="factor">Factor:</label>
+		<select id="factor" name="factor">
+		  <option name="factor" value="abortionRate">abortion rate</option>
+		  <option name="factor" value="homicideRate">homicide rate</option>
+		  <option name="factor" value="drugOverdoses">drug overdoses</option>
+		  <option name="factor" value="suicideRate">suicide rate</option>
+		  <option name="factor" value="teenPregnancyRate">teen pregnancy rate</option>
+		</select><br>
+		<br/>
+		<input type="submit"> 
+		
+	  </form>
+          <br/><br/>
+	<br/><br/>
+	
+        <!-- (6) -->
+        <h2> What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state? How does this compare to states with the highest and lowest median incomes?</h2>
+        <form action="query6.php" method="post">
+                State Name (capitalized): <input type="text" name="q6state"> <br/>
+                <input type="submit">
+        </form>
+        <br/><br/>
+
+
+	<!-- (8) -->
+	<h2>What is the mean average income in each state for U.S. born individuals across all 50 states? 
+		How does this compare to foreign born individuals? </h2>
+	<form action="query8graphs.php" method="post">
+		<input type="submit" value="click here to see">
+	</form>
+	<br/><br/>
+
+	<!-- (9) -->
+	<h2>For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
+        what was the highschool graduation rate? Average SAT/ACT scores?</h2>
+	<form action="query9.php" method="post">
+		<input type="submit" value="click here to see">
+	</form>
+	<br/><br/>
+
+
+	<!-- (10, 7) -->
+	<h2>In descending order of education spending per pupil, see each state's percentage of adults who have 
+		completed college and the highschool graduation rate. How does a state of your choice compare to the averages of these statistics for all states?</h2>
+        <form action="query10.php" method="post">
+                State Name (capitalized): <input type="text" name="q10state"> <br>
+                <input type="submit">
+        </form>
+        <br/><br>
+
+	<!-- (11) -->
+	<h2>What is the difference in overall health for states in descending order of  a given economic factor?</h2>
+
+	<form action="query11.php" method="post">
+		<label for="factor">Factor:</label>
+		<select id="factor" name="factor">
+		  <option name="factor" value="percentInPoverty">percent in poverty</option>
+		  <option name="factor" value="unemploymentRate">unemployment rate</option>
+		  <option name="factor" value="homelessnessRatePer10000">homelessness</option>
+		  <option name="factor" value="realGDP">real GDP</option>
+		  <option name="factor" value="medianIncome">median income</option>
+		  <option name="factor" value="foreignBornMedianIncome">foreign born median income</option>
+		  <option name="factor" value="USBornMedianIncome">US born median income</option>
+		</select><br>
+		<br/>
+		<input type="submit"> 
+		
+	  </form>
+          <br/><br/>
+
+        <!-- (12) -->
+	<h2>For states with an unemployment rate X standard deviations above the national average,  list the health and risk factor statistics. How do these compare to the national averages of these statistics?</h2>
+	<form action="query12.php" method="post">
+	  Number of Standard Deviations(Up to 2 Decimal Places): <input type="number" step='0.01' name="stddev12"> <br/> <br/>
+	                  <input type="submit">
+	</form>
+	<br/><br/>
+
+	<!-- (14) -->
+	<h2>What is the average graduation rate of each state for the X number of states with the lowest poverty levels?</h2>
+	<form action="query14graph.php" method="post">
+	         Number of states (Positive Integer): <input type="number" name="q14num"> <br><br>
+		<input type="submit">
+	</form>
+	<br/><br/>
+
+	<!-- (16) -->
+	<h2>Show the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2>
+	<form action="query16graph.php" method="post">
+		<input type="submit" value="click here to see">
+	</form>
+	<br/><br/>
+
+	<h3 style="margin-left: 40px">For 2 states of your choice, how do the difference between their median incomes and average teacher starting salaries compare, as well as their educational performance in terms of average SAT/ACT/NAEP scores?</h3>
+        <form action="query16.php" method="post"  style="margin-left: 40px">
+          First State Name (capitalized): <input type="text" name="q16state1"> <br><br>
+	  Second State Name (capitalized): <input type="text" name="q16state2"> <br>
+                <input type="submit">
+        </form>
+        <br/><br>
+
+
+	 <!-- (17) -->
+        <h2>In order of least to most racially diverse, list each state's real GDP and median household income.</h2>
+        <form action="query17.php" method="post">
+                <input type="submit" value="click here to see">
+        </form>
+        <br/><br/>
+
+	<h1> Inserting and Deleting Records from the Database </h1>
+	<h4> Please ensure that any state/territory for which you are inserting a record matches one of the titles described above! Only these inputs will be accepted </h4>
+	
+	<!-- (insert health) -->
+        <h2>Insert a record containing health statistics about a state into the Health table</h2>
+        <form action="inserthealth.php" method="post">
+          State Name (capitalized): <input type="text" name="healthState"> <br/> <br/>
+	  State Population: <input type="number" name="healthPop"> <br/> <br/>
+	  Abortion Rate (% Between 0 and 100, up to 7 Decimal Places): <input type="number" step='0.0000001' name="abortion"> <br/> <br/>
+          Suicide Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="suicide"> <br/> <br/>
+          Homicide Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="homicide"> <br/> <br/>
+          Number of Drug Overdoses (In 1000s, up to 2 Decimal Places): <input type="number" step='0.01' name="drugODs"> <br/> <br/>
+	  Teen Pregnancy Rate (% Between 0 and 100, up to 2 Decimal Places): <input type="number" step='0.01' name="teenPreg"> <br/> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+	<!-- (delete health) -->
+        <h2>Delete a record from the Health table</h2>
+        <form action="deletehealth.php" method="post">
+          State Name (capitalized): <input type="text" name="healthDelState"> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+        <!-- (insert education) -->
+        <h2>Insert a record containing education statistics about a state into the Education table</h2>
+        <form action="inserteducation.php" method="post">
+          State Name (capitalized): <input type="text" name="eduState"> <br/><br>
+          State Population: <input type="number" name="eduPop"> <br/><br>
+          Average Teacher Starting Salary (Nonnegative Integer Value, In USD): <input type="number" name="teacherSal"> <br/><br>
+          Average SAT Score (Integer Between 0 and 1600): <input type="number" name="SAT"> <br/><br>
+          Average ACT Score (Between 0 and 36, Up to 2 Decimal Places): <input type="number" step='0.01' name="ACT"> <br/><br>
+          NAEP Reading Score (Integer Between 0 and 500): <input type="number" name="NAEPRead"> <br/><br>
+          NAEP Math Score (Integer Between 0 and 500): <input type="number" name="NAEPMath"> <br/><br>
+	  Education Spending Per Pupil (In USD, Up to 5 Decimal Places, Between $0 and $99999): <input type="number" step='0.00001' name="eduSpending"> <br/><br>
+          Average High School Graduation Rate (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" step='0.01' name="percentCollege"> <br/><br>
+          Percent of Adults Who've Completed at Least Some College (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" step='0.01' name="hsGradRate"> <br/><br>
+          <input type="submit">
+	</form><br/><br/>
+
+	<!-- (delete education) -->
+        <h2>Delete a record from the Education table</h2>
+        <form action="deleteeducation.php" method="post">
+          State Name (capitalized): <input type="text" name="eduDelState"> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+	
+        <!-- (insert risk factors) -->
+        <h2>Insert a record containing risk factor statistics about a state into the Risk Factors table</h2>
+        <form action="insertriskfactors.php" method="post">
+          State Name (capitalized): <input type="text" name="rfState"> <br/><br>
+          State Population: <input type="number" name="rfPop"> <br/><br>
+          Cancer Mortality Rate(Number of Deaths per 100,000 People, Up to 2 Decimal Places): <input type="number" step='0.01' name="cancer"> <br/><br>
+          Obesity Prevalence (% Between 0 and 100, Up to 2 Decimal Places): <input type="number" step='0.01' name="obesity"> <br/><br>
+          STI Cases Per 100,000 People (Nonnegative Integer): <input type="number" name="sti"> <br/><br>
+         
+          <input type="submit">
+        </form><br/><br/>
+
+        <!-- (delete risk factors) -->
+        <h2>Delete a record from the Risk Factors table</h2>
+        <form action="deleteriskfactors.php" method="post">
+          State Name (capitalized): <input type="text" name="rfDelState"> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+        <!-- (insert economy) -->
+        <h2>Insert a record containing economic statistics about a state into the Economy table</h2>
+        <form action="inserteconomy.php" method="post">
+          State Name (capitalized): <input type="text" name="economyState"> <br/><br/>
+	  State Population: <input type="number" name="economyPop"> <br/><br/>
+	  Percent in Poverty (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01' name="percentInPoverty"> <br/><br/>
+          Unemployment Rate (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01'name="unemploymentRate"> <br/><br/>
+          RealGDP (Up to 2 Decimal Places): <input type="number"  step='0.01' name="realGDP"> <br/><br/>
+          Percent Unhoused (% Between 0 and 100, Up to 9 Decimal Places): <input type="number"  step='0.000000001' name="percentUnhoused"> <br/><br/>
+	  Homelessness rate Per 10000 (% Between 0 and 100, Up to 2 Decimal Places): <input type="number"  step='0.01' name="homelessnessRatePer10000"> <br/><br/>
+          Median Income (Nonnegative Integer Value): <input type="number" name="medianIncome"> <br/><br/>
+          Median Income of Foreign Born Residents (Nonnegative Integer Value): <input type="number" name="foreignBornMedianIncome"> <br/><br/>
+	  Median Income of US Born Residents (Nonnegative Integer Value): <input type="number" name="USBornMedianIncome"> <br/><br/>
+          <input type="submit">
+        </form><br/><br/>
+
+
+	<!-- (delete economy) -->
+        <h2>Delete a record from the Economy table</h2>
+        <form action="deleteeconomy.php" method="post">
+          State Name (capitalized): <input type="text" name="economyDelState"> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+        <!-- (insert demographics) -->
+        <h2>Insert a record containing demographic statistics about a state into the Demographic table</h2>
+        <form action="insertdemographics.php" method="post">
+          State Name (capitalized): <input type="text" name="demographicsState"> <br/> <br/>
+	  State Population: <input type="number" name="demographicsPop"> <br/> <br/>
+          Percent White (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="white"> <br/> <br/>
+          Percent Black (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="black"> <br/> <br/>
+          Percent Asian (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="asian"> <br/> <br/>
+          Percent Indigenous (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="indigenous"> <br/> <br/>
+          Percent Other (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="other"> <br/> <br/>
+          Percent Hispanic or Latino (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="hispanicOrLatino"> <br/> <br/>
+          Percent Not Hispanic or Latino (% Between 0 and 100, up to 4 Decimal Places): <input type="number" step='0.00001' name="notHispanicOrLatino"> <br/> <br/>
+          <input type="submit">
+        </form><br/><br/>
+
+
+	<!-- (delete demographics) -->
+        <h2>Delete a record from the Demographics table</h2>
+        <form action="deletedemographics.php" method="post">
+          State Name (capitalized): <input type="text" name="demographicsDelState"> <br/>
+          <input type="submit">
+        </form>
+
+
+  </body>
+
+     <style>
+        body {font-family: 'verdana'; font-size: 12px;}
+     </style>
+
+</html>

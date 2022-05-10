@@ -1,0 +1,13 @@
+﻿State,Population
+Alabama,5024279
+California,39538223
+Florida,21538187
+Idaho,1839106
+Kentucky,4505836
+Maryland,6177224
+Massachusetts,7029917
+New York,20201249
+Ohio,11799448
+South Dakota,886667
+Texas,29145505
+Washington,7705281

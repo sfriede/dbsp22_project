@@ -1,0 +1,51 @@
+stateName,cancerMortality,STIsPer100K,obesityPrevalence
+Alabama,161.6,855,39
+Alaska,143.7,1144,31.9
+Arizona,127.7,780,30.9
+Arkansas,163.8,841,36.4
+California,130.3,805,30.3
+Colorado,127.2,684,24.2
+Connecticut,133.8,607,29.2
+Delaware,151.1,807,36.5
+Florida,136.3,669,24.3
+Georgia,147.6,848,28.4
+Hawaii,123.8,653,34.3
+Idaho,136.5,452,34.4
+Illinois,150.9,814,24.5
+Indiana,162.7,712,31.1
+Iowa,147.8,623,32.4
+Kansas,151.4,674,36.8
+Kentucky,177.3,612,36.5
+Louisiana,159.9,1046,35.3
+Maine,161.5,384,36.6
+Maryland,142.3,769,38.1
+Massachusetts,135.2,570,31
+Michigan,157.3,682,31
+Minnesota,138.7,563,24.4
+Mississippi,176,1082,35.2
+Missouri,157.9,828,30.7
+Montana,141.5,585,39.7
+Nebraska,147.6,565,34
+Nevada,144.1,823,28.5
+New Hampshire,145,327,34
+New Jersey,133.4,513,28.7
+New Mexico,129.8,937,29.9
+New York,128.8,804,27.7
+North Carolina,148.4,889,30.9
+North Dakota,139.5,653,26.3
+Ohio,159.1,764,33.6
+Oklahoma,171,1801,33.1
+Oregon,145.8,617,35.5
+Pennsylvania,153.2,594,36.4
+Rhode Island,141.6,653,28.1
+South Carolina,153.9,957,31.5
+South Dakota,148.1,709,31.4
+Tennessee,164.4,795,30.1
+Texas,139.8,694,36.2
+Utah,119.5,439,33.2
+Vermont,152.2,319,35.6
+Virginia,146.6,655,35.8
+Washington,138.7,627,28.6
+West Virginia,177,265,26.3
+Wisconsin,148.7,622,32.2
+Wyoming,136.3,432,28

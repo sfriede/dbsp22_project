@@ -1,0 +1,13 @@
+stateName,cancerMortality,STIsPer100K,obesityPrevalence
+Alabama,161.6,855,39
+California,130.3,805,30.3
+Florida,136.3,669,24.3
+Idaho,136.5,452,34.4
+Kentucky,177.3,612,36.5
+Maryland,142.3,769,38.1
+Massachusetts,135.2,570,31
+New York,128.8,804,27.7
+Ohio,159.1,764,33.6
+South Dakota,148.1,709,31.4
+Texas,139.8,694,36.2
+Washington,138.7,627,28.6
