@@ -129,37 +129,37 @@ CHECK(eduSpendingPerPupil >= 0)
 
 -- Load the data from each .txt file into the appropriate table
 
-LOAD DATA LOCAL INFILE './state.txt'
+LOAD DATA LOCAL INFILE './dbase_setup/state.txt'
 INTO TABLE States 
 FIELDS TERMINATED BY ','
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './demographics.txt'
+LOAD DATA LOCAL INFILE './dbase_setup/demographics.txt'
 INTO TABLE Demographics 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './health.txt' 
+LOAD DATA LOCAL INFILE './dbase_setup/health.txt' 
 INTO TABLE Health 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './riskFactors.txt' 
+LOAD DATA LOCAL INFILE './dbase_setup/riskFactors.txt' 
 INTO TABLE RiskFactors 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './education.txt' 
+LOAD DATA LOCAL INFILE './dbase_setup/education.txt' 
 INTO TABLE Education 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'
 IGNORE 1 ROWS;
 
-LOAD DATA LOCAL INFILE './economy.txt'
+LOAD DATA LOCAL INFILE './dbase_setup/economy.txt'
 INTO TABLE Economy 
 FIELDS TERMINATED BY ',' 
 LINES TERMINATED BY '\r\n'

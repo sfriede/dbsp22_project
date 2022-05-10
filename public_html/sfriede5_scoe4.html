@@ -8,17 +8,17 @@
 	<h1> United States Socioeconomic, Educational, and Basic Health Dataset </h1>
 	<h4> Use these features to see important statistics and figures on these metrics across the U.S. states and territories, as well as add your own records to the dataset. All data is taken from 2019-2020 government datasets.</h4>
 
-      <h4> Note this database only supports records for these states/territories (all properly spellec and capitalized): any of the U.S. 50 states, Guam, Puerto Rico, Washington DC/Washington D.C., US Virgin Islands, Northern Mariana Islands, Howland Isalnd, Jarvis Island, Johnston Atoll, Kingman Reef, Wake Island, Navassa Island, Baker Island, Palmyra Atoll, Midway Atoll, American Samoa  </h4>
+      <h4> Note this database only supports records for these states/territories (all properly spelled and capitalized): any of the U.S. 50 states, Guam, Puerto Rico, Washington DC/Washington D.C., US Virgin Islands, Northern Mariana Islands, Howland Isalnd, Jarvis Island, Johnston Atoll, Kingman Reef, Wake Island, Navassa Island, Baker Island, Palmyra Atoll, Midway Atoll, American Samoa  </h4>
 
         <!-- (1, 4) -->
-        <h2>See the effects of quality of education on financial factors later in life</h2>
+        <h2>1. See the effects of quality of education on financial factors later in life</h2>
         <form action="entity1.php" method="post">
                 <input type="submit" value="click here to see">
         </form>
         <br/><br/>
 
         <!-- (9, 13, 15) -->
-        <h2>See the effects of quality of education on health factors later in life</h2>
+        <h2>2. See the effects of quality of education on health factors later in life</h2>
         <form action="entity2.php" method="post">
                 <input type="submit" value="click here to see">
         </form>
@@ -26,9 +26,9 @@
 
 	
         <!-- (2) -->
-        <h2> What is the median household income for states where the teen pregnancy rate is higher than X%?</h2>
+        <h2>3.  What is the median household income for states where the teen pregnancy rate is higher than X%?</h2>
         <form action="query2.php" method="post">
-                Threshold (0-100%): <input type="text" name="teenPregRate"> <br/>
+                Threshold (0-100%, Up to 2 Decimal Places): <input type="number" step = 0.01 name="teenPregRate"> <br/>
                 <input type="submit">
         </form>
         <br/><br/>
@@ -41,7 +41,7 @@
 	<br/><br/>-->
 
         <!-- (5) -->
-	<h2>Of the states in which a health factor of your choice is higher than the average rate for all states, what was the average household income?</h2>
+	<h2>4. Of the states in which a health factor of your choice is higher than the average rate for all states, what was the average household income?</h2>
 	<form action="query5.php" method="post">
 		<label for="factor">Factor:</label>
 		<select id="factor" name="factor">
@@ -59,7 +59,7 @@
 	<br/><br/>
 	
         <!-- (6) -->
-        <h2> What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state? How does this compare to states with the highest and lowest median incomes?</h2>
+        <h2>5.  What is the difference is US-born and foreign-born median incomes for a given state, and how racially diverse is this state? How does this compare to states with the highest and lowest median incomes?</h2>
         <form action="query6.php" method="post">
                 State Name (capitalized): <input type="text" name="q6state"> <br/>
                 <input type="submit">
@@ -68,7 +68,7 @@
 
 
 	<!-- (8) -->
-	<h2>What is the mean average income in each state for U.S. born individuals across all 50 states? 
+	<h2>6. What is the mean average income in each state for U.S. born individuals across all 50 states? 
 		How does this compare to foreign born individuals? </h2>
 	<form action="query8graphs.php" method="post">
 		<input type="submit" value="click here to see">
@@ -76,7 +76,7 @@
 	<br/><br/>
 
 	<!-- (9) -->
-	<h2>For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
+	<h2>7. For states in which the rate of drug overdoses or sucide are significantly lower than other states, 
         what was the highschool graduation rate? Average SAT/ACT scores?</h2>
 	<form action="query9.php" method="post">
 		<input type="submit" value="click here to see">
@@ -85,7 +85,7 @@
 
 
 	<!-- (10, 7) -->
-	<h2>In descending order of education spending per pupil, see each state's percentage of adults who have 
+	<h2>8. In descending order of education spending per pupil, see each state's percentage of adults who have 
 		completed college and the highschool graduation rate. How does a state of your choice compare to the averages of these statistics for all states?</h2>
         <form action="query10.php" method="post">
                 State Name (capitalized): <input type="text" name="q10state"> <br>
@@ -94,7 +94,7 @@
         <br/><br>
 
 	<!-- (11) -->
-	<h2>What is the difference in overall health for states in descending order of  a given economic factor?</h2>
+	<h2>9. What is the difference in overall health for states in descending order of  a given economic factor?</h2>
 
 	<form action="query11.php" method="post">
 		<label for="factor">Factor:</label>
@@ -114,7 +114,7 @@
           <br/><br/>
 
         <!-- (12) -->
-	<h2>For states with an unemployment rate X standard deviations above the national average,  list the health and risk factor statistics. How do these compare to the national averages of these statistics?</h2>
+	<h2>10. For states with an unemployment rate X standard deviations above the national average,  list the health and risk factor statistics. How do these compare to the national averages of these statistics?</h2>
 	<form action="query12.php" method="post">
 	  Number of Standard Deviations(Up to 2 Decimal Places): <input type="number" step='0.01' name="stddev12"> <br/> <br/>
 	                  <input type="submit">
@@ -122,7 +122,7 @@
 	<br/><br/>
 
 	<!-- (14) -->
-	<h2>What is the average graduation rate of each state for the X number of states with the lowest poverty levels?</h2>
+	<h2>11. What is the average graduation rate of each state for the X number of states with the lowest poverty levels?</h2>
 	<form action="query14graph.php" method="post">
 	         Number of states (Positive Integer): <input type="number" name="q14num"> <br><br>
 		<input type="submit">
@@ -130,7 +130,7 @@
 	<br/><br/>
 
 	<!-- (16) -->
-	<h2>Show the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2>
+	<h2>12. Show the states and the average income of working adults for states ordered by the average teacher salary of the state.</h2>
 	<form action="query16graph.php" method="post">
 		<input type="submit" value="click here to see">
 	</form>
@@ -146,7 +146,7 @@
 
 
 	 <!-- (17) -->
-        <h2>In order of least to most racially diverse, list each state's real GDP and median household income.</h2>
+        <h2>13. In order of least to most racially diverse, list each state's real GDP and median household income.</h2>
         <form action="query17.php" method="post">
                 <input type="submit" value="click here to see">
         </form>
@@ -156,7 +156,7 @@
 	<h4> Please ensure that any state/territory for which you are inserting a record matches one of the titles described above! Only these inputs will be accepted </h4>
 	
 	<!-- (insert health) -->
-        <h2>Insert a record containing health statistics about a state into the Health table</h2>
+        <h2> Insert a record containing health statistics about a state into the Health table</h2>
         <form action="inserthealth.php" method="post">
           State Name (capitalized): <input type="text" name="healthState"> <br/> <br/>
 	  State Population: <input type="number" name="healthPop"> <br/> <br/>

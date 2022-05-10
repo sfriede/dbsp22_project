@@ -25,7 +25,7 @@
 			      $result1Worked = 1;
 			      
 			      echo "<h3> For states in which the rate of drug overdoses or sucide are significantly higher or lower than other states, what was the highschool graduation rate? Average SAT/ACT scores?</h3>";
-			      echo "<h4> Here, we defined 'significantly lower or higher' as states where the suicide rate or number of drug overdoses were greater than or equal to 1.5 standard deviations above or below the mean value of that statistic across all 50 states</h4>";
+			      echo "<h4> Here, we defined 'significantly lower or higher' as states where the suicide rate or number of drug overdoses (in 1000s) were greater than or equal to 1.5 standard deviations above or below the mean value of that statistic across all 50 states</h4>";
 
 			      echo "<h5> Statistics for states with siginificantly high suicide rates or number of drug overdoses </h5>";
             		      //Create table to display results
@@ -323,7 +323,7 @@ window.onload = function () {
 
                  },
                  axisY:{
-                        title:"Number of Drug Overdoses",
+                        title:"Number of Drug Overdoses (in 1000s)",
                  }
 
         });

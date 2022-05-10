@@ -73,6 +73,10 @@
 <head>
 <script type="text/javascript">
 window.onload = function () {
+
+
+	var data = <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>;
+	if (data != null) {
         var chart = new CanvasJS.Chart("container5", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -104,13 +108,13 @@ window.onload = function () {
 
         });
         chart.render();
-
+	}
 }
 </script>
 </head>
 <body>
         <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the X number of states with the lowest poverty levels</h3>
+        <h3 style = "font-family: 'verdana'">What is the average graduation rate of each state for the X number of states with the lowest poverty levels?</h3>
         <div id="container5" style="height: 100%; width: 100%;display: inline-block;"></div>
 
      <style>
