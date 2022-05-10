@@ -169,7 +169,7 @@
                                 } else {
 
                                   if(!($result5)) {
-                                     echo "<br>We do not have information available for $q6state. Remember that the input must be a valid, capitalized state or US territory name.<br>";
+                                     echo "<br>We do not have information available for $q6state.<br>";
                                   }
                                 }
                                   if(($result5)) {
@@ -210,6 +210,10 @@
 <head>  
 <script>
 window.onload = function () {
+
+
+	var data =  <?php echo json_encode($dataPointsHigh, JSON_NUMERIC_CHECK); ?>;
+	if (data != null) {
         var chart = new CanvasJS.Chart("container1", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -237,7 +241,11 @@ window.onload = function () {
         });
 
         chart.render();
+	}
 
+
+	var data = <?php echo json_encode($dataPointsCollege, JSON_NUMERIC_CHECK); ?>;
+	if (data != null) {
         var chart = new CanvasJS.Chart("container2", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -264,6 +272,7 @@ window.onload = function () {
 
         });
         chart.render();
+	}
 }
 </script>
 </head>

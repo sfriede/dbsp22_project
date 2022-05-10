@@ -97,7 +97,7 @@
 
 	                       //Create table to display results
                                echo "<table border=\"1px solid black\">";
-                               echo "<tr><th> State </th> <th> Median Income - Average Teacher Starting Salary</th><th> National Average for Income-Salary Difference - This State's Difference</th><th>Average SAT Score</th><th>Average ACT Score</th><th>NAEP Reading Score</th><th>NAEP Math Score </th></tr>";
+                               echo "<tr><th> State </th> <th> Median Income - Average Teacher Starting Salary</th><th> (National Average for Income-Salary Difference) - This State's Difference</th><th>Average SAT Score</th><th>Average ACT Score</th><th>NAEP Reading Score</th><th>NAEP Math Score </th></tr>";
                                //Report result set by visiting each row in it
                                while ($row = $result->fetch_row()) {
 

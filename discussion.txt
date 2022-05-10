@@ -44,10 +44,10 @@
 
 -- Known Issues --
 
-   One known issue is if the user does not input a valid state or US territory name for query 10 ("In descending order of education spending per pupil, see each state's percentage of adults who have completed college and the highschool graduation rate. How does a state of your choice compare to the averages of these statistics for all states?"), the correct "invalid input message" will be displayed, but there will also be empty Canvas JS chart boxes. We were unable to find a way to hide these chart boxes in time. However, when acceptable input is given, the correct output is given ragrdless of whether or not there actually exists a relevant record for that state/territory.
+   One known issue is if the user inputs a teen pregancy rate threshold for which no state has a rate above or no state has a arate below that threshold, the container for that chart will still display and create a large empty space on the page. We were unable to figure out how to hide the container if no chart would be rendered inside of it in time.
 
-    This same issue holds for query 14 ("What is the average graduation rate of each state for the X number of states with the lowest poverty levels?"). If the user inputs a negative integer or 0, the empty chart box is displayed with the appropriate error message.
-
+   Another issue is if query 5 is executed, and given the current data the states with the maximum/minimum median incomes do not have demographic data available, it will display empty rows for those entities, when it would be better for it to display no row at all.
+   
     Other than that bug, another unimplemented feature is the use of user input for query 9, where it would have been fitting/more intersting to incorporate some UI. This is one place we would like to expand upon but unfortunately did not have the time to implement.
 
 -- Extensions --

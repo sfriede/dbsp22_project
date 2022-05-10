@@ -1,7 +1,7 @@
 <!-- Sydney Friedel and Shelby Coe -->
 <!-- sfriede5 and scoe4 -->
 
-<head><title>Delete Health</title></head>
+<head><title>Delete Demographics</title></head>
 <body>
 <?php
 	//open a connection to dbase server

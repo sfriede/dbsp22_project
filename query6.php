@@ -38,7 +38,7 @@
 		||  strcmp($q6state, 'Navassa Island') == 0) {
 		
    		   //input is within range, so we can make stored procedure calls safely
-		   echo "<h2>What is the difference between the US born and foreign born median incomes for $q6state, and how racially diverse is this state? How does this compare to states with the minimum and maximum median incomes?</h2><br>";
+		   echo "<h2>What is the difference between the US born and foreign born median incomes for $q6state, and how racially diverse is this state? How does this compare to states with the minimum and maximum median incomes? Note that demographic data may not be available for these states/territories</h2><br>";
 
 		   //call stored procedures defined on dbase
 
@@ -106,7 +106,7 @@
          			} else {
 
 				  if(!($result1)) {
-				  	echo "We do not have information available for this state. Remember that the input must be a valid, capitalized state or US territory name.";
+				  	echo "We do not have information available for this state/territory";
 				  }
 				}
 				  
@@ -148,6 +148,9 @@
 <script type="text/javascript">
 window.onload = function () {
 
+	var data = <?php echo json_encode($dataPointsMax, JSON_NUMERIC_CHECK); ?>;
+	
+	if (data != null) {
         var chart = new CanvasJS.Chart("container1", {
                 animationEnabled: true,
                 exportEnabled: true,
@@ -166,7 +169,11 @@ window.onload = function () {
                 }],
         });
         chart.render();
-	        var chart = new CanvasJS.Chart("container2", {
+	}
+
+	var data = <?php echo json_encode($dataPointsMin, JSON_NUMERIC_CHECK); ?>;
+	if (data != null) {
+	var chart = new CanvasJS.Chart("container2", {
                 animationEnabled: true,
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -184,7 +191,11 @@ window.onload = function () {
                 }],
         });
         chart.render();
-        var chart = new CanvasJS.Chart("container3", {
+	}
+
+	var data = <?php echo json_encode($dataPointsState, JSON_NUMERIC_CHECK); ?>;
+	if (data != null) {
+	var chart = new CanvasJS.Chart("container3", {
                 animationEnabled: true,
                 exportEnabled: true,
                 theme: "light1", // "light1", "light2", "dark1", "dark2"
@@ -202,6 +213,7 @@ window.onload = function () {
                 }],
         });
         chart.render();
+	}
 
 }
 </script>
